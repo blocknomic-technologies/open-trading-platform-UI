@@ -1,0 +1,220 @@
+<div class="uk-overflow-auto page">
+  <button @click="changeMarketType" class="marketTypeBtn">
+    <span v-if="spot">Derivatives Markets</span>
+    <span v-else>Spot Markets</span>
+  </button>
+
+  <div v-if="spot">
+    <div v-if="showLoader" class="loader">
+      <spinner mTop="100px" />
+    </div>
+    <div v-else>
+      <!-- <div class="uk-margin">
+        <form class="uk-search uk-search-default">
+            <input class="uk-search-input" type="search" placeholder="Search..." v-model="filterExchange">
+        </form>
+    </div>    -->
+      <div id="wrap2" class="uk-visible@m	">
+        <div class="sortButtons">
+          <span class="sortButton" @click="sortDataBy(0)">Pair
+            <img class="sortIconBtn" src="../../assets/sort-icon.svg" />
+          </span>
+          <span class="sortButton" @click="sortDataBy(301)">Price
+            <img class="sortIconBtn" src="../../assets/sort-icon.svg" />
+
+          </span>
+          <span class="sortButton" @click="sortDataBy(201)">% Change
+            <img class="sortIconBtn" src="../../assets/sort-icon.svg" />
+
+          </span>
+          <span class="sortButton" @click="sortDataBy(101)">Volume
+            <img class="sortIconBtn" src="../../assets/sort-icon.svg" />
+
+          </span>
+        </div>
+        <div class="sortIcon"></div>
+      </div>
+      <div id="wrap" class="uk-visible@m">
+        <div class="right">
+          <form v-on:submit.prevent autocomplete="off">
+            <input id="search" v-model="filterExchange" name="search" type="text"
+              placeholder="Search by Exchange, Currency, BasePair , QuotePair">
+            <input id="search_submit" value="Rechercher" type="submit">
+          </form>
+        </div>
+      </div>
+      <div class="uk-hidden@m">
+        <div class="container">
+          <input v-model="filterExchange" name="search" type="text" placeholder="Search ...">
+          <div class="search"></div>
+        </div>
+        <div class="container2">
+          <div id="mobileDropdown">
+            <span class="sortButtonD" @click="sortDataBy(0)">Pair
+              <img class="sortIconBtn" src="../../assets/sort-icon.svg" />
+            </span><br>
+            <span class="sortButtonD" @click="sortDataBy(301)">Price
+              <img class="sortIconBtn" src="../../assets/sort-icon.svg" />
+
+            </span><br>
+            <span class="sortButtonD" @click="sortDataBy(201)">% Change
+              <img class="sortIconBtn" src="../../assets/sort-icon.svg" />
+
+            </span><br>
+            <span class="sortButtonD" @click="sortDataBy(101)">Volume
+              <img class="sortIconBtn" src="../../assets/sort-icon.svg" />
+
+            </span> <br>
+          </div>
+
+          <div class="search2"></div>
+        </div>
+
+      </div>
+      <div class="border"></div>
+      <div id="wrapBelow" class="uk-overflow-auto">
+        <vk-table :data="data" :selected-rows.sync="singleSelection" row-selectable class="marketsTable"
+          style="padding-left: 10px !important; min-width: 100%;">
+          <vk-table-column title="Exchange" cell="Exchange">
+            <div slot-scope="{ cell, selected, allSelected }" style="padding-left: 10px !important;">
+              <span>
+                {{ cell }}
+              </span>
+            </div>
+          </vk-table-column>
+          <vk-table-column title="Pair" cell="TaisenxPair">
+            <div slot-scope="{ cell }">
+              {{ cell }}
+            </div>
+            <div slot="empty">
+              Pair unknown
+            </div>
+          </vk-table-column>
+          <vk-table-column title="Price" cell="Price">
+            <div slot-scope="{ cell }">
+              {{ cell }}
+            </div>
+            <div slot="empty">
+              Price unknown
+            </div>
+          </vk-table-column>
+          <vk-table-column title="Change %" cell="PercentageChange">
+            <div slot-scope="{ cell }">
+              <span :class="{ red: cell<0 , green: cell>0}">{{ cell }} %</span>
+            </div>
+            <div slot="empty">
+              Percentage change unknown
+            </div>
+          </vk-table-column>
+          <vk-table-column title="Change" cell="Change">
+            <div slot-scope="{ cell }">
+              <span :class="{ red: cell<0 , green: cell>0}">{{ cell }}</span>
+            </div>
+            <div slot="empty">
+              Age unknown
+            </div>
+          </vk-table-column>
+          <vk-table-column title="Volume" cell="Volume">
+            <div slot-scope="{ cell }">
+              {{ cell }}
+            </div>
+            <div slot="empty">
+              Volume unknown
+            </div>
+          </vk-table-column>
+          <vk-table-column title="24H High/Low" cell="High">
+            <div slot-scope="{ cell }">
+              <meter :min="cell.split('/')[2]" :value="cell.split('/')[1]" :max="cell.split('/')[0]"></meter>
+              <br>
+              <span class="highPrice">{{ cell.split("/")[0] }}</span><span
+                class="lowPrice">{{ cell.split("/")[2] }}</span>
+              <!-- {{ cell }}  -->
+            </div>
+            <div slot="empty">
+              High unknown
+            </div>
+          </vk-table-column>
+          <!-- <vk-table-column title="Low" cell="Low">
+            <div slot-scope="{ cell }">
+              {{ cell }} 
+            </div>
+            <div slot="empty">
+              Low unknown
+            </div>
+          </vk-table-column> -->
+          <vk-table-column title="Ask" cell="Ask">
+            <div slot-scope="{ cell }">
+              {{ cell }}
+            </div>
+            <div slot="empty">
+              Ask unknown
+            </div>
+          </vk-table-column>
+          <vk-table-column title="Bid" cell="Bid">
+            <div slot-scope="{ cell }">
+              {{ cell }}
+            </div>
+            <div slot="empty">
+              Bid unknown
+            </div>
+          </vk-table-column>
+        </vk-table>
+        <div class="paginationDiv">
+          <ul class="pagination">
+            <li v-if="pageNumber > 1" class="pagination-item" @click="changePageNumberToExtreme(false)">
+              <span class="pagination-button">
+                <<</span> </li> <li v-if="pageNumber > 1" class="pagination-item" @click="changePageNumber(1)">
+                  <span class="pagination-button">
+                    <</span> </li> <li class="pagination-item" @click="changePageNumber(4)" v-if="pageNumber > 4">
+                      <span class="pagination-button">{{pageNumber - 4}}</span>
+
+            </li>
+            <li class="pagination-item" @click="changePageNumber(3)" v-if="pageNumber > 3">
+              <span class="pagination-button">{{pageNumber - 3}}</span>
+
+            </li>
+            <li class="pagination-item" @click="changePageNumber(2)" v-if="pageNumber > 2">
+              <span class="pagination-button">{{pageNumber - 2}}</span>
+
+            </li>
+            <li class="pagination-item" @click="changePageNumber(1)" v-if="pageNumber > 1">
+              <span class="pagination-button">{{pageNumber - 1}}</span>
+
+            </li>
+            <li class="pagination-item current">
+              <span class="pagination-button current">{{pageNumber}}</span>
+
+            </li>
+            <li class="pagination-item" @click="changePageNumber(-1)" v-if="pageNumber < (noOfPages)">
+              <span class="pagination-button">{{pageNumber + 1}}</span>
+
+            </li>
+            <li class="pagination-item" @click="changePageNumber(-2)" v-if="pageNumber < (noOfPages - 1)">
+              <span class="pagination-button">{{pageNumber +2}}</span>
+
+            </li>
+            <li class="pagination-item" @click="changePageNumber(-3)" v-if="pageNumber < (noOfPages - 2)">
+              <span class="pagination-button">{{pageNumber + 3}}</span>
+
+            </li>
+            <li class="pagination-item" @click="changePageNumber(-4)" v-if="pageNumber < (noOfPages - 3)">
+              <span class="pagination-button">{{pageNumber + 4}}</span>
+
+            </li>
+            <li v-if="pageNumber !== noOfPages" class="pagination-item" @click="changePageNumber(-1)">
+              <span class="pagination-button">></span>
+
+            </li>
+            <li v-if="pageNumber !== noOfPages" class="pagination-item" @click="changePageNumberToExtreme(true)">
+              <span class="pagination-button">>></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div v-else>
+    <margin-markets :marginData="marginData" :availableContracts="availableContracts"
+      :availableIndices="availableIndices" />
+  </div>
+</div>

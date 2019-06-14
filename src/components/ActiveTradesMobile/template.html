@@ -1,0 +1,153 @@
+<div class="active-trades-mobile-modal">
+
+    <div class="content">
+        <div v-if="openOrders">
+            <div class="dropdown-container">
+                <model-select style="width: 50%; margin: 10px;" :options="exchangeList" v-model="selectedExchange" placeholder="Exchange">
+                </model-select>
+                <model-select style="width: 50%; margin: 10px;" :options="pairList" v-model="selectedPair" placeholder="Pair">
+                </model-select>
+            </div>
+            <table id="hello" data-simplebar data-simplebar-auto-hide="false" class="svh-table display nowrap" style="width:100%" data-scroll-x="true" data-scroll-y="294px">
+                <thead>
+                    <tr>
+                        <!-- <th width="50">ID</th> -->
+                        <th>Order ID</th>
+                        <th>Time</th>
+                        <th>Order Type</th>
+                        <th>Exchange</th>
+                        <th>Pair</th>
+                        <th>Amount</th>
+                        <!-- <th>Fee</th> -->
+                        <th>Price</th>
+                        <th>Stop Price</th>
+                        <th>Flags</th>
+                        <th>Parameters</th>
+                        <th>Buy/Sell</th>
+                        <th>Status</th>
+                        <th>Cancel</th>
+                    </tr>
+                </thead>
+                <tbody v-if="!isLoading">
+                    <tr v-for="order in activeOrders">
+                        <!-- <td width="50">{{ order.id }}</td> -->
+                        <td>{{ order.cid }}</td>
+                        <td>{{ order.timestamp }}</td>
+                        <td>{{ order.orderType }}</td>
+                        <td>{{ order.exchange }}</td>
+                        <td>{{ order.pair }}</td>
+                        <td>{{ order.amount }}</td>
+                        <!-- <td>{{ trade.fee }}</td> -->
+                        <td>{{ order.price }}</td>
+                        <td>{{ order.stopPrice }}</td>
+                        <td>{{ order.flags }}</td>
+                        <td>{{ order.params }}</td>
+                        <td>{{ order.bos }}</td>
+                        <td>{{ order.status }}</td>
+                        <td>
+                            <a @click=cancelOrder(order.cid,order.exchange,order.pair) href="javascript:undefined" class="fs14 os-semibold c-white center">
+                                <span class="mr5 ">X</span>
+
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody v-else>
+                    <spinner id="spinner" mTop="0"></spinner>
+                </tbody>
+            </table>
+            <!-- string value -->
+            <div v-if="isUpdating" class="updater center">
+                <img width="75px" src="https://image.ibb.co/dc02hd/30.gif" />
+            </div>
+        </div>
+        <!-- <div class="footer"></div> -->
+        <div v-else>
+            <div class="dropdown-container">
+                <model-select style="width: 100%; margin: 10px;" :options="marginExchangeList" v-model="selectedMarginExchange" placeholder="Exchange">
+                </model-select><br>
+            </div>
+            <span v-if="selectedMarginExchange.text === 'Bitfinex'" style="color:white; padding: 10px;">PNL: {{ marginInfo.user_pl }} Margin Balance: {{ marginInfo.margin_balance }} MARGIN NET: {{ marginInfo.margin_net}} Margin Required: {{ marginInfo.margin_required }} </span>
+            <table v-if="selectedMarginExchange.text === 'Bitfinex'" id="hello" data-simplebar data-simplebar-auto-hide="false" class="svh-table display nowrap" style="width:100%" data-scroll-x="true" data-scroll-y="294px">
+                <thead>
+                    <tr>
+                        <!-- <th width="50">ID</th> -->
+                        <th>Symbol</th>
+                        <th>Status</th>
+                        <th>Amount</th>
+                        <th>Base Price</th>
+                        <th>P/L</th>
+                        <th>P/L %</th>
+                        <th>Liquadation Price</th>
+                        <th>Leverage</th>
+                        <th>Funding</th>
+                        <th>Funding Type</th>
+                    </tr>
+                </thead>
+                <tbody v-if="!isLoading">
+                    <tr v-for="position in openPositions">
+                        <!-- <td width="50">{{ order.id }}</td> -->
+                        <td>{{ position.symbol }}</td>
+                        <td>{{ position.status }}</td>
+                        <td>{{ position.amount }}</td>
+                        <td>{{ position.basePrice }}</td>
+                        <td>{{ position.profitLoss }}</td>
+                        <td>{{ position.plPercentage }}</td>
+                        <td>{{ position.liquidationPrice }}</td>
+                        <td>{{ position.leverage }}</td>
+                        <td>{{ position.marginFunding }}</td>
+                        <td>{{ position.marginFundingType }}</td>
+                        <td>
+                            <a @click=cancelBitfinexPosition(order.symbol,order.amount) href="javascript:undefined" class="fs14 os-semibold c-white center">
+                                <span class="mr5 ">X</span>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody v-else>
+                    <spinner id="spinner" mTop="0"></spinner>
+                </tbody>
+            </table>
+            <table v-if="selectedMarginExchange.text === 'Bitmex'" id="hello" data-simplebar data-simplebar-auto-hide="false" class="svh-table display nowrap" style="width:100%" data-scroll-x="true" data-scroll-y="294px">
+                <thead>
+                    <tr>
+                        <!-- <th width="50">ID</th> -->
+                        <th>Symbol</th>
+                        <th>Size</th>
+                        <th>Value</th>
+                        <th>Entry Price</th>
+                        <th>Mark price</th>
+                        <th>Liq. Price</th>
+                        <th>Margin</th>
+                        <th>Unrealised PNL (ROE %)</th>
+                        <th>Realised PNL</th>
+                        <th>Close Position</th>
+                    </tr>
+                </thead>
+                <tbody v-if="!isLoading">
+                    <tr v-for="position in openPositions">
+                        <!-- <td width="50">{{ order.id }}</td> -->
+                        <td>{{ position.symbol }}</td>
+                        <td>{{ position.currentQty }}</td>
+                        <td>{{ position.lastValue }}</td>
+                        <td>{{ position.avgEntryPrice }}</td>
+                        <td>{{ position.markPrice }}</td>
+                        <td>{{ position.liquidationPrice }}</td>
+                        <td>{{ position.posMargin }}</td>
+                        <td>{{ position.unrealisedRoePcnt }}</td>
+                        <td>{{ position.realisedPnl }}</td>
+                        <td @click="closeBitmexPosition(position.symbol)">
+                            <a href="javascript:undefined" class="fs14 os-semibold c-white center">
+                                <span class="mr5 ">X</span>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody v-else>
+                    <spinner id="spinner" mTop="0"></spinner>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

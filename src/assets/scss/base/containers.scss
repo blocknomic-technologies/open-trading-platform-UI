@@ -1,0 +1,120 @@
+/* Component containers
+----------------------------------*/
+@import '../../css/colors.css';
+.ui-widget {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+  }
+  .ui-widget .ui-widget {
+    font-size: 12px;
+  }
+  .ui-widget input,.ui-widget select,.ui-widget textarea,.ui-widget button {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    @media screen and (max-width: 1500px) and (min-width: 1300px){
+      font-size:13px;
+    }
+  }
+  .ui-widget.ui-widget-content {
+    border: 1px solid var(--main-bg-color);
+  }
+  .ui-widget-content {
+    border: 1px solid #dddddd;
+    background: var(--main-bg-color);
+    color: var(--pri-label-color);
+  }
+  .ui-widget-content a {
+    color: var(--pri-label-color);
+  }
+  
+  /* Tabs
+  ----------------------------------*/
+  .ui-tabs {
+    position: relative;
+    padding: 0;
+  }
+  .ui-tabs .ui-tabs-nav {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    margin-bottom: 10px;
+    border: 0;
+    background: none;
+  }
+  .ui-tabs .ui-tabs-nav li {
+    list-style: none;
+    float: left;
+    position: relative;
+    top: 0;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    background: 0;
+  }
+  .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+    float: none;
+    padding: 11px 30px;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    color:var(--primary-text-color);
+    text-transform: uppercase; 
+    outline: 0;
+  }
+  .ui-tabs .ui-tabs-nav li.ui-tabs-active {
+    margin-bottom: -1px;
+    padding-bottom: 1px;
+    background: none;
+  }
+  .ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor{
+    color:var(--primary-text-color);
+    background: var(--tab-color);
+  }
+  .ui-tabs .ui-tabs-panel {
+    display: block;
+    border-width: 0;
+    padding: 0;
+    background: none;
+  }
+  
+  /* Tabs With 3 Col
+  ----------------------------------*/
+  .ui-tabs.three-col > .ui-tabs-nav li{
+    width: 33.33%;
+  }
+  .ui-tabs.three-col .ui-tabs-nav .ui-tabs-anchor{
+    padding:11px 0;
+  }
+  
+  /* Customize Tab 1
+  ----------------------------------*/
+  .cs-tab-1 {
+    .ui-tabs .ui-tabs-nav .ui-tabs-anchor{   
+      padding: 0 10px 6px;
+      font-size: 14px;    
+      text-transform: capitalize;
+      border-bottom: 3px solid transparent;
+      position: relative;
+      margin-right: 10px
+    }
+    .ui-tabs .ui-tabs-nav li.ui-tabs-active .ui-tabs-anchor{
+      color:var(--primary-text-color);
+      background: none;
+      border-bottom: 3px solid var(--tab-button-background-color);
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: -11px;
+        width: 0;
+        height: 0;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+        border-top: 8px solid var(--tab-button-background-color);
+        display: block;
+        left: 50%;
+        margin-left: -7px;
+      }
+    }
+  }

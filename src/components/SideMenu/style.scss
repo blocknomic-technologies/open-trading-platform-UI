@@ -1,0 +1,93 @@
+@import '../../assets/scss/base/mixins.scss';
+.sidemenu {
+    position: fixed;
+    left: 0;
+    top: 50px;
+    width: 0;
+    bottom: 0;
+    background: #1a2b30;
+    z-index: 980;
+    overflow: hidden;
+    @include transition(all, 0.3s, ease, 0s);
+    @include breakpoint(medium) {
+        top: 0;
+        width: 70px;
+    }
+    &.open {
+        width: 220px;
+        .main ul {
+            width: 220px;
+        }
+        .main ul li.sidemenu-trigger span {
+            left: auto;
+            right: 0;
+        }
+        .main ul li.sidemenu-trigger span i:before {
+            content: "\f118";
+        }
+    }
+    .logo {
+        background: var(--mobile-bg-color);
+        display: block;
+        padding: 7px 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 1;
+    }
+    .main {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        padding-top: 0px;
+        padding-right: 17px;
+        overflow: hidden;
+        overflow-y: auto;
+        @include breakpoint(medium) {
+            width: calc(100% + 17px);
+            padding-top: 86px;
+        }
+    }
+    //.main:after{content:"";display:block;height:200px;}
+    .main ul {
+        width: 80px;
+    }
+    .main ul li {
+        position: relative;
+    }
+    .main ul li a {
+        display: block;
+        position: relative;
+        padding-left: 80px;
+        color: var(--primary-text-color);
+    }
+    .main ul li a.active {
+        color: var(--mobile-bg-color);
+    }
+    .main ul li a:hover {
+        text-decoration: none;
+    }
+    .main ul li a span {
+        font-size: 24px;
+        display: block;
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .main ul li a span:last-child {
+        font-size: 16px;
+        position: static;
+        width: auto;
+        text-align: left;
+    }
+    .main ul li a .uk-badge {
+        position: absolute;
+        left: 50%;
+        top: 12px;
+        background: var(--mobile-bg-color);
+    }
+}

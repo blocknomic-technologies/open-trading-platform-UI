@@ -1,0 +1,52 @@
+<div class="active-trades">
+    <div v-on:click='toggleOpen' :class="{'opened': open, 'close': !open}" class="accordionToggleButton">Active Trades
+    </div>
+    <div>
+        <div id="activeTrades" :class="{'closed': !open}">
+            <div id="recentSimplebar" data-simplebar data-simplebar-auto-hide="false">
+                <table>
+                    <thead>
+                        <tr>
+                            <!-- <th width="50">ID</th> -->
+                            <th>Order ID</th>
+                            <th>Time</th>
+                            <th>Order Type</th>
+                            <th>Pair</th>
+                            <th>Amount</th>
+                            <!-- <th>Fee</th> -->
+                            <th>Price</th>
+                            <th>Stop Price</th>
+                            <th width="100">Buy/Sell</th>
+                            <th width="100">Exchange</th>
+                            <th>Status</th>
+                            <th>Cancel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="order in activeOrders">
+                            <!-- <td width="50">{{ order.id }}</td> -->
+                            <td>{{ order.orderId }}</td>
+                            <td>{{ formatDateTime(order.tTime) }}</td>
+                            <td>{{ order.orderType }}</td>
+                            <td>{{ order.pair }}</td>
+                            <td>{{ order.amount }}</td>
+                            <!-- <td>{{ trade.fee }}</td> -->
+                            <td>{{ order.avgPrice }}</td>
+                            <td>{{ order.stopPrice }}</td>
+                            <td>{{ order.buyOrSell }}</td>
+                            <td>{{ order.exchange }}</td>
+                            <td>{{ order.status }}</td>
+                            <td>
+                                <a @click=cancelOrder(order.id) href="javascript:undefined" class="fs14 os-semibold c-white">
+                                    <span class="mr5 text-underline">Cancel</span>
+                                    <i class="icons8-delete"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

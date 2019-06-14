@@ -1,0 +1,525 @@
+[{
+        "key": "ABS",
+        "value": "The Abyss"
+    },
+    {
+        "key": "ADD",
+        "value": "ADD"
+    },
+    {
+        "key": "AGI",
+        "value": "SingularityNET"
+    },
+    {
+        "key": "AID",
+        "value": "AidCoin"
+    },
+    {
+        "key": "AIO",
+        "value": "Aion"
+    },
+    {
+        "key": "ANT",
+        "value": "Aragon"
+    },
+    {
+        "key": "ATD",
+        "value": "Atidium"
+    },
+    {
+        "key": "ATM",
+        "value": "Atonomi"
+    },
+    {
+        "key": "AUC",
+        "value": "Auctus"
+    },
+    {
+        "key": "AVT",
+        "value": "Aventus"
+    },
+    {
+        "key": "BAB",
+        "value": "Bitcoin ABC"
+    },
+    {
+        "key": "BAT",
+        "value": "Basic Attention Token"
+    },
+    {
+        "key": "BBN",
+        "value": "Banyan Network"
+    },
+    {
+        "key": "BCH",
+        "value": "Bitcoin Cash"
+    },
+    {
+        "key": "BCI",
+        "value": "BitcoinInterest"
+    },
+    {
+        "key": "BFT",
+        "value": "BnkToTheFuture"
+    },
+    {
+        "key": "BNT",
+        "value": "Bancor"
+    },
+    {
+        "key": "BOX",
+        "value": "ContentBox"
+    },
+    {
+        "key": "BSV",
+        "value": "Bitcoin SV"
+    },
+    {
+        "key": "BTC",
+        "value": "Bitcoin"
+    },
+    {
+        "key": "BTG",
+        "value": "Bitcoin Gold"
+    },
+    {
+        "key": "CBT",
+        "value": "CommerceBlock"
+    },
+    {
+        "key": "CFI",
+        "value": "Cofound.it"
+    },
+    {
+        "key": "CND",
+        "value": "Cindicator"
+    },
+    {
+        "key": "CNN",
+        "value": "Content Neutrality Network"
+    },
+    {
+        "key": "CSX",
+        "value": "Credits"
+    },
+    {
+        "key": "CTX",
+        "value": "Cortex"
+    },
+    {
+        "key": "DAD",
+        "value": "DADI"
+    },
+    {
+        "key": "DAI",
+        "value": "Dai Stablecoin"
+    },
+    {
+        "key": "DAT",
+        "value": "Streamr"
+    },
+    {
+        "key": "DGB",
+        "value": "Digibyte"
+    },
+    {
+        "key": "DGX",
+        "value": "Digix Gold Token"
+    },
+    {
+        "key": "DRN",
+        "value": "Dragonchain"
+    },
+    {
+        "key": "DSH",
+        "value": "Dash"
+    },
+    {
+        "key": "DTA",
+        "value": "Data"
+    },
+    {
+        "key": "DTH",
+        "value": "Dether"
+    },
+    {
+        "key": "EDO",
+        "value": "Eidoo"
+    },
+    {
+        "key": "ELF",
+        "value": "aelf"
+    },
+    {
+        "key": "ENJ",
+        "value": "Enjin"
+    },
+    {
+        "key": "ESS",
+        "value": "Essentia"
+    },
+    {
+        "key": "ETC",
+        "value": "Ethereum Classic"
+    },
+    {
+        "key": "ETH",
+        "value": "Ethereum"
+    },
+    {
+        "key": "ETP",
+        "value": "ETP"
+    },
+    {
+        "key": "EUR",
+        "value": "Euro"
+    },
+    {
+        "key": "EVT",
+        "value": "Ethfinex Voting Token"
+    },
+    {
+        "key": "FSN",
+        "value": "Fusion"
+    },
+    {
+        "key": "FUN",
+        "value": "FunFair"
+    },
+    {
+        "key": "GBP",
+        "value": "Pound Sterling"
+    },
+    {
+        "key": "GNT",
+        "value": "Golem"
+    },
+    {
+        "key": "GOT",
+        "value": "ParkinGO"
+    },
+    {
+        "key": "GSD",
+        "value": "GUSD"
+    },
+    {
+        "key": "HOT",
+        "value": "Hydro Protocol"
+    },
+    {
+        "key": "INT",
+        "value": "Internet Node Token"
+    },
+    {
+        "key": "IOS",
+        "value": "IOSToken"
+    },
+    {
+        "key": "IOT",
+        "value": "Iota"
+    },
+    {
+        "key": "IQX",
+        "value": "Everipedia"
+    },
+    {
+        "key": "JPY",
+        "value": "Japanese Yen"
+    },
+    {
+        "key": "KNC",
+        "value": "Kyber"
+    },
+    {
+        "key": "LRC",
+        "value": "Loopring"
+    },
+    {
+        "key": "LTC",
+        "value": "Litecoin"
+    },
+    {
+        "key": "LYM",
+        "value": "Lympo"
+    },
+    {
+        "key": "MAN",
+        "value": "Matrix"
+    },
+    {
+        "key": "MGO",
+        "value": "MobileGo"
+    },
+    {
+        "key": "MIT",
+        "value": "Mithril"
+    },
+    {
+        "key": "MKR",
+        "value": "Maker"
+    },
+    {
+        "key": "MLN",
+        "value": "Melon"
+    },
+    {
+        "key": "MNA",
+        "value": "Decentraland"
+    },
+    {
+        "key": "MTN",
+        "value": "Medicalchain"
+    },
+    {
+        "key": "MTO",
+        "value": "MEET.ONE"
+    },
+    {
+        "key": "NCA",
+        "value": "Nucleus Vision"
+    },
+    {
+        "key": "NEC",
+        "value": "Ethfinex Nectar Token"
+    },
+    {
+        "key": "NEO",
+        "value": "NEO"
+    },
+    {
+        "key": "NIO",
+        "value": "Autonio"
+    },
+    {
+        "key": "ODE",
+        "value": "Odem"
+    },
+    {
+        "key": "OMG",
+        "value": "OmiseGO"
+    },
+    {
+        "key": "OMN",
+        "value": "Omni"
+    },
+    {
+        "key": "ONL",
+        "value": "On.Live"
+    },
+    {
+        "key": "ORS",
+        "value": "ORS"
+    },
+    {
+        "key": "PAI",
+        "value": "PAI Project"
+    },
+    {
+        "key": "PAS",
+        "value": "Blockpass"
+    },
+    {
+        "key": "PAX",
+        "value": "Paxos"
+    },
+    {
+        "key": "PNK",
+        "value": "Kleros"
+    },
+    {
+        "key": "POA",
+        "value": "POA Network (erc20)"
+    },
+    {
+        "key": "POY",
+        "value": "Polymath"
+    },
+    {
+        "key": "QSH",
+        "value": "QASH"
+    },
+    {
+        "key": "QTM",
+        "value": "Qtum"
+    },
+    {
+        "key": "RBT",
+        "value": "RBTC"
+    },
+    {
+        "key": "RCN",
+        "value": "RCN"
+    },
+    {
+        "key": "RDN",
+        "value": "Raiden"
+    },
+    {
+        "key": "REP",
+        "value": "Augur"
+    },
+    {
+        "key": "REQ",
+        "value": "Request Network"
+    },
+    {
+        "key": "RIF",
+        "value": "RIF"
+    },
+    {
+        "key": "RLC",
+        "value": "iExec"
+    },
+    {
+        "key": "RRT",
+        "value": "Recovery Right Tokens"
+    },
+    {
+        "key": "RTE",
+        "value": "Rate3"
+    },
+    {
+        "key": "SAN",
+        "value": "Santiment"
+    },
+    {
+        "key": "SEE",
+        "value": "Seer"
+    },
+    {
+        "key": "SEN",
+        "value": "Consensus AI"
+    },
+    {
+        "key": "SNG",
+        "value": "SingularDTV"
+    },
+    {
+        "key": "SNT",
+        "value": "Status"
+    },
+    {
+        "key": "SPK",
+        "value": "SpankChain"
+    },
+    {
+        "key": "STJ",
+        "value": "Storj"
+    },
+    {
+        "key": "TKN",
+        "value": "TokenCard"
+    },
+    {
+        "key": "TNB",
+        "value": "Time New Bank"
+    },
+    {
+        "key": "TRX",
+        "value": "TRON"
+    },
+    {
+        "key": "TSD",
+        "value": "TrueUSD"
+    },
+    {
+        "key": "UDC",
+        "value": "USDc"
+    },
+    {
+        "key": "USD",
+        "value": "US Dollar"
+    },
+    {
+        "key": "UTK",
+        "value": "UTRUST"
+    },
+    {
+        "key": "UTN",
+        "value": "Universa"
+    },
+    {
+        "key": "VEE",
+        "value": "BLOCKv"
+    },
+    {
+        "key": "VEN",
+        "value": "VeChain"
+    },
+    {
+        "key": "VET",
+        "value": "VeChain"
+    },
+    {
+        "key": "VLD",
+        "value": "Vetri"
+    },
+    {
+        "key": "VSY",
+        "value": "V-SYSTEMS"
+    },
+    {
+        "key": "WAX",
+        "value": "WAX"
+    },
+    {
+        "key": "WLO",
+        "value": "WOLLO"
+    },
+    {
+        "key": "WPR",
+        "value": "WePower"
+    },
+    {
+        "key": "WTC",
+        "value": "Walton"
+    },
+    {
+        "key": "XLM",
+        "value": "Stellar Lumen"
+    },
+    {
+        "key": "XMR",
+        "value": "Monero"
+    },
+    {
+        "key": "XRA",
+        "value": "Xriba"
+    },
+    {
+        "key": "XRP",
+        "value": "Ripple"
+    },
+    {
+        "key": "XTZ",
+        "value": "Tezos"
+    },
+    {
+        "key": "XVG",
+        "value": "Verge"
+    },
+    {
+        "key": "YGG",
+        "value": "Yggdrash"
+    },
+    {
+        "key": "YYW",
+        "value": "YOYOW"
+    },
+    {
+        "key": "ZCN",
+        "value": "0Chain"
+    },
+    {
+        "key": "ZEC",
+        "value": "Zcash"
+    },
+    {
+        "key": "ZIL",
+        "value": "Zilliqa"
+    },
+    {
+        "key": "ZRX",
+        "value": "0x"
+    }
+]

@@ -1,0 +1,8 @@
+@import '../../../../../assets/scss/base/mixins.scss';
+
+#multiline{
+  display:none;width:100%;height:520px;
+  @include breakpoint(medium){
+    display:block;height:calc(100vh - 330px) !important;
+  }
+}  

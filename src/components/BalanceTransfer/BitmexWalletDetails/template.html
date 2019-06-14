@@ -1,0 +1,31 @@
+<div class="bitmex-wallet-details">
+    <div id="hello" data-simplebar data-simplebar-auto-hide="false">
+        <table class="svh-table display nowrap" style="width:100%" data-scroll-x="true" data-scroll-y="294px">
+            <thead v-if="spinnerFlag">
+                <spinner id="spinner"></spinner>
+            </thead>
+            <thead v-else>
+                <tr>
+                    <ul>
+                        <li>Account: {{ bitmexSummary.account }}</li>
+                        <li>Currency: {{ bitmexSummary.currency }}</li>
+                        <li>Deposited: {{ parseFloat(bitmexSummary.deposited) || "-" }}</li>
+                        <li>Withdrawn: {{ parseFloat(bitmexSummary.withdrawn) || "-" }}</li>
+                        <li>Transfer In: {{ parseFloat(bitmexSummary.transferIn) || "-" }}</li>
+                        <li>Transfer Out: {{ parseFloat(bitmexSummary.transferOut) || "-" }}</li>
+                        <li>Amount: {{ parseFloat(bitmexSummary.amount) || "-" }}</li>
+                        <li>Pending Credit: {{ parseFloat(bitmexSummary.pendingCredit) || "-" }}</li>
+                        <li>Pending Debit: {{ parseFloat(bitmexSummary.pendingDebit) || "-" }}</li>
+                        <li>Confirmed Debit: {{ parseFloat(bitmexSummary.confirmedDebit) || "-" }}</li>
+                        <li>Timestamp: {{ formatDateTime(bitmexSummary.timestamp) }}</li>
+                    </ul>
+                </tr>
+                <tr v-if="bitmexSummary.length === 0">
+                    <td colspan="4">
+                        {{ displayText }}
+                    </td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>

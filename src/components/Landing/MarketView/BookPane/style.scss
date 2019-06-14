@@ -1,0 +1,22 @@
+@import '../../../../assets/scss/base/mixins.scss';
+
+.chart-statistics{
+    display:none;
+    .uk-panel-title{margin-bottom:5px;}
+    ul{
+      margin:0 -10px;
+      li{
+        float:left;padding:5px 10px;
+      }
+    }
+    @include breakpoint(medium){
+      display:block;margin:0;padding:15px;
+    }
+    @include breakpoint(xlarge){
+      ul{        
+        li{
+          float:left;padding:5px 10px;width:16.66%;
+        }
+      }
+    }
+  }

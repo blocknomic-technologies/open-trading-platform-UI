@@ -1,0 +1,34 @@
+@import '../../assets/css/colors.css';
+
+.simplebar-track {
+  background: var(--main-bg-color);
+}
+
+.simplebar-track.vertical {
+  pointer-events: all;
+}
+
+.simplebar-scrollbar::before {
+  background: var(--primary-text-color);
+}
+
+.simplebar-track:hover .simplebar-scrollbar:before,
+.simplebar-track .simplebar-scrollbar.visible:before {
+  opacity: 1 !important;
+}
+
+.noHorizontal .simplebar-track.horizontal {
+  opacity: 0 !important;
+}
+
+#hello>div.simplebar-track.vertical>div {
+  transform: translate3d(0px, 0px, 0px) ;
+}
+
+.noDefaultOverflow .simplebar-content {
+  overflow-x: hidden;
+}
+
+.white-overlay {
+  background-color: rgba(0, 0, 0, 0.45) !important;
+}

@@ -1,0 +1,57 @@
+<div id="tab-a3 noHorizontal" class="tikertab-content"> 
+    <div class="sv-table-wrapper ticker-table cs-table-1">
+        <table class="sv-table display nowrap" style="width:100%" data-scroll-y="291px">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <!-- <th>Type</th> -->
+                    <th class="uk-text-right">Available</th>
+                    <th class="uk-text-right">Blocked</th>
+                    <th class="uk-text-right">Total</th>
+                </tr>
+            </thead>
+            <div id="simpleBarContainer" data-simplebar data-simplebar-auto-hide="false">
+                <tbody>
+                    <tr v-for="ledger in balance">
+                        <td>{{ledger.currency}}({{ledger.wallet_type}})</td>
+                        <!-- <td></td> -->
+                        <td class="uk-text-right">{{ledger.avail_bal}}</td>
+                        <td class="uk-text-right">{{ledger.locked_bal}}</td>
+                        <td class="uk-text-right">{{ledger.total_bal}}</td>
+                    </tr>
+                </tbody>
+            </div>
+        </table>
+        <div v-if=showMarginInfo> 
+            <table>
+                <tr>
+                    <td>Margin Gross Balance: {{marginInfo.gross_balance}}</td>
+                </tr>
+                <tr>
+                    <td>Margin Tradeable Balance: {{marginInfo.tradeable_balance}}</td>
+                </tr>
+            </table>
+            <fieldset>
+                    <legend>General Margin info</legend>
+            <table>
+                    <tr>
+                            <td>User PNL: {{marginBaseInfo.user_pl}}</td>
+                            <td>User Swaps: {{marginBaseInfo.user_swaps}}</td>
+                        </tr>
+                        <tr>
+                            <td>Margin Net: {{marginBaseInfo.margin_net}}</td>
+                        </tr>
+                        <tr>
+                                <td>Margin Balance: {{marginBaseInfo.margin_balance}}</td>
+                            </tr>
+                        <tr>
+                            <td>Margin Required: {{marginBaseInfo.margin_required}}</td>
+                        </tr>
+            </table>
+        </fieldset>
+        </div>
+    </div>
+    <div v-if=showLoader  class="center">
+            <img width="75px" src="https://image.ibb.co/dc02hd/30.gif" />
+    </div>
+</div>

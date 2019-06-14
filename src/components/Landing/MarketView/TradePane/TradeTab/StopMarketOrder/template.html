@@ -1,0 +1,93 @@
+<div class="market-order">
+    <div class="uk-grid uk-grid-small f1-form-grid" style="position: relative;">
+        <div class="uk-width-3-5">
+            <div class="form-grp">
+                <div class="form-elm select" style="width:90%;">
+                    <select class="form-ctrl select2-single" v-model="formData.exc">
+                        <option value="bitfinex">BITFINEX</option>
+                        <!-- <option v-for="val in $store.getters.getSelectedPairExchanges" :key=val :value=val>
+                            {{ val.toUpperCase() }}
+                        </option> -->
+                    </select>
+                </div>
+                <div>
+                    <span class="dot" :class="statusCode" :title="statusCode"></span>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="buy-sell-tab-dropdown uk-position-top-right">
+            <div class="form-elm select" style="width: 80px;">
+                <select class="form-ctrl select2-single" @change=pairChange v-model=$store.state.selectedPair>
+                    <option v-for="val in $store.getters.getAvailablePairs" :key=val :value=val>
+                        {{ val }}
+                    </option>
+                </select>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="uk-grid uk-grid-small f1-form-grid">
+        <div class="uk-width-1-1">
+            <div class="form-grp">
+                <div class="form-elm">
+                    <input class="form-ctrl" type="text" placeholder="Amount" v-model="formData.amount">
+                    <span>{{($store.state.selectedPair).split('/')[[0]]}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-grid uk-grid-small f1-form-grid">
+        <div class="uk-width-1-1">
+            <div class="form-grp">
+                <div class="form-elm">
+                    <input class="form-ctrl" type="text" placeholder="Stop Price" v-model="formData.stopPrice">
+                    <span>{{($store.state.selectedPair).split('/')[[0]]}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-grid uk-grid-small f1-form-grid">
+        <div class="uk-width-1-2">
+            <div class="form-grp">
+                <div class="form-elm">
+                    <input style='color:var(--green-color)' class="form-ctrl" type="text" placeholder="Buy Price" readonly :value="estimatedPriceBuy">
+                    <span style='color:var(--green-color)'>{{($store.state.selectedPair).split('/')[[1]]}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="uk-width-1-2">
+            <div class="form-grp">
+                <div class="form-elm">
+                    <input style='color:var(--red-color)' class="form-ctrl" type="text" placeholder="Sell Price" readonly :value="estimatedPriceSell">
+                    <span style='color:var(--red-color)'>{{($store.state.selectedPair).split('/')[[1]]}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="uk-grid uk-grid-small f1-form-grid">
+        <div v-if="showLoader" class="uk-width-1-1 center">
+            <img src="https://image.ibb.co/dc02hd/30.gif" />
+        </div>
+        <div v-else class="uk-width-1-1 flex">
+            <div class="left">
+                <button v-if="!showConfirm" class="uk-button uk-button-green" @click="confirmTrade('buy')">buy</button>
+                <button v-else class="uk-button uk-button-green" @click="makeTrade()">Confirm</button>
+
+                <button v-if="!showConfirm" class="uk-button uk-button-red ml10" @click="confirmTrade('sell')">sell</button>
+                <button v-else class="uk-button uk-button-red ml10" @click="cancelTrade">Cancel</button>
+            </div>
+            <div class="right">
+                <span class="value">{{ fees.maker }}%</span>
+                <span class="stream">Maker&nbsp;</span>
+                <br>
+                <span class="value">{{ fees.taker }}%</span>
+                <span class="stream">Taker&nbsp;</span>
+            </div>
+        </div>
+
+    </div>
+</div>

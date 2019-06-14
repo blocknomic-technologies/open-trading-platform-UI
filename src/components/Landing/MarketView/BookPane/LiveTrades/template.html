@@ -1,0 +1,53 @@
+<div class="livetrades noHorizontal" style="padding: 0 0 15px">
+    <div class="uk-panel">
+        <h3 class="uk-panel-title" style="font-size:14px !important;">Live Trades</h3>
+    </div>
+    <div id="hello" v-if="!showLoader" data-simplebar data-simplebar-auto-hide="false" :style="{ height: tableHeight }">
+        <table>
+            <thead class="uk-hidden">
+                <tr>
+                    <td>
+                        one
+                    </td>
+                    <td id="">
+                        one
+                    </td>
+                    <td>
+                        one
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="trade of trades">
+                    <td v-bind:class="{
+                                            'c-green': trade.buyOrSell === 'buy',
+                                            'c-red': trade.buyOrSell === 'sell'
+                                        }">{{trade.price}}</td>
+                    <td class="uk-text-center">{{trade.volume}}</td>
+                    <td class="uk-text-right">{{trade.timeStamp}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="hello" v-if="showLoader" data-simplebar data-simplebar-auto-hide="false" :style="{ height: tableHeight }">
+        <table>
+            <thead class="uk-hidden">
+                <tr>
+                    <td>
+                        one
+                    </td>
+                    <td id="">
+                        one
+                    </td>
+                    <td>
+                        one
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <spinner />
+            </tbody>
+        </table>
+    </div>
+</div>

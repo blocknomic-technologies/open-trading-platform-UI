@@ -1,0 +1,225 @@
+<div class="wallet-summary-bitfinex">
+    <div id="wrap2" class="uk-visible@m">
+        <div class="sortButtons">
+            <span class="sortButton" @click="sortDataBy(0)">Currency
+                    <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+                  </span>
+            <span class="sortButton" @click="sortDataBy(101)">Exchange Total
+                    <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+          
+                  </span>
+            <span class="sortButton" @click="sortDataBy(201)">Margin Total
+                    <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+          
+                  </span>
+            <span class="sortButton" @click="sortDataBy(301)">Funding Total
+                    <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+          
+                  </span>
+            <span class="sortButton" @click="sortDataBy(401)">Total Balance
+                        <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+              
+                      </span>
+        </div>
+        <div class="sortIcon"></div>
+    </div>
+    <div id="wrap" class="uk-visible@m">
+        <div class="right">
+            <form v-on:submit.prevent autocomplete="off">
+                <input id="search" v-model="searchString" name="search" type="text" placeholder="Search by Currency">
+                <input id="search_submit" value="Rechercher" type="submit">
+            </form>
+        </div>
+
+    </div>
+    <div class="uk-hidden@m">
+        <div class="container">
+            <input v-model="searchString" name="search" type="text" placeholder="Search ...">
+            <div class="search"></div>
+        </div>
+        <div class="container2">
+            <div id="mobileDropdown">
+                <span class="sortButtonD" @click="sortDataBy(0)">Currency
+                                  <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                                </span><br>
+                <span class="sortButtonD" @click="sortDataBy(101)">Exchange Total
+                                  <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                      
+                                </span><br>
+                <span class="sortButtonD" @click="sortDataBy(201)">Margin Total
+                                  <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                      
+                                </span><br>
+                <span class="sortButtonD" @click="sortDataBy(301)">Funding Total
+                                  <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                      
+                                </span> <br>
+                <span class="sortButtonD" @click="sortDataBy(401)">Total Balance
+                                  <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                      
+                                </span> <br>
+            </div>
+
+            <div class="search2"></div>
+        </div>
+
+    </div>
+    <div id="hello" data-simplebar data-simplebar-auto-hide="false">
+        <table class="svh-table display nowrap" style="min-width:100%" data-scroll-x="true" data-scroll-y="294px">
+            <thead>
+                <tr>
+                    <th class="currency">Currency</th>
+                    <th>Exchange Wallet</th>
+                    <th>Margin Wallet</th>
+                    <th>Funding Wallet</th>
+                    <th>Total</th>
+                    <th>Quick Transfers</th>
+                </tr>
+            </thead>
+            <tbody v-if="spinnerFlag">
+                <spinner id="spinner"></spinner>
+            </tbody>
+            <tbody v-else>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div>
+                            <table>
+                                <thead>
+                                    <tr class="innerTr">
+                                        <th>Available Balance</th>
+                                        <th>Unsettled Interest</th>
+                                        <th>Total Balance</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <table>
+                                <thead>
+                                    <tr class="innerTr">
+                                        <th>Available Balance</th>
+                                        <th>Unsettled Interest</th>
+                                        <th>Total Balance</th>
+                                    </tr>
+                                </thead>
+
+                            </table>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <table>
+                                <thead>
+                                    <tr class="innerTr">
+                                        <th>Available Balance</th>
+                                        <th>Unsettled Interest</th>
+                                        <th>Total Balance</th>
+                                    </tr>
+                                </thead>
+
+                            </table>
+                        </div>
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr v-for="(bitfinexSummaryRow,index) in bitfinexSummary">
+                    <td class="currency">{{ bitfinexSummaryRow.currency }}</td>
+                    <td>
+                        <div>
+                            <table>
+                                <tbody>
+                                    <tr class="innerTr">
+                                        <td>{{ bitfinexSummaryRow.exchange_total_balance }}</td>
+                                        <td>{{ bitfinexSummaryRow.exchange_unsettled_interest }}</td>
+                                        <td>{{ bitfinexSummaryRow.exchange_available_balance }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <table>
+
+                                <tbody>
+                                    <tr class="innerTr">
+                                        <td>{{ bitfinexSummaryRow.margin_total_balance }}</td>
+                                        <td>{{ bitfinexSummaryRow.margin_unsettled_interest }}</td>
+                                        <td>{{ bitfinexSummaryRow.margin_available_balance }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <table>
+
+                                <tbody>
+                                    <tr class="innerTr">
+                                        <td>{{ bitfinexSummaryRow.funding_total_balance }}</td>
+                                        <td>{{ bitfinexSummaryRow.funding_unsettled_interest }}</td>
+                                        <td>{{ bitfinexSummaryRow.funding_available_balance }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                    <td>{{ bitfinexSummaryRow.total_balance }}</td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td @click=toggleTransferToFrom(index) class="transferToFrom amountField" style="display:flex;">
+                                    <div class="dropdown">
+                                        <button class="dropbtn">{{ fromValue[index] }}
+                                                                <i class="fa fa-caret-down"></i>
+                                                            </button>
+                                        <div class="dropdown-content">
+                                            <a @click="changeFromValue(index,'Exchange')" style="color:white;">Exchange</a>
+                                            <a @click="changeFromValue(index,'Margin')" style="color:white;">Margin</a>
+                                            <a @click="changeFromValue(index,'Funding')" style="color:white;">Funding</a>
+                                        </div>
+                                    </div>
+                                    <div class="arrow">&#8594;</div>
+                                    <div class="dropdown">
+                                        <button class="dropbtn">{{ toValue[index] }}
+                                                                <i class="fa fa-caret-down"></i>
+                                                            </button>
+                                        <div class="dropdown-content">
+                                            <a @click="changeToValue(index,'Exchange')" style="color:white;">Exchange</a>
+                                            <a @click="changeToValue(index,'Margin')" style="color:white;">Margin</a>
+                                            <a @click="changeToValue(index,'Funding')" style="color:white;">Funding</a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td rowspan="2" @click="quickTransferMoney(index)">
+                                    <div><img :class="{loading:loading[index], crossRotate:true }" src="../../../assets/transferIcon.svg" /></div>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td class="amountField">
+                                    <div class="form-grp">
+                                        <div class="form-elm">
+                                            <input type="number" class="form-ctrl amountField" placeholder="Amount" v-model="amount[index]">
+                                        </div>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr v-if="bitfinexSummary.length === 0">
+                    <td colspan="4">
+                        Invalid API-KEY or API-KEYS not Entered.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

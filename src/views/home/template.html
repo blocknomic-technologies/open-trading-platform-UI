@@ -1,0 +1,19 @@
+<div class="home">
+    <div v-if="!isLoggedIn || !isPhoneVerified">
+        <tab-bar :tabs="tabs" @tab-change="onTabChange" :bus="tabBarEventBus" />
+        <div v-if="action==='login'">
+            <login />
+        </div>
+        <div v-else-if="action==='signup' && !isLoggedIn">
+            <sign-up v-if="action === 'signup'" @sign-up-complete="signUpComplete" />
+        </div>
+    </div>
+    <div v-else>
+        <div id="nav">
+            <router-link to="/settings">Settings</router-link> |
+            <router-link to="/history">History</router-link>|
+        </div>
+        <br /><br /><br /><br />
+    </div>
+
+</div>

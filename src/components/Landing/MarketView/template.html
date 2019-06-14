@@ -1,0 +1,30 @@
+<div class="marketview uk-clearfix" v-bind:class="{
+	'sidebar-col1-hide': $store.state.tradePaneClosed,
+	'sidebar-col2-hide': $store.state.bookPaneClosed
+}">
+	<div class="sidebar-col sidebar-col1" v-bind:class="{
+		hide: $store.state.tradePaneClosed
+	}">
+		<button class="sidebar-trigger sidebar-col1-trigger" @click="sidebarTrigger('1')">
+			<i class="icons8-forward"></i>
+		</button>
+		<div class="sidebar-inner" >
+			<trade-pane class="sidebar-inner" />
+		</div>
+	</div>
+
+	<div class="sidebar-col sidebar-col2" v-bind:class="{
+		hide: $store.state.bookPaneClosed
+	}">
+		<button class="sidebar-trigger sidebar-col2-trigger" @click="sidebarTrigger('2')">
+			<i class="icons8-forward"></i>
+		</button>
+		<div class="sidebar-inner">
+			<book-pane class="sidebar-inner" />
+		</div>
+	</div>
+
+	<div class="stockchart-wrap">
+		<price-pane />
+	</div>
+</div>

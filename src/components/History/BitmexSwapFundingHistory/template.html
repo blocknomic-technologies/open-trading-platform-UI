@@ -1,0 +1,99 @@
+<div class="bitmex-swap-funding-history">
+    <div id="wrap2" class="uk-visible@m">
+        <div class="sortButtons">
+            <div class="sortButtons">
+                <span class="sortButton" @click="sortDataBy(0)">Symbol
+                          <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+                        </span>
+                <span class="sortButton" @click="sortDataBy(101)">Funding Rate
+                                <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+                      
+                              </span>
+                <span class="sortButton" @click="sortDataBy(201)">Daily Rate
+                          <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+                
+                        </span>
+                <span class="sortButton" @click="sortDataBy(301)">Funding Interval
+                            <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+                  
+                          </span>
+                <span class="sortButton" @click="sortDataBy(401)">Timestamp
+                          <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+                
+                        </span>
+            </div>
+        </div>
+        <div class="sortIcon"></div>
+    </div>
+    <div id="wrap" class="uk-visible@m">
+        <div class="right">
+            <form v-on:submit.prevent autocomplete="off">
+                <input id="search" v-model="searchString" name="search" type="text" placeholder="Search by Currency">
+                <input id="search_submit" value="Rechercher" type="submit">
+            </form>
+        </div>
+
+    </div>
+    <div class="uk-hidden@m">
+        <div class="container">
+            <input v-model="searchString" name="search" type="text" placeholder="Search ...">
+            <div class="search"></div>
+        </div>
+        <div class="container2">
+            <div id="mobileDropdown">
+                <span class="sortButtonD" @click="sortDataBy(0)">Symbol
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                            </span><br>
+                <span class="sortButtonD" @click="sortDataBy(101)">Funding Rate
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                  
+                            </span><br>
+                <span class="sortButtonD" @click="sortDataBy(201)">Daily Rate
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                  
+                            </span><br>
+                <span class="sortButtonD" @click="sortDataBy(301)">Funding Interval
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                  
+                            </span> <br>
+                <span class="sortButtonD" @click="sortDataBy(401)">Timestamp
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                  
+                            </span> <br>
+            </div>
+
+            <div class="search2"></div>
+        </div>
+
+    </div>
+    <div id="hello" data-simplebar data-simplebar-auto-hide="false">
+        <table class="svh-table display nowrap" style="width:100%" data-scroll-x="true" data-scroll-y="294px">
+            <thead>
+                <tr>
+                    <th id="tableHeaders">Symbol</th>
+                    <th id="tableHeaders">Funding Rate</th>
+                    <th id="tableHeaders">Daily Funding Rate</th>
+                    <th id="tableHeaders">Funding Interval</th>
+                    <th id="tableHeaders">Timestamp</th>
+                </tr>
+            </thead>
+            <tbody v-if="spinnerFlag">
+                <spinner id="spinner" />
+            </tbody>
+            <tbody v-else>
+                <tr v-for="historyRow in history">
+                    <td>{{ historyRow.symbol }}</td>
+                    <td>{{ historyRow.fundingRate }}</td>
+                    <td>{{ historyRow.fundingRateDaily }}</td>
+                    <td>{{ historyRow.fundingInterval }}</td>
+                    <td>{{ historyRow.timestamp }}</td>
+                </tr>
+                <tr v-if="history.length === 0">
+                    <td colspan="4">
+                        {{ displayText }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

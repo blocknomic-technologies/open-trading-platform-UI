@@ -1,0 +1,121 @@
+<div class="bequant-history">
+    <form>
+        <div>
+            <div id="tab-a4" class="settingstab-content">
+                <!-- <div class="form-area">
+                    <vk-grid class="f1-form-grid">
+                        <div class="uk-width-1-2@m">
+                            <div class="form-grp">
+                                <div class="form-elm">
+                                    <select class="uk-select" v-model="selectedPair">
+                                        <option value="" selected disabled hidden>SELECT A PAIR</option>
+                                        <option v-for="val in pairs" :key=val :value=val>
+                                            {{ val.toUpperCase() }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </vk-grid>
+                </div> -->
+
+            </div>
+        </div>
+    </form>
+    <div id="wrap2" class="uk-visible@m">
+        <div class="sortButtons">
+            <span class="sortButton" @click="sortDataBy(0)">ID
+                <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+              </span>
+            <span class="sortButton" @click="sortDataBy(101)">Price
+                <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+      
+              </span>
+            <span class="sortButton" @click="sortDataBy(201)">Quantity
+                <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+      
+              </span>
+            <!-- <span class="sortButton" @click="sortDataBy(301)">Funding Total
+                <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+      
+              </span>
+              <span class="sortButton" @click="sortDataBy(401)">Total Balance
+                    <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+          
+                  </span> -->
+        </div>
+        <div class="sortIcon"></div>
+    </div>
+    <div id="wrap" class="uk-visible@m">
+        <div class="dropdown">
+            <div class="dropbtn" style="text-transform: capitalize;">{{ selectedPair }}
+                <i class="fa fa-caret-down "></i>
+            </div>
+            <div class="dropdown-content ">
+                <a v-for="val in pairs " @click="changeSelectedPair(val) " style="color:white; text-transform: capitalize; "> {{ val.toUpperCase() }}</a>
+            </div>
+        </div>
+    </div>
+    <div class="uk-hidden@m">
+        <div class="container">
+            <input v-model="searchString" name="search" type="text" placeholder="Search ...">
+            <div class="search"></div>
+        </div>
+        <div class="container2">
+            <div id="mobileDropdown">
+                <span class="sortButtonD" @click="sortDataBy(0)">ID
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                            </span><br>
+                <span class="sortButtonD" @click="sortDataBy(101)">Price
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                  
+                            </span><br>
+                <span class="sortButtonD" @click="sortDataBy(201)">Quantity
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                  
+                            </span><br>
+            </div>
+
+            <div class="search2"></div>
+        </div>
+
+    </div>
+    <div id="hello " data-simplebar data-simplebar-auto-hide="false ">
+        <table class="svh-table display nowrap " style="width:100% " data-scroll-x="true " data-scroll-y="294px ">
+            <thead>
+                <tr>
+                    <th id="tableHeaders ">ID</th>
+                    <th id="tableHeaders ">Order ID</th>
+                    <th id="tableHeaders ">Price</th>
+                    <th id="tableHeaders ">Quantity</th>
+                    <th id="tableHeaders ">Commission</th>
+                    <th id="tableHeaders ">Commission Asset</th>
+                    <th id="tableHeaders ">Time</th>
+                    <th id="tableHeaders ">Is Buyer</th>
+                    <th id="tableHeaders ">Is Maker</th>
+                </tr>
+            </thead>
+            <tbody v-if="spinnerFlag ">
+                <spinner id="spinner "></spinner>
+            </tbody>
+            <tbody v-else>
+                <tr v-for="historyRow in history ">
+                    <td>{{ historyRow.id }}</td>
+                    <td>{{ historyRow.orderId }}</td>
+                    <td>{{ historyRow.price }}</td>
+                    <td>{{ historyRow.qty }}</td>
+                    <td>{{ historyRow.commission }}</td>
+                    <td>{{ historyRow.commissionAsset }}</td>
+                    <td>{{ formatDateTime(historyRow.time) }}</td>
+                    <td>{{ historyRow.isBuyer }}</td>
+                    <td>{{ historyRow.isMaker }}</td>
+                </tr>
+                <tr v-if="history.length===0 ">
+                    <td colspan="4 ">
+                        {{ displayText }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

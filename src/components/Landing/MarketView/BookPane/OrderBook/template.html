@@ -1,0 +1,148 @@
+<div class="orderbook noHorizontal" :style="{ height: orderHeight }">
+    <div class="header">
+        <span class="title uk-panel-title" style="font-size:14px !important;">Order Book</span>
+        <span class="count title">
+      <div class="uk-display-inline-block uk-text-middle fs11 uk-text-right" :style="$store.getters.themeMode === 'tournament' ? {color: '#fff'} : {color: 'inherit'}">
+        <template v-if='precisionNumber===0'>
+          Precision: P0
+        </template>
+        <template v-if='precisionNumber===1'>
+          Precision: P1 
+        </template>
+        <template v-if='precisionNumber===2'>
+          Precision: P2
+        </template>
+        <template v-if='precisionNumber===3'>
+          Precision: P3
+        </template>
+      </div>
+      <div class="uk-display-inline-block uk-text-middle ml5">
+        <button class="ob-count-btn sub" @click="precision('minus')" :disabled="precisionNumber === 0">
+          <i class="icons8-subtract"></i>
+        </button>
+        <button class="ob-count-btn" @click="precision('plus')" :disabled="precisionNumber === 3">
+          <i class="icons8-plus-math"></i>
+        </button>
+      </div>
+    </span>
+    </div>
+    <template v-if="!showLoader">
+      <div class="noShow noHorizontal"> 
+    <div id="ob-hello1" class="uk-visible@m" :style="{ 'max-height': tableHeight }" >
+      
+          <table>
+              <thead class="uk-hidden">
+                <tr>
+                  <th>&nbsp;</th>
+                  <th>&nbsp;</th>
+                  <th>&nbsp;</th>
+      
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(bid,index) of bids" v-if="Number((bid.volume)) != 0">
+                  <td class="c-green" style="position: relative;">{{bid.value}}
+                    <div :style="{
+                          background: 'green',
+                          position: 'absolute',
+                          border: '2px solid #39e600',
+                          top: 0,
+                          bottom: 0,
+                          left: 0,
+                          right: 0,
+                          overflow: 'visible',
+                          width: (((Number(bid.totalVolume)/Number(maxVol))*308)) + '%',
+                          opacity: .25
+                        }"></div>
+                  </td>
+                  <td class="uk-text-center">{{Number((bid.volume).toFixed(3))}}</td>
+                  <td class="cumulativeSumField">{{ Number((bid.totalVolume).toFixed(3)) }}</td>
+                </tr>
+              </tbody>
+            </table>
+    </div>
+    <div id="ob-hello1" class="uk-hidden@m" data-simplebar data-simplebar-auto-hide="false" :style="{ 'max-height': tableHeight }">
+      
+      <table>
+          <thead class="uk-hidden">
+            <tr>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+              <th>&nbsp;</th>
+  
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(bid,index) of bids" v-if="Number((bid.volume)) != 0">
+              <td class="c-green" style="position: relative;">{{bid.value}}
+                <div :style="{
+                      background: 'green',
+                      position: 'absolute',
+                      border: '2px solid #39e600',
+                      top: 0,
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      overflow: 'visible',
+                      width: (((Number(bid.totalVolume)/Number(maxVol))*308)) + '%',
+                      opacity: .25
+                    }"></div>
+              </td>
+              <td class="uk-text-center">{{Number((bid.volume).toFixed(3))}}</td>
+              <td class="cumulativeSumField">{{ Number((bid.totalVolume).toFixed(3)) }}</td>
+            </tr>
+          </tbody>
+        </table>
+</div>
+    <div>
+          <div v-show="price !== 0" v-bind:class="{
+            'ob-center-text-red': price < 0, 
+            'ob-center-text-green': price > 0 
+        }"
+              class="ob-center-text">
+              <span class="ob-center-text-green" style="font-size: 12px;  font-weight: 100;">{{$store.state.buyPrice}}</span>
+              <br>
+              <span  style="font-size: 14px;  font-weight: 800;">{{Math.abs(price)
+              }} {{ $store.state.selectedPair.split('/')[1] }}</span>
+              <br>
+              <span class="ob-center-text-red" style="font-size: 12px;  font-weight: 100;">{{$store.state.sellPrice}}</span></div>
+      </div>
+    <br><br>
+
+    <div id="ob-hello2" data-simplebar data-simplebar-auto-hide="false" :style="{ 'max-height': tableHeight }">
+          <table style="">
+              <thead class="uk-hidden">
+                <tr>
+                  <th>&nbsp;</th>
+                  <th>&nbsp;</th>
+                  <th>&nbsp;</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="ask of asks" v-if="Number((ask.volume)) != 0">
+                  <td class="c-red" style="position: relative;">{{ask.value}}
+                    <div :style="{
+                                      background: 'red',
+                                      position: 'absolute',
+                                      top: 0,
+                                      border: '2px solid #d279a6',
+                                      bottom: 0,
+                                      left: 0,
+                                      right: 0,
+                                      overflow: 'visible',
+                                      width: (((Number(ask.totalVolume)/Number(maxVol))*308)) + '%',
+                                      opacity: .25
+                                    }"></div>
+                  </td>
+                  <td class="uk-text-center">{{Number((ask.volume).toFixed(3))}}</td>
+                  <td class="cumulativeSumField">{{ Number((ask.totalVolume).toFixed(3)) }}</td>
+                </tr>
+              </tbody>
+            </table>
+    </div>
+  </div>
+  </template>
+    <template v-else>
+    <spinner mTop="calc(100% - 30px)" />
+  </template>
+</div>

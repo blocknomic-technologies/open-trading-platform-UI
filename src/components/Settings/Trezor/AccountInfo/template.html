@@ -1,0 +1,81 @@
+<div class="Trezor-Account-Info">
+    <div v-if="displayFlag">
+        <form>
+            <div style="text-align:center;">
+                <div id="tab-a4" class="settingstab-content">
+                    <div class="form-area">
+                        <vk-grid class="f1-form-grid">
+                            <div class="uk-width-1-1@m">
+                                <div class="dropdown">
+                                    <div class="dropbtn" style="text-transform: capitalize;">{{ selectedCurrency }}
+                                        <i class="fa fa-caret-down "></i>
+                                    </div>
+                                    <div class="dropdown-content ">
+                                        <a v-for="val in currencyArray" @click="changeSelectedCurrency(val.key)" style="color:white; text-transform: capitalize;"> {{ val.value.toUpperCase() }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </vk-grid>
+                        <vk-grid class="f1-form-grid">
+                            <div class="uk-width-1-1@m">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <input class="form-ctrl" type="number" placeholder="Account Number" min="0" step="1" v-model="accountNumber">
+                                    </div>
+                                </div>
+                            </div>
+                        </vk-grid>
+                        <vk-button class="pl40 pr40 goBack" @click="handleSubmit()">Submit</vk-button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div v-else style="text-align:center;">
+        <table class="svh-table display nowrap" style="width:100%" data-scroll-x="true" data-scroll-y="294px">
+            <tbody>
+                <tr>
+                    <th>ID:</th>
+                    <td>{{ result.id }}</td>
+                </tr>
+                <tr>
+                    <th>Path:</th>
+                    <td v-for="(values, index) in result.path">{{result.path[index]}}</td>
+                </tr>
+                <tr>
+                    <th>Serialized Path:</th>
+                    <td>{{ result.serializedPath }}</td>
+                </tr>
+                <tr>
+                    <th>XPUB Key:</th>
+                    <td>{{ result.xpub }}</td>
+                </tr>
+                <tr>
+                    <th>Address:</th>
+                    <td>{{ result.address }}</td>
+                </tr>
+                <tr>
+                    <th>Address Index:</th>
+                    <td>{{ result.addressIndex }}</td>
+                </tr>
+                <tr>
+                    <th>Address Path:</th>
+                    <td v-for="(values, index) in result.addressPath">{{result.addressPath[index]}}</td>
+                </tr>
+                <tr>
+                    <th>Address Serialized Path:</th>
+                    <td>{{ result.addressSerializedPath }}</td>
+                </tr>
+                <tr>
+                    <th>Balance:</th>
+                    <td>{{ result.balance }}</td>
+                </tr>
+                <tr>
+                    <th>Confirmed:</th>
+                    <td>{{ result.confirmed }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <vk-button class="pl40 pr40 goBack" @click="goBack()">Go Back</vk-button>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="Trezor">
+    <div>
+        <div class="uk-margin-medium-top uk-visible@m">
+            <vk-tabs align="center">
+                <vk-tabs-item title="Account Info">
+                    <account-info></account-info>
+                </vk-tabs-item>
+                <vk-tabs-item title="Receiving Address">
+                    <receiving-address></receiving-address>
+                </vk-tabs-item>
+                <vk-tabs-item title="Send Crypto">
+                    <send-money></send-money>
+                </vk-tabs-item>
+            </vk-tabs>
+        </div>
+        <div class="uk-hidden@m" id="mobileDropdown">
+            <vk-button id="tabBarDropdown" mode='click'>{{ activeTab }}</vk-button>
+            <vk-dropdown :delayHide=1>
+                <vk-nav-dropdown>
+                    <vk-nav-item v-for="tab of tabs" :key="tab" :title="tab" @click="onDropDownTabChange(tab)"></vk-nav-item>
+                </vk-nav-dropdown>
+            </vk-dropdown>
+            <account-info v-if="activeTab === 'Account Info'"></account-info>
+            <receiving-address v-if="activeTab === 'Receiving Address'"></receiving-address>
+            <send-money v-if="activeTab === 'Send Money'"></send-money>
+        </div>
+    </div>
+</div>

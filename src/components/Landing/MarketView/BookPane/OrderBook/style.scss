@@ -1,0 +1,258 @@
+@import "../../../../../assets/scss/base/mixins.scss";
+* {
+    font-size: 12px;
+}
+
+.orderbook {
+    padding: 0;
+    // border-top: 1px solid var(--border-right-color);
+    border-top: 1px solid transparent;
+    width: 100%;
+    @include breakpoint(medium) {
+        margin: 0;
+    }
+}
+
+#ob-hello1 {
+    overflow: hidden;
+    margin-top: 40px;
+}
+
+#ob-hello2 {
+    overflow: hidden;
+    margin-top: 0px;
+}
+
+.title {
+    padding-top: 10px;
+    padding-left: 10px;
+    font-size: 16px !important;
+}
+
+.title {
+    float: left;
+}
+
+.count {
+    float: right;
+    color: var(--tab-color);
+}
+
+.sub {
+    margin-right: 2px;
+}
+
+.ob-count-btn {
+    background: var(--tab-color);
+    color: var(--primary-text-color);
+    border: 0;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding: 3px 0;
+    text-align: center;
+    cursor: pointer;
+    outline: 0;
+}
+
+.ob-center-text-red {
+    color: var(--red-color);
+    -webkit-animation-name: text-color-red;
+    animation-name: text-color-red;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+}
+
+.ob-center-text {
+    width: 100%;
+    height: 30px;
+    font-size: 12px !important;
+    font-weight: 600;
+    color: var(--primary-text-color);
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.ob-center-text-green {
+    color: var(--green-color);
+    -webkit-animation-name: text-color-green;
+    animation-name: text-color-green;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+}
+
+.priceAnimationRed {
+    -webkit-animation-name: text-color-red;
+    animation-name: text-color-red;
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 1;
+    animation-iteration-count: 1;
+}
+
+.header {
+    padding-right: 10px;
+    position: relative;
+    z-index: 10;
+}
+
+@-webkit-keyframes text-color-green {
+    0% {
+        color: var(--primary-text-color);
+    }
+    25% {
+        color: green;
+    }
+    50% {
+        color: green;
+    }
+    75% {
+        color: green;
+    }
+    100% {
+        color: green;
+    }
+}
+
+@keyframes text-color-green {
+    0% {
+        color: var(--primary-text-color);
+    }
+    25% {
+        color: green;
+    }
+    50% {
+        color: green;
+    }
+    75% {
+        color: green;
+    }
+    100% {
+        color: green;
+    }
+}
+
+.uk-panel-title {
+    height: 25px !important;
+    margin-bottom: 0 !important;
+}
+
+@-webkit-keyframes text-color-red {
+    0% {
+        color: var(--primary-text-color);
+    }
+    25% {
+        color: red;
+    }
+    50% {
+        color: red;
+    }
+    75% {
+        color: red;
+    }
+    100% {
+        color: red;
+    }
+}
+
+@keyframes text-color-red {
+    0% {
+        color: var(--primary-text-color);
+    }
+    25% {
+        color: red;
+    }
+    50% {
+        color: red;
+    }
+    75% {
+        color: red;
+    }
+    100% {
+        color: red;
+    }
+}
+
+.sv-table tbody td,
+.sv-table tbody th {
+    width: 19%;
+    padding-right: 15px;
+}
+
+.sv-table {
+    width: 100%;
+}
+
+.order-book-table {
+    width: 100%;
+    display: table;
+    position: relative;
+}
+
+table {
+    table-layout: fixed;
+    display: table;
+    margin: 10px;
+}
+
+table,
+tr,
+tbody {
+    width: calc(100% - 25px);
+}
+
+.simplebar-track.horizontal {
+    visibility: hidden !important;
+}
+
+.simplebar-track {
+    pointer-events: all !important;
+}
+
+.cumulativeSumField {
+    text-align: right;
+}
+
+@media screen and (min-width: 2400px) {
+    // #ob-hello1 {
+    //   height: 22vh;
+    // }
+    // #ob-hello2 {
+    //   height: 22vh;
+    // }
+}
+
+@media screen and (max-width: 1024px) {
+    #ob-hello1 {
+        height: 150px !important;
+    }
+    #ob-hello2 {
+        height: 150px !important;
+    }
+    .orderbook{
+        height: 400px !important;
+    }
+}
+
+.noShow {
+    // display: flex;
+    width: 100%;
+    // flex-direction: column;
+    // justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

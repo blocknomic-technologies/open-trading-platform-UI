@@ -1,0 +1,78 @@
+button {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px !important;
+  padding: 0 30px;
+  margin-top: 5px;
+}
+
+.center {
+  text-align: center;
+}
+
+img {
+  width: 80px;
+  height: auto;
+}
+.limit-order select option {
+  background-color: var(--main-bg-color);
+  color: var(--pri-label-color);
+}
+
+.text-on-input {
+  position: relative;
+}
+
+span {
+  display: block;
+  position: relative;
+  line-height: 40px;
+  text-align: right;
+  float: right;
+}
+input {
+  position: absolute;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+  margin-top: 6px;
+}
+
+.stream {
+  line-height: 10px;
+  font-size: 12px;
+}
+
+.value {
+  line-height: 10px;
+  font-size: 12px;
+  color: var(--primary-text-color);
+}
+.operational {
+  color: green !important;
+}
+
+.degraded_performance {
+  color: yellow;
+}
+
+.partial_outage {
+  color: orange;
+}
+
+.major_outage {
+  color: red;
+}
+.dot {
+  margin-top: -25px;
+  width: 15px;
+  height: 15px;
+}
+
+.limit-order{
+  margin-top: -15px;
+}

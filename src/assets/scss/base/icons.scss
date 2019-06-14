@@ -1,0 +1,100 @@
+$prefix: "../../../assets";
+
+@font-face {
+    font-family: "Curry-Coin";
+    src: url($prefix + "/icon8/Curry-Coin.eot");
+    src: url($prefix + "/icon8/Curry-Coin.eot?#iefix") format("embedded-opentype"),
+    url($prefix + "/icon8/Curry-Coin.woff2") format("woff2"),
+    url($prefix + "/icon8/Curry-Coin.woff") format("woff"),
+    url($prefix + "/icon8/Curry-Coin.ttf") format("truetype"),
+    url($prefix + "/icon8/Curry-Coin.svg#Curry-Coin") format("svg");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    @font-face {
+      font-family: "Curry-Coin";
+      src: url($prefix + "/icon8/Curry-Coin.svg#Curry-Coin") format("svg");
+    }
+  }
+  
+  [data-icons8]:before { content: attr(data-icons8); }
+  
+  .icons8, [data-icons8]:before,
+  .icons8-back:before,
+  .icons8-checked-checkbox:before,
+  .icons8-collapse-arrow:before,
+  .icons8-delete:before,
+  .icons8-donate:before,
+  .icons8-expand-arrow:before,
+  .icons8-facebook-circled:before,
+  .icons8-forward:before,
+  .icons8-home:before,
+  .icons8-home-2:before,
+  .icons8-left:before,
+  .icons8-logout-rounded-up:before,
+  .icons8-logout-rounded-up-2:before,
+  .icons8-long-arrow-left:before,
+  .icons8-menu:before,
+  .icons8-notification:before,
+  .icons8-password:before,
+  .icons8-plus-math:before,
+  .icons8-receive-cash:before,
+  .icons8-right:before,
+  .icons8-right-arrow:before,
+  .icons8-rupee:before,
+  .icons8-settings:before,
+  .icons8-settings-2:before,
+  .icons8-subtract:before,
+  .icons8-time-machine:before,
+  .icons8-toggle-off:before,
+  .icons8-toggle-on:before,
+  .icons8-unchecked-checkbox:before,
+  .icons8-user:before,
+  .icons8-user-2:before {
+    display: inline-block;
+    font-family: "Curry-Coin";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-decoration: inherit;
+    text-rendering: optimizeLegibility;
+    text-transform: none;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+  }
+  
+  .icons8-back:before { content: "\f110"; }
+  .icons8-checked-checkbox:before { content: "\f103"; }
+  .icons8-collapse-arrow:before { content: "\f112"; }
+  .icons8-delete:before { content: "\f11b"; }
+  .icons8-donate:before { content: "\f10c"; }
+  .icons8-expand-arrow:before { content: "\f10e"; }
+  .icons8-facebook-circled:before { content: "\f10a"; }
+  .icons8-forward:before { content: "\f111"; }
+  .icons8-home:before { content: "\f109"; }
+  .icons8-home-2:before { content: "\f10d"; }
+  .icons8-left:before { content: "\f118"; }
+  .icons8-logout-rounded-up:before { content: "\f106"; }
+  .icons8-logout-rounded-up-2:before { content: "\f108"; }
+  .icons8-long-arrow-left:before { content: "\f115"; }
+  .icons8-menu:before { content: "\f11c"; }
+  .icons8-notification:before { content: "\f10f"; }
+  .icons8-password:before { content: "\f102"; }
+  .icons8-plus-math:before { content: "\f11f"; }
+  .icons8-receive-cash:before { content: "\f100"; }
+  .icons8-right:before { content: "\f117"; }
+  .icons8-right-arrow:before { content: "\f116"; }
+  .icons8-rupee:before { content: "\f121"; }
+  .icons8-settings:before { content: "\f105"; }
+  .icons8-settings-2:before { content: "\f107"; }
+  .icons8-subtract:before { content: "\f11e"; }
+  .icons8-time-machine:before { content: "\f10b"; }
+  .icons8-toggle-off:before { content: "\f114"; }
+  .icons8-toggle-on:before { content: "\f113"; }
+  .icons8-unchecked-checkbox:before { content: "\f104"; }
+  .icons8-user:before { content: "\f101"; }
+  .icons8-user-2:before { content: "\f11a"; }

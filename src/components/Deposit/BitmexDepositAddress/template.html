@@ -1,0 +1,33 @@
+<div class="bitmex-deposit-address">
+    <form>
+        <div>
+            <div id="tab-a4" class="settingstab-content">
+                <div class="form-area">
+                    <vk-grid class="f1-form-grid">
+                        <div class="dropdown">
+                            <div class="dropbtn" style="text-transform: capitalize;">{{ selectedMethod }}
+                                <i class="fa fa-caret-down "></i>
+                            </div>
+                            <div class="dropdown-content ">
+                                <a v-for="val in bitmexMethodTypes " @click="changeSelectedMethod(val) " style="color:white; text-transform: capitalize; font-size: 12px;"> {{ val.toUpperCase() }}</a>
+                            </div>
+                        </div>
+                    </vk-grid>
+                    <vk-grid class="f1-form-grid ">
+                        <div class="uk-width-3-4 ">
+                            <div class="form-grp ">
+                                <div class="form-elm ">
+                                    <input id="destination_Address" class="form-ctrl " type="text " placeholder="Destination Address " :value='destinationAddress' readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <span @click="copyReferral(destinationAddress) " class="copyText tooltip uk-width-1-4 ">
+                                    <img src="https://png.icons8.com/material/50/38545d/copy.png ">
+                                    <span class="tooltiptext ">Copy</span>
+                        </span>
+                    </vk-grid>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

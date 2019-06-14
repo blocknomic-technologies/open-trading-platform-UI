@@ -1,0 +1,24 @@
+<!-- <div class="trade-pane" style="height: 100%;width: 100%;overflow: hidden;"> -->
+<div class="trade-pane">
+    <!-- <div class="trade-pane-content" ref="tradePane" v-bind:style="{overflow: 'hidden'}"> -->
+    <div class="trade-pane-content" ref="tradePane">
+        <!-- <div class="trade-pane-content" ref="tradePane" v-bind:style="{width: '100%',height: '100%',overflowX: 'hidden',overflowY: 'scroll',paddingRight: 17,boxSizing: 'content-box'}"> -->
+        <div style="padding-left: 10px; padding-right: 10px">
+            <div id="subtab">
+                <tab-bar :mobileDropdown=false :bus="tabBarEventBus" v-if="!$store.state.isLoggedIn" :tabs=tabs.notLoggedInTabs @tab-change="activeTabChange" />
+                <tab-bar :mobileDropdown=false :bus="tabBarEventBus" v-else-if="!$store.state.isPhoneVerified" :tabs=tabs.notPhoneVerifiedTabs @tab-change="activeTabChange" />
+                <tab-bar :mobileDropdown=false :bus="tabBarEventBus" :tabs=tabs.loggedInTabs @tab-change="activeTabChange" v-else />
+            </div>
+            <keep-alive>
+                <!-- <trade-tab v-if="activeTab === 'Trade'" /> -->
+                <login v-if="activeTab === 'Login'" />
+                <!-- <ticker v-if="activeTab === 'Ticker'" /> -->
+                <balance v-if="activeTab === 'Balance'" />
+                <news v-if="activeTab === 'News'" />
+            </keep-alive>
+        </div>
+    </div>
+    <!-- <depth-chart :height="height" /> -->
+    <!-- <live-trades /> -->
+    <live-trades :parentHeight="height" :height="height" />
+</div>

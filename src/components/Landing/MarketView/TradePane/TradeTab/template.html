@@ -1,0 +1,20 @@
+<div id="landing-trade-tab">
+    <!-- <div class="buy-sell-tab-dropdown uk-position-top-right">
+        <div class="form-elm select" style="width: 80px;">
+            <select class="form-ctrl select2-single" @change=pairChange v-model=$store.state.selectedPair>
+                <option v-for="val in $store.getters.getAvailablePairs" :key=val :value=val>
+                    {{ val }}
+                </option>
+            </select>
+        </div>
+    </div> -->
+    <div class="cs-tab-1 uk-position-relative">
+        <tab-bar :mobileDropdown=false marketDropdown="false" :tabs=tabs @tab-change="activeTabChange" />
+        <keep-alive>
+        <market-order v-if="activeTab === 'Market'" />
+        <limit-order v-else-if="activeTab === 'Limit'" />
+        <stop-limit-order v-else-if="activeTab === 'Stop Limit'" />
+        <stop-market-order v-else-if="activeTab === 'Stop Market'" />
+    </keep-alive>
+    </div>
+</div>

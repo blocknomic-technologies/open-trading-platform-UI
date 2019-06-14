@@ -1,0 +1,104 @@
+<div class="margin-markets">
+  <vk-grid>
+    <div class="uk-width-1-3@m uk-width-1-1@s">
+      <model-select :options="marginExchangeList" v-model="selectedMarginExchange" placeholder="Exchange">
+      </model-select>
+    </div>
+    <div class="uk-width-1-3@m uk-width-1-1@s">
+      <model-select :options="marginHeadingList" v-model="selectedMarginInsType" placeholder="Instrument Type">
+      </model-select>
+    </div>
+    <div class="uk-width-1-3@m uk-width-1-1@s">
+      <model-select :options="marginPairsList" v-model="selectedMarginPair" placeholder="Pair">
+      </model-select>
+    </div>
+  </vk-grid>
+  <table id="dataTable" data-simplebar data-simplebar-auto-hide="false">
+    <thead>
+      <tr>
+        <th>
+          Last Price
+        </th>
+        <th>
+          Mark Price
+        </th>
+        <th>
+          Volume
+        </th>
+        <th>
+          Ask
+        </th>
+        <th>
+          Bid
+        </th>
+        <th>
+          High
+        </th>
+        <th>
+          Low
+        </th>
+        <th>
+          % Change
+        </th>
+        <th>
+          FundingRate
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          {{ selectedpairData.lastPrice }}
+        </td>
+        <td>
+          {{ selectedpairData.markPrice }}
+        </td>
+        <td>
+          {{ selectedpairData.volume }}
+        </td>
+        <td>
+          {{ selectedpairData.askPrice }}
+        </td>
+        <td>
+          {{ selectedpairData.bidPrice }}
+        </td>
+        <td>
+          {{ selectedpairData.highPrice }}
+        </td>
+        <td>
+          {{ selectedpairData.lowPrice }}
+        </td>
+        <td>
+          {{ selectedpairData.lastChangePcnt }}
+        </td>
+        <td>
+          {{ selectedpairData.fundingRate }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <fieldset>
+    <legend>Full {{ selectedMarginInsType.text }} Details</legend>
+    <div v-if=" selectedMarginInsType.text === 'Contracts'" @click=goToTrade class="tradeBtn">Trade</div>
+    <br><br>
+    <table>
+      <thead>
+        <tr>
+          <th>
+            KEY
+          </th>
+          <th>
+            VALUE
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-if="value" v-for="(value,key) in selectedpairData">
+          <td>{{key}}</td>
+          <td>{{value}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </fieldset>
+</div>

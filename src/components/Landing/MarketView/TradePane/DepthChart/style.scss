@@ -1,0 +1,47 @@
+@import "../../../../../assets/scss/base/mixins.scss";
+* {
+  box-sizing: border-box;
+}
+
+.depthchart {
+  margin: 10px 0; // height: calc(100% - 90px);
+  height: auto;
+  width: 100%;
+  position: relative;
+  padding: 20px !important;
+  border-top: 1px solid var(--border-right-color);
+  @include breakpoint(medium) {
+    display: table;
+    margin: 0;
+    padding: 15px 0 0; // max-height: 50%;
+    // min-height: 20%;
+    .uk-panel {
+      height: 100%;
+      position: relative;
+    }
+    .uk-panel-title {
+      margin-left: -5px;
+    }
+  }
+}
+
+#depthchart {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 50px);
+  margin-top: -8px;
+  margin-bottom: 10px;
+  // margin-left: -20px;
+  @include breakpoint(medium) {
+    display: table-row;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  #depthchart {
+    height: 200px !important;
+  }
+  .depthchart {
+    height: 250px !important;
+  }
+}

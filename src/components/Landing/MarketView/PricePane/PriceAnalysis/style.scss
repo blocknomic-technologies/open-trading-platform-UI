@@ -1,0 +1,197 @@
+@import "../../../../../assets/scss/base/mixins.scss";
+.priceanalysis {
+  margin: 20px 0;
+  padding: 20px 20px 0;
+  border-top: 1px solid var(--border-right-color);
+  @include breakpoint(medium) {
+    margin: 10px 0 0; //.svh-table-wrapper{min-width:675px}
+    .svh-table-wrapper .dataTables_scrollHeadInner {
+      width: 100% !important;
+      min-width: 775px;
+    }
+    .svh-table-wrapper .mCSB_container {
+      width: 100% !important;
+      min-width: 775px;
+    }
+    .svh-table-wrapper .svh-table {
+      width: 100% !important;
+      min-width: 775px;
+    }
+  }
+  @include breakpoint(medium) {
+    padding: 15px 15px 20px;
+  }
+}
+
+.pa-exchange-btn {
+  position: relative;
+  top: 2px;
+  padding: 0 10px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 14px;
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    @include roundedCorners(50);
+    @include transition(all, 0.4s, ease, 0s);
+    &:before {
+      position: absolute;
+      content: "";
+      height: 12px;
+      width: 12px;
+      left: 1px;
+      bottom: 1px;
+      background-color: var(--primary-text-color);
+      @include roundedCorners(50);
+      @include transition(all, 0.4s, ease, 0s);
+    }
+  }
+  input {
+    display: none;
+    &:checked {
+      + {
+        .slider {
+          background-color: #5fd169;
+          &:before {
+            -webkit-transform: translateX(18px);
+            -ms-transform: translateX(18px);
+            transform: translateX(18px);
+          }
+        }
+      }
+    }
+    &:focus {
+      + {
+        .slider {
+          box-shadow: 0 0 1px #2196f3;
+        }
+      }
+    }
+  }
+}
+// tbody {
+//   table-layout: fixed;
+// }
+
+// .priceanalysis tbody {
+//   height: 70px !important;
+//   overflow: auto;
+//   table-layout: fixed;
+// }
+// .priceanalysis thead {
+//   table-layout: fixed;
+// }
+
+// .priceanalysis tbody tr td {
+//   width: 100px;
+
+// .tableWrapper {
+//   width: 100%;
+// }
+
+// table {
+//   width: 100%;
+// }
+
+// table th {
+//   text-align: left;
+//   color: var(--primary-text-color);
+// }
+
+// table tbody {
+//   box-sizing: border-box;
+//   width: 100%;
+//   overflow: hidden;
+//   height: 10vw;
+// }
+// thead {
+//   width: 100%;
+// }
+// td,
+// th {
+//   width: 20%;
+// }
+table,
+tr td,
+th {
+  text-align: left;
+}
+td,
+th {
+  border-bottom: none !important;
+  min-width: !important;
+}
+tr {
+  border-bottom: 1px solid var(--border-bottom-color);
+}
+thead {
+  border-bottom: 1px solid var(--border-bottom-color);
+  color: var(--primary-text-color);
+}
+tbody {
+  height: 80px;
+  overflow: hidden;
+}
+thead,
+tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+thead {
+  width: calc(100% - 1em);
+  color: var(--primary-text-color);
+}
+table {
+  width: 100%;
+}
+
+tbody tr {
+  cursor: pointer;
+}
+
+tbody tr:hover {
+  background-color: #444;
+}
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.uk-panel {
+  padding: 0 5px;
+}
+
+.center {
+  text-align: center;
+}
+
+.fs16px {
+  font-size: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  table,
+  tbody,
+  thead,
+  tr {
+    width: 650px;
+  }
+  td,
+  th {
+    width: 100px;
+  }
+}

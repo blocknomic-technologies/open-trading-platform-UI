@@ -1,0 +1,37 @@
+#landing-trade-tab {
+  width: 100%;
+  position: relative;
+  div {
+    #tab-bar {
+      div {
+        ul {
+          overflow-x: scroll !important;
+        }
+      }
+    }
+  }
+}
+
+.buy-sell-tab-dropdown {
+  right: 20px;
+  width: 33%;
+  top: 97px;
+  z-index: 2;
+  position: relative;
+  .form-elm-select {
+    width: 80px;
+  }
+}
+
+.buy-sell-tab-dropdown select option {
+  background-color: var(--main-bg-color);
+  color: var(--pri-label-color);
+}
+
+@media screen and (max-width: 768px) {
+  .buy-sell-tab-dropdown {
+    right:5px;
+    top: 45px;
+  }
+}
+

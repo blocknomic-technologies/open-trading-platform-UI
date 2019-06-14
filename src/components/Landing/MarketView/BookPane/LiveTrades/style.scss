@@ -1,0 +1,33 @@
+#hello {
+  overflow: hidden;
+  padding: 10px;
+}
+table {
+  text-align: left;
+  display: table;
+  table-layout: fixed;
+  width: calc(100% - 5px);
+}
+
+.uk-panel {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+tr {
+  width: 100%;
+}
+
+tbody {
+  width: calc(100% - 10px);
+}
+thead {
+  width: 100%;
+  color: var(--primary-text-color);
+}
+th,
+td {
+  width: 33%;
+}
+thead th {
+}

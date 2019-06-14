@@ -1,0 +1,156 @@
+<div class="bitmex-order-history">
+    <div id="wrap2" class="uk-visible@m">
+        <div class="sortButtons">
+            <div class="sortButtons">
+                <span class="sortButton" @click="sortDataBy(0)">Symbol
+                                  <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+                                </span>
+                <span class="sortButton" @click="sortDataBy(101)">Side
+                                        <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+                              
+                                      </span>
+                <span class="sortButton" @click="sortDataBy(201)">Price
+                                  <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+                        
+                                </span>
+                <span class="sortButton" @click="sortDataBy(301)">Transaction Time
+                                    <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+                          
+                                  </span>
+                <span class="sortButton" @click="sortDataBy(401)">Timestamp
+                                  <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+                        
+                                </span>
+            </div>
+        </div>
+        <div class="sortIcon"></div>
+    </div>
+    <div id="wrap" class="uk-visible@m">
+        <div class="right">
+            <form v-on:submit.prevent autocomplete="off">
+                <input id="search" v-model="searchString" name="search" type="text" placeholder="Search by Currency">
+                <input id="search_submit" value="Rechercher" type="submit">
+            </form>
+        </div>
+
+    </div>
+    <div class="uk-hidden@m">
+        <div class="container">
+            <input v-model="searchString" name="search" type="text" placeholder="Search ...">
+            <div class="search"></div>
+        </div>
+        <div class="container2">
+            <div id="mobileDropdown">
+                <span class="sortButtonD" @click="sortDataBy(0)">Symbol
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                            </span><br>
+                <span class="sortButtonD" @click="sortDataBy(101)">Side
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                  
+                            </span><br>
+                <span class="sortButtonD" @click="sortDataBy(201)">Price
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                  
+                            </span><br>
+                <span class="sortButtonD" @click="sortDataBy(301)">Transaction Time
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                  
+                            </span> <br>
+                <span class="sortButtonD" @click="sortDataBy(401)">Timestamp
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                  
+                            </span> <br>
+            </div>
+
+            <div class="search2"></div>
+        </div>
+
+    </div>
+    <div id="hello" data-simplebar data-simplebar-auto-hide="false">
+        <table class="svh-table display nowrap" style="width:100%" data-scroll-x="true" data-scroll-y="294px">
+            <thead>
+                <tr>
+                    <th id="tableHeaders">Order ID</th>
+                    <th id="tableHeaders">Account</th>
+                    <th id="tableHeaders">Symbol</th>
+                    <th id="tableHeaders">Side</th>
+                    <th id="tableHeaders">Quantities</th>
+                    <th id="tableHeaders">Price</th>
+                    <th id="tableHeaders">Peg Details</th>
+                    <th id="tableHeaders">Currency Details</th>
+                    <th id="tableHeaders">Execution Instructions</th>
+                    <th id="tableHeaders">Order Details</th>
+                    <th id="tableHeaders">Transaction Time</th>
+                    <th id="tableHeaders">Timestamp</th>
+                    <th id="tableHeaders">Parameters</th>
+                </tr>
+            </thead>
+            <tbody v-if="spinnerFlag">
+                <spinner id="spinner" />
+            </tbody>
+            <tbody v-else>
+                <tr v-for="historyRow in history">
+                    <td>{{ historyRow.orderID }}</td>
+                    <td>{{ historyRow.account }}</td>
+                    <td>{{ historyRow.symbol }}</td>
+                    <td>{{ historyRow.side }}</td>
+                    <td>
+                        <ul>
+                            <li>Display Quantity: {{ historyRow.displayQty }}</li>
+                            <li>Simple Leaves Quantity: {{ historyRow.simpleLeavesQty }}</li>
+                            <li>Leaves Quantity: {{ historyRow.leavesQty }}</li>
+                            <li>Simple Cumulative Quantity: {{ historyRow.simpleCumQty }}</li>
+                            <li>Cumulative Quantity: {{ historyRow.cumQty }}</li>
+                        </ul>
+                    </td>
+                    <td>{{ historyRow.price }}</td>
+                    <td>
+                        <ul>
+                            <li>Peg Offset Value: {{ historyRow.pegOffsetValue }}</li>
+                            <li>Peg Price Type: {{ historyRow.pegPriceType }}</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Currency: {{ historyRow.currency }}</li>
+                            <li>Settle Currency: {{ historyRow.settlCurrency }}</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Instructions: {{ historyRow.execInst }}</li>
+                            <li>Destination: {{ historyRow.exDestination }}</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Order Quantity: {{ historyRow.orderQty }}</li>
+                            <li>Order Type: {{ historyRow.ordType }}</li>
+                            <li>Order Status: {{ historyRow.ordStatus }}</li>
+                            <li>Order Rejection Reason: {{ historyRow.ordRejReason }}</li>
+                        </ul>
+                    </td>
+                    <td>{{ historyRow.transactTime }}</td>
+                    <td>{{ historyRow.timestamp }}</td>
+                    <td>
+                        <ul>
+                            <li>StopPx: {{ historyRow.stopPx }}</li>
+                            <li>Time In Force: {{ historyRow.timeInForce }}</li>
+                            <li>Contingency Type: {{ historyRow.contingencyType }}</li>
+                            <li>Triggered: {{ historyRow.triggered }}</li>
+                            <li>Working Indicator: {{ historyRow.workingIndicator }}</li>
+                            <li>Average Px: {{ historyRow.avgPx }}</li>
+                            <li>Multi-Leg Reporting Type: {{ historyRow.multiLegReportingType }}</li>
+                            <li>Text: {{ historyRow.text }}</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr v-if="history.length === 0">
+                    <td colspan="4">
+                        {{ displayText }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+:root {
+    --main-bg-color: #0e1e23;
+    --header-bg-color: #203238;
+    --header-border-color: #415b62;
+    --tab-button-background-color: #39545d;
+    --primary-text-color: #ffffff;
+    --miner-sub-text-color: #909ca0;
+    --mobile-bg-color: #edba9f;
+    --green-color: #5fd66a;
+    --red-color: #ff5353;
+    --sec-mobile-bg-color: #b37863;
+    --pri-label-color: #879fad;
+    --just-black : #000000;
+    --placeholder-color: #999999;
+    --border-bottom-color: #1e2c31;
+    --border-right-color : #445f66;
+    --tab-color: #38545d;
+    --silder-bg-color: #d3d3d3; 
+    --secondary-modal-bg-color :#0F1E23;
+    --container-bg-color: #121E22;
+}

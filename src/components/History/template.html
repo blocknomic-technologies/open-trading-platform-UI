@@ -1,0 +1,372 @@
+<div class="history">
+    <h1 class="fs20 os-regular c-white p20 m0 uk-text-uppercase">History</h1>
+    <form class="pl20 pr20">
+        <div>
+            <div id="tab-a4" class="settingstab-content">
+            </div>
+        </div>
+    </form>
+    <div v-if="bitfinexFlag">
+        <div class="uk-visible@m">
+            <vk-tabs class="pl20 pr20">
+                <vk-tabs-item title="Orders">
+                    <div class="dropdown">
+                        <div class="dropbtn" style="text-transform: capitalize;">{{ selectedExchange }}
+                            <i class="fa fa-caret-down "></i>
+                        </div>
+                        <div class="dropdown-content ">
+                            <a @click="changeExchange( 'bitfinex') " style="color:white; text-transform: capitalize; ">bitfinex</a>
+                            <a @click="changeExchange( 'bequant') " style="color:white; text-transform: capitalize; ">bequant</a>
+                            <a @click="changeExchange( 'binance') " style="color:white; text-transform: capitalize; ">binance</a>
+                            <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                        </div>
+                    </div>
+                    <bitfinex-orders-history></bitfinex-orders-history>
+                </vk-tabs-item>
+                <vk-tabs-item title="Trading">
+                    <div class="dropdown">
+                        <div class="dropbtn" style="text-transform: capitalize;">{{ selectedExchange }}
+                            <i class="fa fa-caret-down "></i>
+                        </div>
+                        <div class="dropdown-content ">
+                            <a @click="changeExchange( 'bitfinex') " style="color:white; text-transform: capitalize; ">bitfinex</a>
+                            <a @click="changeExchange( 'bequant') " style="color:white; text-transform: capitalize; ">bequant</a>
+                            <a @click="changeExchange('binance')" style="color:white; text-transform: capitalize;">binance</a>
+                            <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                        </div>
+                    </div>
+                    <bitfinex-trading-history></bitfinex-trading-history>
+                </vk-tabs-item>
+                <vk-tabs-item title="Positions">
+                    <div class="dropdown">
+                        <div class="dropbtn" style="text-transform: capitalize;">{{ selectedExchange }}
+                            <i class="fa fa-caret-down "></i>
+                        </div>
+                        <div class="dropdown-content ">
+                            <a @click="changeExchange( 'bitfinex') " style="color:white; text-transform: capitalize; ">bitfinex</a>
+                            <a @click="changeExchange('bequant')" style="color:white; text-transform: capitalize;">bequant</a>
+                            <a @click="changeExchange( 'binance') " style="color:white; text-transform: capitalize; ">binance</a>
+                            <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                        </div>
+                    </div>
+                    <bitfinex-positions-history></bitfinex-positions-history>
+                </vk-tabs-item>
+                <vk-tabs-item title="Crypto Deposits ">
+                    <div class="dropdown ">
+                        <div class="dropbtn " style="text-transform: capitalize; ">{{ selectedExchange }}
+                            <i class="fa fa-caret-down"></i>
+                        </div>
+                        <div class="dropdown-content">
+                            <a @click="changeExchange('bitfinex')" style="color:white; text-transform: capitalize;">bitfinex</a>
+                            <a @click="changeExchange('bequant')" style="color:white; text-transform: capitalize;">bequant</a>
+                            <a @click="changeExchange( 'binance') " style="color:white; text-transform: capitalize; ">binance</a>
+                            <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                        </div>
+                    </div>
+                    <bitfinex-deposit-history></bitfinex-deposit-history>
+                </vk-tabs-item>
+                <vk-tabs-item title="Crypto Withdrawal">
+                    <div class="dropdown">
+                        <div class="dropbtn" style="text-transform: capitalize;">{{ selectedExchange }}
+                            <i class="fa fa-caret-down "></i>
+                        </div>
+                        <div class="dropdown-content ">
+                            <a @click="changeExchange( 'bitfinex') " style="color:white; text-transform: capitalize; ">bitfinex</a>
+                            <a @click="changeExchange( 'bequant') " style="color:white; text-transform: capitalize; ">bequant</a>
+                            <a @click="changeExchange('binance')" style="color:white; text-transform: capitalize;">binance</a>
+                            <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                        </div>
+                    </div>
+                    <div>
+                        <bitfinex-pending-withdrawal-history></bitfinex-pending-withdrawal-history>
+                    </div>
+                </vk-tabs-item>
+            </vk-tabs>
+        </div>
+        <div class="uk-hidden@m" id="mobileDropdown">
+            <vk-button id="tabBarDropdown" mode='click'>{{ bitfinexActiveTab }}</vk-button>
+            <vk-dropdown :delayHide=1>
+                <vk-nav-dropdown>
+                    <vk-nav-item v-for="tab of bitfinexTabs" :key="tab" :title="tab" @click="onDropDownBitfinexTabChange(tab)"></vk-nav-item>
+                </vk-nav-dropdown>
+            </vk-dropdown>
+            <div class="dropdown">
+                <div class="dropbtn" style="text-transform: capitalize;">{{ selectedExchange }}
+                    <i class="fa fa-caret-down "></i>
+                </div>
+                <div class="dropdown-content ">
+                    <a @click="changeExchange( 'bitfinex') " style="color:white; text-transform: capitalize; ">bitfinex</a>
+                    <a @click="changeExchange( 'bequant') " style="color:white; text-transform: capitalize; ">bequant</a>
+                    <a @click="changeExchange( 'binance') " style="color:white; text-transform: capitalize; ">binance</a>
+                    <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                </div>
+            </div>
+            <bitfinex-orders-history v-if="bitfinexActiveTab === 'Orders'"></bitfinex-orders-history>
+            <bitfinex-trading-history v-if="bitfinexActiveTab === 'Trading'"></bitfinex-trading-history>
+            <bitfinex-positions-history v-if="bitfinexActiveTab === 'Positions'"></bitfinex-positions-history>
+            <bitfinex-deposit-history v-if="bitfinexActiveTab === 'Crypto Deposits'"></bitfinex-deposit-history>
+            <bitfinex-pending-withdrawal-history v-if="bitfinexActiveTab === 'Crypto Withdrawal'"></bitfinex-pending-withdrawal-history>
+        </div>
+    </div>
+    <div v-else-if="bequantFlag ">
+        <div class="uk-visible@m">
+            <vk-tabs class="pl20 pr20 ">
+                <vk-tabs-item title="Orders">
+                    <div class="dropdown">
+                        <div class="dropbtn" style="text-transform: capitalize;">{{ selectedExchange }}
+                            <i class="fa fa-caret-down "></i>
+                        </div>
+                        <div class="dropdown-content ">
+                            <a @click="changeExchange( 'bitfinex') " style="color:white; text-transform: capitalize; ">bitfinex</a>
+                            <a @click="changeExchange( 'bequant') " style="color:white; text-transform: capitalize; ">bequant</a>
+                            <a @click="changeExchange( 'binance') " style="color:white; text-transform: capitalize; ">binance</a>
+                            <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                        </div>
+                    </div>
+                    <bequant-orders-history></bequant-orders-history>
+                </vk-tabs-item>
+                <vk-tabs-item title="Trading ">
+                    <div class="dropdown ">
+                        <div class="dropbtn " style="text-transform: capitalize; ">{{ selectedExchange }}
+                            <i class="fa fa-caret-down"></i>
+                        </div>
+                        <div class="dropdown-content">
+                            <a @click="changeExchange('bitfinex')" style="color:white; text-transform: capitalize;">bitfinex</a>
+                            <a @click="changeExchange('bequant')" style="color:white; text-transform: capitalize;">bequant</a>
+                            <a @click="changeExchange( 'binance') " style="color:white; text-transform: capitalize; ">binance</a>
+                            <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                        </div>
+                    </div>
+                    <bequant-trading-history></bequant-trading-history>
+                </vk-tabs-item>
+                <vk-tabs-item title="Crypto Deposits">
+                    <div class="dropdown">
+                        <div class="dropbtn" style="text-transform: capitalize;">{{ selectedExchange }}
+                            <i class="fa fa-caret-down "></i>
+                        </div>
+                        <div class="dropdown-content ">
+                            <a @click="changeExchange( 'bitfinex') " style="color:white; text-transform: capitalize; ">bitfinex</a>
+                            <a @click="changeExchange( 'bequant') " style="color:white; text-transform: capitalize; ">bequant</a>
+                            <a @click="changeExchange('binance')" style="color:white; text-transform: capitalize;">binance</a>
+                            <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                        </div>
+                    </div>
+                    <bequant-deposit-history></bequant-deposit-history>
+                </vk-tabs-item>
+                <vk-tabs-item title="Crypto Withdrawal ">
+                    <div class="dropdown ">
+                        <div class="dropbtn " style="text-transform: capitalize; ">{{ selectedExchange }}
+                            <i class="fa fa-caret-down"></i>
+                        </div>
+                        <div class="dropdown-content">
+                            <a @click="changeExchange('bitfinex')" style="color:white; text-transform: capitalize;">bitfinex</a>
+                            <a @click="changeExchange('bequant')" style="color:white; text-transform: capitalize;">bequant</a>
+                            <a @click="changeExchange( 'binance') " style="color:white; text-transform: capitalize; ">binance</a>
+                            <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                        </div>
+                    </div>
+                    <div>
+                        <bequant-pending-withdrawal-history></bequant-pending-withdrawal-history>
+                    </div>
+                </vk-tabs-item>
+            </vk-tabs>
+        </div>
+        <div class="uk-hidden@m" id="mobileDropdown">
+            <vk-button id="tabBarDropdown" mode='click'>{{ bequantActiveTab }}</vk-button>
+            <vk-dropdown :delayHide=1>
+                <vk-nav-dropdown>
+                    <vk-nav-item v-for="tab of bequantTabs" :key="tab" :title="tab" @click="onDropDownBequantTabChange(tab)"></vk-nav-item>
+                </vk-nav-dropdown>
+            </vk-dropdown>
+            <div class="dropdown">
+                <div class="dropbtn" style="text-transform: capitalize;">{{ selectedExchange }}
+                    <i class="fa fa-caret-down "></i>
+                </div>
+                <div class="dropdown-content ">
+                    <a @click="changeExchange( 'bitfinex') " style="color:white; text-transform: capitalize; ">bitfinex</a>
+                    <a @click="changeExchange( 'bequant') " style="color:white; text-transform: capitalize; ">bequant</a>
+                    <a @click="changeExchange( 'binance') " style="color:white; text-transform: capitalize; ">binance</a>
+                    <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                </div>
+            </div>
+            <bequant-orders-history v-if="bequantActiveTab === 'Orders'"></bequant-orders-history>
+            <bequant-trading-history v-if="bequantActiveTab === 'Trading'"></bequant-trading-history>
+            <bequant-deposit-history v-if="bequantActiveTab === 'Crypto Deposits'"></bequant-deposit-history>
+            <bequant-pending-withdrawal-history v-if="bequantActiveTab === 'Crypto Withdrawal'"></bequant-pending-withdrawal-history>
+        </div>
+<<<<<<< HEAD
+        <bequant-orders-history v-if="selectedExchange === 'bequant' && bequantActiveTab === 'Orders'"></bequant-orders-history>
+        <bequant-trading-history v-if="selectedExchange === 'bequant' && bequantActiveTab === 'Trading' "></bequant-trading-history>
+        <bequant-deposit-history v-if="selectedExchange === 'bequant' && bequantActiveTab === 'Crypto Deposits'"></bequant-deposit-history>
+        <bequant-pending-withdrawal-history v-if="selectedExchange === 'bequant' && bequantActiveTab === 'Crypto Withdrawal'"></bequant-pending-withdrawal-history>
+=======
+>>>>>>> 8b343a3bf1ffd5c38b84dd0b5d3c705a858fe020
+    </div>
+
+    <div v-else-if="binanceFlag">
+        <div class="uk-visible@m">
+            <vk-tabs class="pl20 pr20">
+                <vk-tabs-item title="Orders">
+                    <div class="dropdown">
+                        <div class="dropbtn" style="text-transform: capitalize;">{{ selectedExchange }}
+                            <i class="fa fa-caret-down "></i>
+                        </div>
+                        <div class="dropdown-content ">
+                            <a @click="changeExchange( 'bitfinex') " style="color:white; text-transform: capitalize; ">bitfinex</a>
+                            <a @click="changeExchange( 'bequant') " style="color:white; text-transform: capitalize; ">bequant</a>
+                            <a @click="changeExchange( 'binance') " style="color:white; text-transform: capitalize; ">binance</a>
+                            <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                        </div>
+                    </div>
+                    <binance-orders-history></binance-orders-history>
+                </vk-tabs-item>
+                <vk-tabs-item title="Trading">
+                    <div class="dropdown">
+                        <div class="dropbtn" style="text-transform: capitalize;">{{ selectedExchange }}
+                            <i class="fa fa-caret-down "></i>
+                        </div>
+                        <div class="dropdown-content ">
+                            <a @click="changeExchange( 'bitfinex') " style="color:white; text-transform: capitalize; ">bitfinex</a>
+                            <a @click="changeExchange( 'bequant') " style="color:white; text-transform: capitalize; ">bequant</a>
+                            <a @click="changeExchange('binance')" style="color:white; text-transform: capitalize;">binance</a>
+                            <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                        </div>
+                    </div>
+                    <binance-trading-history></binance-trading-history>
+                </vk-tabs-item>
+                <vk-tabs-item title="Crypto Deposits">
+                    <div class="dropdown ">
+                        <div class="dropbtn " style="text-transform: capitalize; ">{{ selectedExchange }}
+                            <i class="fa fa-caret-down"></i>
+                        </div>
+                        <div class="dropdown-content">
+                            <a @click="changeExchange('bitfinex')" style="color:white; text-transform: capitalize;">bitfinex</a>
+                            <a @click="changeExchange('bequant')" style="color:white; text-transform: capitalize;">bequant</a>
+                            <a @click="changeExchange( 'binance') " style="color:white; text-transform: capitalize; ">binance</a>
+                            <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                        </div>
+                    </div>
+                    <binance-deposit-history></binance-deposit-history>
+                </vk-tabs-item>
+                <vk-tabs-item title="Crypto Withdrawal">
+                    <div class="dropdown">
+                        <div class="dropbtn" style="text-transform: capitalize;">{{ selectedExchange }}
+                            <i class="fa fa-caret-down "></i>
+                        </div>
+                        <div class="dropdown-content ">
+                            <a @click="changeExchange( 'bitfinex') " style="color:white; text-transform: capitalize; ">bitfinex</a>
+                            <a @click="changeExchange( 'bequant') " style="color:white; text-transform: capitalize; ">bequant</a>
+                            <a @click="changeExchange( 'binance') " style="color:white; text-transform: capitalize; ">binance</a>
+                            <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                        </div>
+                    </div>
+                    <div>
+                        <binance-pending-withdrawal-history></binance-pending-withdrawal-history>
+                    </div>
+                </vk-tabs-item>
+            </vk-tabs>
+        </div>
+        <div class="uk-hidden@m" id="mobileDropdown">
+            <vk-button id="tabBarDropdown" mode='click'>{{ binanceActiveTab }}</vk-button>
+            <vk-dropdown :delayHide=1>
+                <vk-nav-dropdown>
+                    <vk-nav-item v-for="tab of binanceTabs" :key="tab" :title="tab" @click="onDropDownBinanceTabChange(tab)"></vk-nav-item>
+                </vk-nav-dropdown>
+            </vk-dropdown>
+            <div class="dropdown">
+                <div class="dropbtn" style="text-transform: capitalize;">{{ selectedExchange }}
+                    <i class="fa fa-caret-down "></i>
+                </div>
+                <div class="dropdown-content ">
+                    <a @click="changeExchange( 'bitfinex') " style="color:white; text-transform: capitalize; ">bitfinex</a>
+                    <a @click="changeExchange( 'bequant') " style="color:white; text-transform: capitalize; ">bequant</a>
+                    <a @click="changeExchange( 'binance') " style="color:white; text-transform: capitalize; ">binance</a>
+                    <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                </div>
+            </div>
+            <binance-orders-history v-if="binanceActiveTab === 'Orders'"></binance-orders-history>
+            <binance-trading-history v-if="binanceActiveTab === 'Trading'"></binance-trading-history>
+            <binance-deposit-history v-if="binanceActiveTab === 'Crypto Deposits'"></binance-deposit-history>
+            <binance-pending-withdrawal-history v-if="binanceActiveTab === 'Crypto Withdrawal'"></binance-pending-withdrawal-history>
+        </div>
+    </div>
+    <div v-else>
+        <div class="uk-visible@m">
+            <vk-tabs class="pl20 pr20 ">
+                <vk-tabs-item title="Orders">
+                    <div class="dropdown">
+                        <div class="dropbtn" style="text-transform: capitalize;">{{ selectedExchange }}
+                            <i class="fa fa-caret-down "></i>
+                        </div>
+                        <div class="dropdown-content ">
+                            <a @click="changeExchange( 'bitfinex') " style="color:white; text-transform: capitalize; ">bitfinex</a>
+                            <a @click="changeExchange( 'bequant') " style="color:white; text-transform: capitalize; ">bequant</a>
+                            <a @click="changeExchange( 'binance') " style="color:white; text-transform: capitalize; ">binance</a>
+                            <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                        </div>
+                    </div>
+                    <bitmex-order-history></bitmex-order-history>
+                </vk-tabs-item>
+                <vk-tabs-item title="Trading">
+                    <div class="dropdown">
+                        <div class="dropbtn" style="text-transform: capitalize;">{{ selectedExchange }}
+                            <i class="fa fa-caret-down "></i>
+                        </div>
+                        <div class="dropdown-content ">
+                            <a @click="changeExchange( 'bitfinex') " style="color:white; text-transform: capitalize; ">bitfinex</a>
+                            <a @click="changeExchange( 'bequant') " style="color:white; text-transform: capitalize; ">bequant</a>
+                            <a @click="changeExchange('binance')" style="color:white; text-transform: capitalize;">binance</a>
+                            <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                        </div>
+                    </div>
+                    <bitmex-trading-history></bitmex-trading-history>
+                </vk-tabs-item>
+                <vk-tabs-item title="Swap Funding">
+                    <div class="dropdown ">
+                        <div class="dropbtn " style="text-transform: capitalize; ">{{ selectedExchange }}
+                            <i class="fa fa-caret-down"></i>
+                        </div>
+                        <div class="dropdown-content">
+                            <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                        </div>
+                    </div>
+                    <bitmex-swap-funding-history></bitmex-swap-funding-history>
+                </vk-tabs-item>
+                <vk-tabs-item title="Liquidation Orders">
+                    <div class="dropdown ">
+                        <div class="dropbtn " style="text-transform: capitalize; ">{{ selectedExchange }}
+                            <i class="fa fa-caret-down"></i>
+                        </div>
+                        <div class="dropdown-content">
+                            <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                        </div>
+                    </div>
+                    <bitmex-liquidation-order-history></bitmex-liquidation-order-history>
+                </vk-tabs-item>
+            </vk-tabs>
+        </div>
+        <div class="uk-hidden@m" id="mobileDropdown">
+            <vk-button id="tabBarDropdown" mode='click'>{{ bitmexActiveTab }}</vk-button>
+            <vk-dropdown :delayHide=1>
+                <vk-nav-dropdown>
+                    <vk-nav-item v-for="tab of bitmexTabs" :key="tab" :title="tab" @click="onDropDownBitmexTabChange(tab)"></vk-nav-item>
+                </vk-nav-dropdown>
+            </vk-dropdown>
+            <div class="dropdown">
+                <div class="dropbtn" style="text-transform: capitalize;">{{ selectedExchange }}
+                    <i class="fa fa-caret-down "></i>
+                </div>
+                <div class="dropdown-content ">
+                    <a @click="changeExchange( 'bitfinex') " style="color:white; text-transform: capitalize; ">bitfinex</a>
+                    <a @click="changeExchange( 'bequant') " style="color:white; text-transform: capitalize; ">bequant</a>
+                    <a @click="changeExchange( 'binance') " style="color:white; text-transform: capitalize; ">binance</a>
+                    <a @click="changeExchange( 'bitmex') " style="color:white; text-transform: capitalize; ">bitmex</a>
+                </div>
+            </div>
+            <bitmex-order-history v-if="bitmexActiveTab === 'Orders'"></bitmex-order-history>
+            <bitmex-trading-history v-if="bitmexActiveTab === 'Trading'"></bitmex-trading-history>
+            <bitmex-swap-funding-history v-if="bitmexActiveTab === 'Swap Funding'"></bitmex-swap-funding-history>
+            <bitmex-liquidation-order-history v-if="bitmexActiveTab === 'Liquidation Orders'"></bitmex-liquidation-order-history>
+        </div>
+    </div>
+</div>

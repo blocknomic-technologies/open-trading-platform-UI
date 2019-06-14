@@ -1,0 +1,10 @@
+@import '../../../../../assets/scss/base/mixins.scss';
+#trading-view {
+    display: none;
+    width: 100%;
+    height: 520px;
+    @include breakpoint(medium) {
+        display: block;
+        height: calc(100vh - 320px) !important;
+    }
+}

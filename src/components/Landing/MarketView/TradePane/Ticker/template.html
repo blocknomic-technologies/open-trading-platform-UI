@@ -1,0 +1,108 @@
+<div id="tab-a2" class="tikertab-content noHorizontal">
+    <div class="uk-panel">
+        <div class="uk-panel-title">
+            <div class="right" style="display: flex; flex-flow: row nowrap; justify-content: center; align-items: center;">
+                <div v-if="!toggleOn" class="" style="width: 8px; height: 8px; border-radius: 50%; background: red;"></div>
+                <div v-else class="" style="width: 8px; height: 8px; border-radius: 50%; background: lightgreen;"></div>
+                <span class="right lp5px fs16px" @click="toggle" style="cursor: pointer;">Fees On</span>
+            </div>
+        </div>
+    </div>
+  <div v-if="!showLoader" class="noDefaultOverflow sv-table-wrapper ticker-table cs-table-1">
+    <table v-if=toggleOn class="border-collapse-none" style="width:100%" data-scroll-y="291px">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Pair</th>
+          <th>Buy</th>
+          <th>Sell</th>
+        </tr>
+      </thead>
+      <div id="simpleBarContainer" class="pdb3" data-simplebar data-simplebar-auto-hide="false">
+        <tbody>
+          <template v-for="(tickerValue, symbol) in $store.state.tickerData">
+            <tr class="ticker-nested-row" v-for="(value, key, index) in tickerValue" :key="value.pair">
+              <td v-if="index === 0" :rowspan="Object.values(tickerValue).length">{{value.basePair}}</td>
+              <td v-else style="display:none;"></td>
+              <td @click=tickerClick(value)>{{value.quotePair}}
+              </td>
+              <td @click=tickerClick(value) v-bind:class="{
+                                'c-red': value.best.asks[0].price > value.best.bids[0].price,
+                                'c-green': value.best.asks[0].price < value.best.bids[0].price
+                            }">{{value.best.asks[0].price}}
+              </td>
+              <td @click=tickerClick(value) v-bind:class="{ 
+                                'c-red': value.best.asks[0].price > value.best.bids[0].price, 
+                                'c-green': value.best.asks[0].price < value.best.bids[0].price
+                            }">{{value.best.bids[0].price}}
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </div>
+      </template>
+    </table>
+
+    <table v-else class="border-collapse-none" style="width:100%" data-scroll-y="291px">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Pair</th>
+          <th>Buy</th>
+          <th>Sell</th>
+        </tr>
+      </thead>
+
+      <div id="simpleBarContainer" class="pdb3" data-simplebar data-simplebar-auto-hide="false">
+
+        <tbody>
+          <template v-for="(tickerValue, symbol) in $store.state.tickerData">
+            <tr class="ticker-nested-row" v-for="(value, key, index) in tickerValue" :key="value.pair">
+              <td v-if="index === 0" :rowspan="Object.values(tickerValue).length">{{value.basePair}}</td>
+              <td v-else style="display:none;"></td>
+              <td @click=tickerClick(value)>{{value.quotePair}}
+              </td>
+              <td @click=tickerClick(value) v-bind:class="{
+                                'c-red': value.best.asks[0].price > value.best.bids[0].price,
+                                'c-green': value.best.asks[0].price < value.best.bids[0].price
+                            }">{{value.best.asks[0].priceNoFee}}
+              </td>
+              <td @click=tickerClick(value) v-bind:class="{ 
+                                'c-red': value.best.asks[0].price > value.best.bids[0].price, 
+                                'c-green': value.best.asks[0].price < value.best.bids[0].price
+                            }">{{value.best.bids[0].priceNoFee}}
+              </td>
+            </tr>
+          </template>
+
+        </tbody>
+
+      </div>
+    </table>
+   
+  </div>
+  
+  <div v-show="showLoader" class="sv-table-wrapper ticker-table cs-table-1">
+
+    <table class=" " style="width:100%" data-scroll-y="291px">
+      <thead>
+        <tr>
+          <th>Symbol</th>
+          <th>Pair</th>
+          <th>Buy</th>
+          <th>Sell</th>
+        </tr>
+      </thead>
+
+      <div id="simpleBarContainer" data-simplebar data-simplebar-auto-hide="false">
+        <tbody>
+          <spinner />
+
+        </tbody>
+
+      </div>
+
+    </table>
+  </div>
+  
+</div>

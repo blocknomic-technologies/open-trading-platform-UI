@@ -1,0 +1,126 @@
+<div class="header-section">
+
+    <div id="mobile-header-wrap">
+        <div id="mobile-header" data-uk-sticky>
+            <div class="page-mask sidemenu-trigger" v-bind:class="{ active: $store.getters.sidebarOpen, close: $store.getters.sidebarOpen  }"></div>
+            <div class="header-links">
+                <a href="https://www.blocknomic.com/" target="_blank" class="logo">
+                    <img src="@/assets/logo.png" alt="">
+                </a>
+                <a href="javascript:undefined" class="sidemenu-trigger" @click="onTriggerClick">
+                    <i class="icons8-menu fs24 c-white"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile Header End -->
+
+    <!-- Desktop Header -->
+    <div id="header-wrap">
+        <vk-sticky>
+            <header id="header">
+                <div class="page-mask sidemenu-trigger" v-bind:class="{ active: $store.getters.sidebarOpen, close: $store.getters.sidebarOpen }"></div>
+                <div class="header-market-links uk-clearfix">
+                    <!-- <div class="header-market-link-group uk-clearfix">
+                        <model-select style="width: 100%;" :options="array" v-model="arrayP" placeholder="Exchange">
+                        </model-select>
+                    </div> -->
+                    <div class="header-market-link-group uk-clearfix">
+                        <div class="header-market-link-label">{{ $store.getters.formattedSelectedExchange }}</div>
+                        <div class="header-market-link uk-clearfix">
+                            <div class="price-title">{{ $store.state.selectedPair }}</div>
+                            <div class="price">
+                                <span>{{Math.abs($store.state.liveTradePrice) }}</span>
+                                <label>{{ $store.state.selectedPair.split('/')[1] }}</label>
+                            </div>
+                        </div>
+                        <!-- <div class="dropdown">
+                            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+                            <div id="myDropdown" class="dropdown-content">
+                                <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                                <a href="#about">About</a>
+                                <a href="#base">Base</a>
+                                <a href="#blog">Blog</a>
+                                <a href="#contact">Contact</a>
+                                <a href="#custom">Custom</a>
+                                <a href="#support">Support</a>
+                                <a href="#tools">Tools</a>
+                            </div>
+                        </div> -->
+                    </div>
+
+                    <div class="header-market-link-group uk-clearfix">
+                        <div class="navbar">
+                            <!-- <div class="onoffswitch">
+                  <span>Tournament Mode</span>
+                  <input type="checkbox" id="switch" @change="toggleTheme" /><label for="switch">Toggle</label>
+              </div> -->
+                            <!-- <span class="pa-exchange-btn right">
+                  <span style="margin-right: 0.5rem; font-size: 12px; color: #fff;">Tournament Mode</span>
+                  <label class="switch">
+                      <input type="checkbox" @change="toggleTheme">
+                      <span class="slider"></span>
+                  </label>
+              </span> -->
+                            <router-link to="/" v-bind:class="{ active: $route.path === '/' }">
+                                <span>Trade</span>
+                            </router-link>
+                            <router-link to="/markets" v-bind:class="{ active: $route.path === '/markets' }">
+                                <span>Markets</span>
+                            </router-link>
+                            <div class="dropdown" v-if="$store.getters.isLoggedIn && $store.getters.themeMode === 'default'">
+                                <button class="dropbtn">Funds
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                                <div class="dropdown-content">
+
+                                    <a href="javascript:undefined" @click="showWithdrawlModal">
+                                        <!-- <span>
+                                            <i class="icc icons8-donate"></i>
+                                        </span> -->
+                                        <span>Deposit</span>
+                                    </a>
+                                    <!-- <a href="javascript:undefined" @click="showDepositModal">
+                                        <span>
+                      <i class="icc icons8-receive-cash"></i>
+                    </span>
+                                        <span>Withdrawal</span>
+                                    </a> -->
+                                </div>
+                            </div>
+                            <div class="dropdown" v-if="$store.getters.isLoggedIn && $store.getters.themeMode === 'default'">
+                                <button class="dropbtn">Profile
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                                <div class="dropdown-content">
+                                    <router-link to="/settings" v-bind:class="{active: $route.path.startsWith('/settings')}">
+                                        Settings
+                                    </router-link>
+                                    <router-link to="/history" v-bind:class="{ active: $route.path.startsWith('/history') }">
+                                        <!-- <span>
+                                            <i class="icc icons8-time-machine"></i>
+                                        </span> -->
+                                        <span>History</span>
+                                    </router-link>
+                                    <a href="javascript:undefined" @click="refreshBalances">
+                                        <span>Refresh Balances</span>
+                                    </a>
+                                    <a href="https://blocknomic.freshdesk.com" v-if="!$store.getters.isLoggedIn" target="_blank">
+                                        <span>Help</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <router-link to="/balance" v-bind:class="{ active: $route.path.startsWith('/balance') }" v-if="$store.getters.isLoggedIn && $store.getters.themeMode === 'default'">
+                                <span>Wallets</span>
+                            </router-link>
+                        </div>
+                    </div>
+                    <a href="http://status.blocknomic.com" target="_blank">
+                        <div id="statusDiv" style="color:var(--primary-text-color);"><span class="dot" :class='statusCode'></span>&nbsp;&nbsp;&nbsp;&nbsp;{{ getPageStatus() }}</div>
+                    </a>
+                </div>
+                <!-- <div v-if="$store.getters.isLoggedIn" id="header-logout" @click="logout"><i class="fas fa-sign-out-alt"></i>Logout</div> -->
+            </header>
+        </vk-sticky>
+    </div>
+</div>

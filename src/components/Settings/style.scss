@@ -1,0 +1,58 @@
+@import '../../assets/scss/base/mixins.scss';
+#settingsTab {
+    .settingstab-content {
+        padding: 20px 0;
+    }
+    @include breakpoint(medium) {
+        .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+            padding: 15px;
+        }
+    }
+    @include breakpoint(large) {
+        .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+            padding: 15px 30px;
+        }
+    }
+    .form-area {
+        max-width: 850px;
+    }
+    .settingsTab-selected {
+        display: none;
+    }
+    @media (max-width: 768px) {
+        .settingsTab-selected {
+            display: block;
+            position: relative;
+            color: var(--primary-text-color);
+            background: var(--tab-color);
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--primary-text-color);
+            text-transform: uppercase;
+            &:after {
+                font-family: Curry-Coin;
+                font-size: 20px;
+                content: "\f10e";
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 12px;
+                pointer-events: none;
+            }
+        }
+        &.ui-tabs .ui-tabs-nav {
+            background: var(--tab-color);
+            text-align: left;
+            display: none;
+            position: absolute;
+            left: 20px;
+            top: 52px;
+            width: calc(100% - 40px);
+            z-index: 1;
+        }
+        &.ui-tabs .ui-tabs-nav li {
+            float: none;
+        }
+    }
+}

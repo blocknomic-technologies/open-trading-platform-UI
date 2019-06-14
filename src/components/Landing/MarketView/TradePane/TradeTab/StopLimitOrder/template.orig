@@ -1,0 +1,124 @@
+<div class="limit-order">
+    <div class="uk-grid uk-grid-small f1-form-grid">
+        <div class="uk-width-1-1">
+            <div class="form-grp">
+                <div class="form-elm select">
+                    <select class="form-ctrl select2-single">
+                        <option>Good-Till-Cancelled</option>
+                        <option>option</option>
+                        <option>option</option>
+                        <option>option</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-grid uk-grid-small f1-form-grid">
+        <div class="uk-width-1-2">
+            <div class="uk-text-left uk-text-capitalize os-regular">
+                <div class="uk-grid uk-grid-small mt0">
+                    <div class="uk-width-1-2">
+                        <span>Balance</span>
+                    </div>
+                    <div class="uk-width-1-2">
+                        <strong class="c-white os-semibold">0.0002</strong>
+                    </div>
+                </div>
+                <div class="uk-grid uk-grid-small mt0">
+                    <div class="uk-width-1-2">
+                        <span>In Order</span>
+                    </div>
+                    <div class="uk-width-1-2">
+                        <strong class="c-white os-semibold">0 BTC</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="uk-width-1-2">
+            <div class="uk-text-right uk-text-capitalize os-regular">
+                <div class="uk-grid uk-grid-small mt0">
+                    <div class="uk-width-1-2">
+                        <span>Total</span>
+                    </div>
+                    <div class="uk-width-1-2">
+                        <strong class="c-white os-semibold">0.0002</strong>
+                    </div>
+                </div>
+                <div class="uk-grid uk-grid-small mt0">
+                    <div class="uk-width-1-2">
+                        <span>Best Ask</span>
+                    </div>
+                    <div class="uk-width-1-2">
+                        <strong class="c-white os-semibold">0.0260</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-grid uk-grid-small f1-form-grid">
+        <div class="uk-width-1-2">
+            <div class="form-grp">
+                <div class="form-elm select">
+                    <select class="form-ctrl select2-single">
+                        <option>Exchange</option>
+                        <option>option</option>
+                        <option>option</option>
+                        <option>option</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="uk-width-1-2">
+            <div class="form-grp">
+                <div class="form-elm">
+                    <input class="form-ctrl" type="text" placeholder="Amount">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-grid uk-grid-small f1-form-grid">
+        <div class="uk-width-1-2">
+            <div class="form-grp">
+                <div class="form-elm">
+                    <input class="form-ctrl" type="text" placeholder="Price">
+                </div>
+            </div>
+        </div>
+
+        <div class="uk-width-1-2">
+            <div class="form-grp">
+                <div class="form-elm">
+                    <input class="form-ctrl" type="text" placeholder="Total">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <vk-grid class="uk-grid uk-grid-small f1-form-grid">
+        <div class="uk-width-1-1">
+            <ul class="uk-list uk-clearfix m0">
+                <!-- <li class="uk-float-left"> -->
+                <button class="uk-button uk-button-green">buy</button>
+                <!-- </li>
+                <li class="uk-float-left ml0"> -->
+                <button class="uk-button uk-button-red ml10">sell</button>
+                <!-- </li> -->
+                <li class="uk-float-right uk-text-right uk-text-capitalize os-regular">
+                    <div>
+                        <span>free</span>
+                        <strong class="c-white os-semibold"> 0.1%</strong>
+                    </div>
+                    <div>
+                        <span>Rebate</span>
+                        <strong class="c-white os-semibold"> 0.1%</strong>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </vk-grid>
+</div>

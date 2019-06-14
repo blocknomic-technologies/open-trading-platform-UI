@@ -1,0 +1,4 @@
+<div class="withdrawl">
+    <tab-bar :tabs="tabs" @tab-change="onTabChange" />
+    <crypto-withdrawls v-if="activeTab === 'Crypto'" />          
+</div>

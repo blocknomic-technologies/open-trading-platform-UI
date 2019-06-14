@@ -1,0 +1,73 @@
+thead {
+  width: calc(100% - 10px);
+  display: table;
+  text-align: left;
+}
+tbody {
+  width: calc(100% - 10px);
+  display: table;
+  text-align: left;
+}
+// thead tr {
+//   width: 100%;
+//   color: var(--primary-text-color);
+//   text-align: left;
+//   text-transform: uppercase;
+// }
+thead tr {
+  width: calc(100% - 20px);
+}
+
+#simpleBarContainer {
+  max-height: 200px;
+  height: fit-content;
+}
+table {
+  width: 100%;
+  display: block;
+}
+th {
+  margin-left: -10px;
+  color: var(--primary-text-color);
+  text-transform: uppercase;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+tbody tr td {
+  width: 25%;
+  border-bottom: 1px solid var(--border-bottom-color);
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+thead th {
+  width: 25%;
+  border-bottom: 1px solid var(--border-bottom-color);
+}
+
+tbody tr {
+  width: calc(100% - 10px);
+  table-layout: fixed;
+}
+
+// #line {
+//   border-bottom: 1px solid var(--border-bottom-color);
+// }
+
+tr:hover {
+  color: var(--primary-text-color) !important;
+}
+
+#tab-a3 {
+  margin-top: -20px;
+  margin-right: -20px;
+}
+
+.center {
+  text-align: center;
+}
+
+// .updater {
+//   position: absolute;
+//   bottom: 0;    width: 100%;
+// }

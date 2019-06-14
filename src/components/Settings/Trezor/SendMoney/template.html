@@ -1,0 +1,67 @@
+<div id="Trezor-Send-Money">
+    <div v-if="displayFlag" style="text-align:center;">
+        <form>
+            <div id="tab-a4" class="settingstab-content">
+                <div class="form-area">
+                    <vk-grid class="f1-form-grid">
+                        <div class="uk-width-1-1@m">
+                            <div class="dropdown">
+                                <div class="dropbtn" style="text-transform: capitalize;">{{ selectedCurrency }}
+                                    <i class="fa fa-caret-down "></i>
+                                </div>
+                                <div class="dropdown-content ">
+                                    <a v-for="val in currencyArray" @click="changeSelectedCurrency(val.key)" style="color:white; text-transform: capitalize;"> {{ val.value.toUpperCase() }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </vk-grid>
+                </div>
+            </div>
+            <div v-for="(route, index) in routes">
+                <div id="tab-a4" class="settingstab-content">
+                    <div class="form-area">
+                        <vk-grid class="f1-form-grid">
+                            <div class="uk-width-1-1@m">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <input class="form-ctrl addressInputs" type="text" placeholder="Address" v-model="routes[index].address">
+                                    </div>
+                                </div>
+                            </div>
+                        </vk-grid>
+                        <vk-grid class="f1-form-grid">
+                            <div class="uk-width-1-1@m">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <input class="form-ctrl amountInputs" type="number" placeholder="Amount" v-model="routes[index].amount">
+                                    </div>
+                                </div>
+                            </div>
+                        </vk-grid>
+                    </div>
+                </div>
+                <vk-button class="pl40 pr40 goBack" @click="deleteKey(index)">Remove This Receipient</vk-button>
+            </div>
+        </form>
+        <vk-button class="pl40 pr40 goBack" @click="handleSubmit()">Send</vk-button>
+        &nbsp; &nbsp;
+        <vk-button class="pl40 pr40 goBack" @click="addNewForm()">Add New Receipient</vk-button>
+    </div>
+    <div v-else style="text-align:center;">
+        <div id="hello" data-simplebar data-simplebar-auto-hide="false">
+            <table class="svh-table display nowrap" style="width:100%" data-scroll-x="true" data-scroll-y="294px">
+                <tbody>
+                    <tr>
+                        <th>Receiving Address:</th>
+                        <td v-for="(values, index) in routes">{{routes[index].address}}</td>
+                    </tr>
+                    <tr>
+                        <th>Transaction ID:</th>
+                        <td>{{ result.txid }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <vk-button class="pl40 pr40 goBack" @click="goBack()">Go Back</vk-button>
+    </div>
+</div>

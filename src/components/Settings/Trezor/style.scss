@@ -1,0 +1,53 @@
+#trezorconnect-wrapper {
+    display: inline-block;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+#trezorconnect-button {
+    left: 10%;
+    font-size: 14px;
+    display: block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-weight: normal;
+    line-height: 1.42857143;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-decoration: none;
+    position: relative;
+    color: #fff;
+    background-color: #59983b;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+#trezorconnect-button:hover {
+    background-color: #43732d
+}
+
+#trezorconnect-info {
+    display: block;
+    font-size: 9px;
+    text-align: right;
+    margin-top: 2px;
+    margin-right: 5px;
+}
+
+#trezorconnect-infolink {
+    text-decoration: none;
+    color: #59983b;
+}
+
+#trezorconnect-infolink:hover {
+    color: #43732d;
+}
+
+#mobileDropdown {
+    margin-top: 10px;
+}

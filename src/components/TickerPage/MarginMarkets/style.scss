@@ -1,0 +1,55 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+tbody {
+  border: 1px solid black;
+
+}
+
+th,
+td {
+  text-align: left;
+  padding: 16px;
+  text-transform: capitalize;
+}
+
+tr:nth-child(even) {
+  background-color: var(--container-bg-color);
+}
+
+legend {
+  color: white;
+  font-size: 2em;
+}
+
+.tradeBtn {
+  width: 25%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border: 1px solid var(--mobile-bg-color);
+  border-radius: 2px;
+  position: absolute;
+  right: 20px;
+  color: var(--mobile-bg-color);
+  cursor: pointer;
+}
+
+.tradeBtn:hover {
+  background-color: var(--mobile-bg-color);
+  color: black;
+}
+
+.button:active {
+  background-color: var(--mobile-bg-color);
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+th {
+  color: white;
+  width: calc(100% / 8);
+}

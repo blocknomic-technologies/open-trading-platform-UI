@@ -1,0 +1,26 @@
+@import '../../../assets/scss/base/mixins.scss';
+  .uk-button {  
+    font-family:'Open Sans', sans-serif;
+    font-size:16px;
+    font-weight:600;
+   
+    background:var(--sec-mobile-bg-color);
+    color: var(--primary-text-color);
+    text-transform:uppercase;
+    @include roundedCorners(40);
+    &:hover{
+      background:var(--mobile-bg-color);
+      color: var(--primary-text-color);
+    }
+  }
+
+  
+  .uk-button-green,.uk-button-green:hover {
+    background-color:var(--green-color);
+    color: var(--primary-text-color);
+  }
+  
+  .uk-button-red,.uk-button-red:hover {
+    background-color:var(--red-color);
+    color: var(--primary-text-color);
+  }

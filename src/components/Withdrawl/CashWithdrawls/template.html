@@ -1,0 +1,16 @@
+<div class="cash-withdrawls">
+    <form @submit.prevent=withdrawCash>
+        <table>
+            <tr>
+                <td>
+                    <input type="number" min=0 v-model="formValue.amount" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Withdraw" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

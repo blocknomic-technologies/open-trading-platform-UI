@@ -1,0 +1,144 @@
+@import "../../../assets/scss/base/mixins.scss";
+.marketview {
+  @include breakpoint(medium) {
+    position: relative;
+    height: calc(100vh - 55px);
+    &.sidebar-col1-hide {
+      .stockchart-wrap {
+        width: calc(50% - 20px);
+      }
+      .sidebar-col2 {
+        left: 20px;
+      }
+    }
+    &.sidebar-col2-hide {
+      .stockchart-wrap {
+        width: calc(50% - 20px);
+      }
+      .sidebar-col1 {
+        left: -20px;
+      }
+    }
+    &.sidebar-col1-hide.sidebar-col2-hide {
+      .stockchart-wrap {
+        width: calc(100% - 40px);
+      }
+    }
+  }
+  @include breakpoint(xlarge) {
+    &.sidebar-col1-hide {
+      .stockchart-wrap {
+        width: calc(100% - 345px - 20px);
+      }
+    }
+    &.sidebar-col2-hide {
+      .stockchart-wrap {
+        width: calc(100% - 395px - 20px);
+      }
+    }
+  }
+  @media screen and (max-width: 1500px) and (min-width: 1300px) {
+    &.sidebar-col1-hide {
+      .stockchart-wrap {
+        width: calc(100% - 280px - 20px);
+      }
+    }
+    &.sidebar-col2-hide {
+      .stockchart-wrap {
+        width: calc(100% - 330px - 20px);
+      }
+    }
+  }
+}
+.stockchart-wrap {
+  @include breakpoint(medium) {
+    float: left;
+    overflow: hidden;
+    transition: all 0.3s;
+    position: relative;
+    width: 0;
+  }
+  @include breakpoint(xlarge) {
+    width: calc(100% - 740px);
+  }
+  @media screen and (max-width: 1500px) and (min-width: 1300px) {
+    width: calc(100% - 610px);
+  }
+}
+.sidebar-col {
+  @include breakpoint(medium) {
+    float: right;
+    overflow: hidden;
+    transition: all 0.3s;
+    position: relative;
+    height: 100%;
+    padding-left: 20px;
+    &.hide {
+      width: 20px !important;
+      .sidebar-trigger i:before {
+        content: "\f110";
+      }
+    }
+    &.sidebar-col1 {
+      width: 50%;
+      left: -50%;
+    }
+    &.sidebar-col2 {
+      width: 50%;
+      left: 50%;
+    }
+    &.sidebar-inner {
+      overflow: hidden;
+    }
+  }
+  @include breakpoint(xlarge) {
+    &.sidebar-col1 {
+      width: 395px;
+      left: -345px;
+    }
+    &.sidebar-col2 {
+      width: 345px;
+      left: 395px;
+    }
+    &.sidebar-inner {
+      overflow: hidden;
+    }
+  }
+  @media screen and (max-width: 1500px) and (min-width: 1300px) {
+    &.sidebar-col1 {
+      width: 330px;
+      left: -280px;
+    }
+    &.sidebar-col2 {
+      width: 280px;
+      left: 330px;
+    }
+  }
+}
+.sidebar-trigger {
+  display: none;
+  @include breakpoint(medium) {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background: transparent;
+    color: var(--primary-text-color);
+    border: none;
+    display: block;
+    width: 20px;
+    font-size: 14px;
+    padding: 0;
+    border: 1px solid var(--border-right-color);
+    border-top: 0;
+    border-bottom: 0;
+    cursor: pointer;
+    outline: 0;
+    z-index: 1;
+  }
+}
+.sidebar-inner {
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+}

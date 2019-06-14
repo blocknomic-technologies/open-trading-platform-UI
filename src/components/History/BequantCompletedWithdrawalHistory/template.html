@@ -1,0 +1,34 @@
+<div class="bequant-completed-withdrawal-history">
+    <div id="hello" data-simplebar data-simplebar-auto-hide="false">
+        <table class="svh-table display nowrap" style="width:100%" data-scroll-x="true" data-scroll-y="294px">
+            <thead>
+                <tr>
+                    <th id="tableHeaders">ID</th>
+                    <th id="tableHeaders">Index</th>
+                    <th id="tableHeaders">Status</th>
+                    <th id="tableHeaders">Currency</th>
+                    <th id="tableHeaders">Amount</th>
+                    <th id="tableHeaders">Last Updated At</th>
+                </tr>
+            </thead>
+            <tbody v-if="spinnerFlag">
+                <spinner id="spinner"></spinner>
+            </tbody>
+            <tbody v-else>
+                <tr v-for="historyRow in history">
+                    <td>{{ historyRow.id }}</td>
+                    <td>{{ historyRow.index }}</td>
+                    <td>{{ historyRow.status }}</td>
+                    <td>{{ historyRow.currency }}</td>
+                    <td>{{ historyRow.amount }}</td>
+                    <td>{{ historyRow.updatedAt }}</td>
+                </tr>
+                <tr v-if="history.length === 0">
+                    <td colspan="4">
+                        {{ displayText }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

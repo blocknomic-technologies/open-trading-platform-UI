@@ -1,0 +1,120 @@
+//accordion scss only
+
+.accordionToggleButton {
+  width: 100%;
+  max-height: 80px;
+  border-top: 1px solid var(--tab-color);
+  font-weight: 600;
+  color: var(--primary-text-color);
+  line-height: 80px;
+  cursor: pointer;
+  padding: 0 20px 0 20px;
+  font-size: 2em;
+  text-transform: uppercase;
+}
+
+.opened::after {
+  content: "\f112";
+  font-family: Curry-Coin;
+  font-size: 28px;
+  position: absolute;
+  right: 20px;
+}
+
+.close::after {
+  content: "\f10e";
+  font-family: Curry-Coin;
+  font-size: 28px;
+  position: absolute;
+  right: 20px;
+}
+
+.dropDownArrow {
+  padding: 20px;
+  float: right;
+}
+
+#activeTrades {
+  max-height: 500px;
+  padding-left: 20px;
+  padding-right: 10px;
+  height: 300px;
+  -webkit-transition: all 0.3s linear;
+  -moz-transition: all 0.3s linear;
+  -ms-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  border-bottom: 1px solid var(--tab-color);
+  overflow-y: hidden;
+}
+
+.closed {
+  max-height: 0px !important;
+}
+
+//accordion scss ends here
+#hello {
+  height: 200px;
+  overflow: hidden;
+  margin-top: 20px;
+  width: 100%;
+}
+
+#recentSimplebar {
+  height: 300px;
+}
+table {
+  width: 100%;
+  table-layout: fixed;
+  display: table;
+}
+tr {
+  width: 100%;
+}
+td,
+th {
+  text-align: left;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+thead tr th {
+  color: var(--primary-text-color);
+  text-transform: uppercase;
+  padding-left: 5px;
+  border-bottom: none !important;
+}
+
+thead,
+tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+tbody tr,
+thead tr {
+  border-bottom: 1px solid var(--border-bottom-color);
+}
+
+thead {
+  width: calc(100% - 1em);
+  border-bottom: 1px solid var(--border-bottom-color);
+}
+
+tr td,
+tr th {
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  table,
+  tr,
+  tbody,
+  thead {
+    width: 950px;
+  }
+  td,
+  th {
+    width: 100px;
+  }
+}

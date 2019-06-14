@@ -1,0 +1,30 @@
+<div id="tab-bar">
+    <vk-tabs :class="{ 'uk-visible@m': mobileDropdown }" @update:activeTab=onTabChange :activeTab=activeTab>
+        <vk-tabs-item v-for="tab of tabs" :key="tab" :title="tab"></vk-tabs-item>
+    </vk-tabs>
+    <!-- <vk-button id="tabBarDropdown" mode='click' >{{ activeTab }}</vk-button>
+        <vk-dropdown>
+        <vk-nav-dropdown  title="Parent" mode="click">
+            <vk-nav-item v-for="tab of tabs" :key="tab" :title="tab"></vk-nav-item>
+        </vk-nav-dropdown>
+        </vk-dropdown> -->
+    <!-- <vk-navbar> 
+            <vk-navbar-nav>
+                <vk-navbar-nav-dropdown :title="activeTab" >
+                <vk-navbar-nav-dropdown-nav >
+                    <vk-nav-item v-for="tab of tabs" :key="tab" :title="tab" push="left" @click=onTabChange(tab) v-on:click="close"></vk-nav-item>
+                </vk-navbar-nav-dropdown-nav>
+                </vk-navbar-nav-dropdown>
+            </vk-navbar-nav>
+        </vk-navbar> -->
+
+    <div v-if="mobileDropdown" class="uk-hidden@m" id="mobileDropdown">
+        <vk-button id="tabBarDropdown" mode='click'>{{ activeTab }}</vk-button>
+        <vk-dropdown :delayHide=1>
+            <vk-nav-dropdown>
+                <vk-nav-item v-for="tab of tabs" :key="tab" :title="tab" @click="onDropDownTabChange(tab)"></vk-nav-item>
+            </vk-nav-dropdown>
+        </vk-dropdown>
+    </div>
+
+</div>

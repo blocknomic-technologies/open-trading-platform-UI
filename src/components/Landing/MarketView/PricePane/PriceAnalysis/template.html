@@ -1,0 +1,115 @@
+<div class="priceanalysis">
+    <div v-if="!toggleOn" class="" style="height: 20px; width: 100%;"></div>
+    <div v-else class="uk-panel">
+        <div class="uk-panel-title">
+            <div class="right">
+                <span class="right fs16px"></span>
+                <span class="pa-exchange-btn right">
+                    <label class="switch">
+                        <input type="checkbox" v-model=toggleFeesOn>
+                        <span class="slider"></span>
+                </label>
+                </span>
+                <span class="right fs16px">Adjust Exchange fees</span>
+            </div>
+        </div>
+    </div>
+    <div class="noHorizontal tableWrapper uk-overflow-auto">
+        <table v-if="toggleOn">
+            <thead>
+                <tr>
+                    <th>
+                        Exchange
+                    </th>
+                    <th>ASK</th>
+                    <th>BID</th>
+                    <th>Depth Ask</th>
+                    <th>Depth Bid</th>
+                </tr>
+            </thead>
+            <tbody v-if=toggleFeesOn>
+                <tr v-for="(exchange,key) in getccTickerData()">
+                    <td @click="connect(key)">
+                        <span class="dot" v-bind:class='getStatus(key)' style="float:left;"></span>&nbsp;{{ key }}</td>
+                    <td @click="connect(key)">
+                        <row-component :pair=exchange.ask.price />
+                    </td>
+                    <td @click="connect(key)">
+                        <row-component :pair=exchange.bid.price />
+                    </td>
+                    <td @click="connect(key)">{{ exchange.ask.depth }}</td>
+                    <td @click="connect(key)">{{ exchange.bid.depth }}</td>
+                </tr>
+            </tbody>
+            <tbody v-else>
+                <tr v-for="(exchange,key) in getccTickerData()">
+                    <td @click="connect(key)">
+                        <span class="dot" v-bind:class='getStatus(key)' style="float:left;"></span>&nbsp;{{ key }}</td>
+                    <td @click="connect(key)">
+                        <row-component :pair=exchange.ask.priceNoFee />
+                    </td>
+                    <td @click="connect(key)">
+                        <row-component :pair=exchange.bid.priceNoFee />
+                    </td>
+                    <td @click="connect(key)">{{ exchange.ask.depth }}</td>
+                    <td @click="connect(key)">{{ exchange.bid.depth }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- //NO CHEDHKHANI -->
+        <table v-else-if="!toggleOn">
+            <thead>
+                <tr>
+                    <th>
+                        Exchange
+                    </th>
+                    <th style="min-width:200px">Last Price</th>
+                    <th>Ask</th>
+                    <th>Bid</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Volume</th>
+                    <th>Change</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="tickerData in this.$store.state.tickerDataExc" @click="connect(tickerData.exchange)">
+                    <td>
+                        <span class="dot" :class="getStatus(tickerData.exchange)" style="float:left;"></span>&nbsp;{{tickerData.exchange}}</td>
+                    <td>
+                        <row-component :pair=tickerData.last />
+                    </td>
+                    <td class="c-red">{{tickerData.ask}}</td>
+                    <td class="c-green">{{tickerData.bid}}</td>
+                    <td>{{tickerData.high}}</td>
+                    <td>{{tickerData.low}}</td>
+                    <td>{{Number(tickerData.volume).toFixed(4)}}</td>
+                    <td v-bind:class="{
+                                    'c-red': tickerData.percentage<0,
+                                    'c-green': tickerData.percentage>0
+                                }">{{Number(tickerData.percentage).toFixed(4)}}%
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <table v-if="activeExchange === 'bitmex'">
+            <thead>
+                <tr>
+                    <th>Index</th>
+                    <th>Funding Rate</th>
+                    <th>Funding Interval</th>
+                    <th>Open Interest</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="tickerData in this.$store.state.tickerDataExc" @click="connect(tickerData.exchange)">
+                    <td>{{tickerData.index}}</td>
+                    <td>{{tickerData.funding}}</td>
+                    <td>{{formatDateTime(tickerData.fundingInterval)}}</td>
+                    <td>{{tickerData.openInterest}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

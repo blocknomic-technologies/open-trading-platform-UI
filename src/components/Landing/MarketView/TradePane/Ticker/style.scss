@@ -1,0 +1,193 @@
+@import "../../../../../assets/scss/base/mixins.scss";
+// .tikertab-content{
+//     min-height:368px;margin:20px 0;padding:20px 20px 0;border-top:1px solid var(--border-right-color);
+//     &:nth-child(2){
+//       padding-top:0;border-top:0;
+//     }
+//     @include breakpoint(medium){
+//       min-height:325px;margin:0;padding:0;border-top:0;
+//       .ticker-table .dataTables_scrollBody{height:calc(50vh - 124px) !important;min-height:250px !important;}
+//     }
+//   }
+// tr:hover {
+//   background: var(--primary-text-color)
+// }
+// tbody:nth-child(odd){
+//   background: var(--primary-text-color);
+// }
+tbody tr:hover td:not(:first-child) {
+  background: var(--tab-color);
+  cursor: pointer;
+}
+
+.tikertab-content {
+  height: calc(100% - 50px);
+  div {
+    // height: 100%;
+    table {
+      height: 100%;
+    }
+  }
+}
+
+thead {
+  width: calc(100% - 10px);
+  display: table;
+  text-align: left;
+}
+
+tbody {
+  width: calc(100% - 10px);
+  display: table;
+  text-align: left;
+}
+
+// thead tr {
+//   width: 100%;
+//   color: var(--primary-text-color);
+//   text-align: left;
+//   text-transform: uppercase;
+// }
+thead tr {}
+
+#simpleBarContainer {
+  height: 31vh;
+}
+
+table {
+  width: 100%;
+  display: block;
+  border-collapse: collapse;
+}
+
+th {
+  margin-left: -10px;
+  color: var(--primary-text-color);
+  text-transform: uppercase;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+tbody tr td {
+  width: 25%;
+  border-bottom: 1px solid var(--border-bottom-color);
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+thead th {
+  width: 25%;
+  border-bottom: 1px solid var(--border-bottom-color);
+}
+
+tbody tr {
+  width: 100%;
+  table-layout: fixed;
+}
+
+// #line {
+//   border-bottom: 1px solid var(--border-bottom-color);
+// }
+tr:hover {
+  color: var(--primary-text-color) !important;
+}
+
+// issue with margins on ticker table
+#tab-a2 {
+  // margin-top: -20px;
+  // margin-right: -20px;
+}
+
+.border-collapse-none {
+  border-collapse: none !important;
+}
+
+.pdb3 {
+  // padding-bottom: 3rem;
+}
+
+
+.switch { 
+  position: relative;
+  display: inline-block;
+  width: 32px;
+  height: 14px;
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 3px;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    background-color: #ccc;
+    @include roundedCorners(50);
+    @include transition(all, 0.4s, ease, 0s);
+    &:before {
+      position: absolute;
+      content: "";
+      height: 12px;
+      width: 12px;
+      left: 1px;
+      bottom: 1px;
+      background-color: white;
+      @include roundedCorners(50);
+      @include transition(all, 0.4s, ease, 0s);
+    }
+  }
+  input {
+    display: none;
+    &:checked {
+      + {
+        .slider {
+          background-color: #5fd169;
+          &:before {
+            -webkit-transform: translateX(18px);
+            -ms-transform: translateX(18px);
+            transform: translateX(18px);
+          }
+        }
+      }
+    }
+    &:focus {
+      + {
+        .slider {
+          box-shadow: 0 0 1px #2196f3;
+        }
+      }
+    }
+  }
+}
+
+.left {
+  float: left;
+}
+
+.right {
+      padding: 5px 5px 0 5px;
+    text-align: center;
+}
+.lp5px {
+  padding-left: 5px;
+
+}
+
+.rp5px {
+  padding-right: 5px;
+
+}
+
+.uk-panel {
+  padding: 0 5px;
+}
+
+.center {
+  text-align: center;
+}
+
+.fs16px {
+  font-size: 12px;
+}
+
+.uk-panel {
+  margin-top: -30px;
+}

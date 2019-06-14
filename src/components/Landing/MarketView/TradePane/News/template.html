@@ -1,0 +1,27 @@
+<div id="slider">
+    <div v-if="loadingFlag" style="height: 25vh;">
+        <spinner id="spinner" mTop="25%"></spinner>
+    </div>
+    <div v-else>
+        <transition-group tag="div" :name="transitionName" class="slides-group">
+            <div v-if="show" :key="current" class="slide" :class="slides[current].className">
+                <div>
+                    <div class="card">
+
+                        <div class="card__content">
+                            <div class="card__title">{{newsObjArr[current].title}}</div>
+                            <p class="card__text">{{ newsObjArr[current].description }}</p>
+                            <a :href="newsObjArr[current].url" target="_blank"><button class="btn2 btn--block card__btn">Read More</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </transition-group>
+        <div class="btn btn-prev" aria-label="Previous slide" @click="slide(-1)">
+            &#10094;
+        </div>
+        <div class="btn btn-next" aria-label="Next slide" @click="slide(1)">
+            &#10095;
+        </div>
+    </div>
+</div>

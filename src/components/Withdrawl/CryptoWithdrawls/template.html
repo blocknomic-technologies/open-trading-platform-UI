@@ -1,0 +1,74 @@
+<div class="crypto-withdrawls ui-tabs ui-widget ui-widget-content">
+    <form v-if='!otpSent' @submit.prevent=withdrawCrypto>
+        <vk-grid class=f1-form-grid>
+            <div class="uk-width-1-1">
+                <div class="form-grp">
+                    <div class="form-elm">
+                        <input class="form-ctrl" type="text" placeholder="Amount" v-model="formValue.amount" />
+                    </div>
+                </div>
+            </div>
+        </vk-grid>
+
+        <vk-grid class=f1-form-grid>
+            <div class="uk-width-1-1">
+                <div class="form-grp">
+                    <div class="form-elm">
+                        <input class="form-ctrl" type="text" placeholder="Receiving Address" v-model="formValue.recievingAddress" />
+                    </div>
+                </div>
+            </div>
+        </vk-grid>
+
+        <vk-grid class=f1-form-grid>
+            <div class="uk-width-1-1">
+                <ul class="uk-subnav gap15">
+                    <li v-for="(coinSymbol, index) of supportedCoins" :key=coinSymbol>
+                        <div class="cr1" style="line-height: 14px;">
+                            <input type="radio" name="grp-a" :id=getGrpId(index) class="cr-input" v-model="formValue.coin" :value=coinSymbol>
+                            <label :for=getGrpId(index) class="cr-label">{{coinSymbol}}</label>&nbsp;
+                            <span class="dot" :class="getStatus(coinSymbol)" style="float:right;"></span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </vk-grid>
+
+        <vk-grid class="f1-form-grid">
+                <div class="uk-width-1-1">
+                        <div style="color: var(--primary-text-color);" class="">Withdrawal Fee: &nbsp; {{ withdrawalFee }} {{ formValue.coin.toUpperCase() }}</div>
+                    </div>
+            <div class="uk-width-1-1">
+                <vk-button class="pl40 pr40" htmlType="submit">Withdraw</vk-button>
+            </div> 
+            
+        </vk-grid>
+    </form>
+    <form v-else @submit.prevent=confirmRequest>
+        <p>OTP sent to your registered email id. Please enter the OTP to confirm withdrawl request. The otp is valid for 5 minutes.</p>
+        <vk-grid class=f1-form-grid>
+            <div class="uk-width-3-4">
+                <div class="form-grp">
+                    <div class="form-elm">
+                        <input class="form-ctrl" type="text" placeholder="OTP" v-model="formValue.emailOtp" />
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-1-4">
+                <div class="form-grp">
+                    <div @click='withdrawCrypto' class="resend">
+                        <a>Resend OTP</a>
+                    </div>
+                </div>
+            </div>
+        </vk-grid>
+        <vk-grid class="f1-form-grid">
+            <div class="uk-width-1-2">
+                <vk-button class="pl40 pr40" htmlType="submit" @click=confirmWithdrawl>Confirm</vk-button>
+            </div>
+            <div class="uk-width-1-2">
+                <vk-button class="pl40 pr40" @click='cancelWithdrawl'>Cancel</vk-button>
+            </div>
+        </vk-grid>
+    </form>
+</div>

@@ -1,0 +1,144 @@
+// Box Sizing
+//eg. @include box-sizing(border-box);
+// --------------------------------------------------
+@mixin box-sizing($box-model) {
+    -webkit-box-sizing: $box-model; // Safari <= 5
+       -moz-box-sizing: $box-model; // Firefox <= 19
+            box-sizing: $box-model;
+  }
+  
+  
+  
+  
+  // Border
+  //eg. @include border('top', 1px, solid, #e5e5e5);
+  // --------------------------------------------------
+  @mixin border($direction, $width, $style, $color) {
+    border-#{$direction}: $width $style $color !important;
+  }
+  
+  
+  
+  
+  // Transition
+  //eg. @include transition(all, 0.3s, linear, 0s)
+  // --------------------------------------------------
+  @mixin transition($property, $duration, $timing-function, $delay) {
+    -webkit-transition: $property $duration $timing-function $delay;
+       -moz-transition: $property $duration $timing-function $delay;
+         -o-transition: $property $duration $timing-function $delay;
+            transition: $property $duration $timing-function $delay;
+  }
+  
+  
+  
+  
+  // Spacing
+  // --------------------------------------------------
+  $spaceamounts: (0, 5, 10, 15, 20, 25, 30, 35, 40, 80);
+  $sides: ('', top, bottom, left, right);
+  
+  @each $space in $spaceamounts {
+    @each $side in $sides {
+      .m#{str-slice($side, 0, 1)}#{$space} {
+        @if($side == ''){
+          margin#{$side}: #{$space}px !important;
+        }
+        @else{
+          margin-#{$side}: #{$space}px !important;
+        }
+      }
+    
+      .p#{str-slice($side, 0, 1)}#{$space} {
+        @if($side == ''){
+          padding#{$side}: #{$space}px !important;
+        }
+        @else{
+          padding-#{$side}: #{$space}px !important;
+        }
+      }
+    }
+  }
+  
+  
+  
+  
+  // Font size
+  // --------------------------------------------------
+  $fontsizes: (11, 12, 14, 16, 20, 22, 24, 26, 28, 30, 32, 34);
+  @each $fontsize in $fontsizes {  
+    .fs#{$fontsize} {      
+      font-size: #{$fontsize}px !important;      
+    }  
+  }
+  
+  
+  
+  
+  // Generic transform
+  // --------------------------------------------------
+  @mixin transform($transforms) {
+    -webkit-transform: $transforms;
+    -moz-transform: $transforms;
+    -ms-transform: $transforms;
+    -o-transform: $transforms;
+    transform: $transforms;
+  }
+  // Rotate
+  //eg. @include transform(rotate(#{180}deg))
+  @mixin rotate ($deg) {
+    @include transform(rotate(#{$deg}deg));
+  } 
+  // Scale
+  @mixin scale($scale) {
+    @include transform(scale($scale));
+  } 
+  // Translate
+  //eg. @include transform(translate(20px, 0))
+  @mixin translate ($x, $y) {
+    @include transform(translate($x, $y));
+  }
+  // Skew
+  @mixin skew ($x, $y) {
+    @include transform(skew(#{$x}deg, #{$y}deg));
+  }
+  //Transform origin
+  @mixin transform-origin ($origin) {
+    -webkit-transform-origin: $origin;
+    -moz-transform-origin: $origin;
+    -ms-transform-origin: $origin;
+    -o-transform-origin: $origin;
+    transform-origin: $origin;
+  }
+  
+  
+  
+  // Round Corner
+  // eg. @include roundedCorners(100)
+  // --------------------------------------------------
+  @mixin roundedCorners($size) {
+    border-radius: $size + px;
+  }
+  
+  
+  
+  
+  // Responsive Breakpoints
+  // eg. @include breakpoint(large){width:60%;}
+  // --------------------------------------------------
+  @mixin breakpoint($point) {
+    @if $point == small {
+      @media (min-width: 768) { @content; }
+    }
+    @else if $point == medium {
+      @media (min-width: 960px) { @content; }
+    }
+    @else if $point == large {
+      // @media (min-width: 1200px) { @content; }
+      @media (min-width: 960px) { @content; }
+    }
+    @else if $point == xlarge {
+      // @media (min-width: 1350px) { @content; }
+      @media (min-width: 960px) { @content; }
+    }
+  }

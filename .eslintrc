@@ -1,0 +1,62 @@
+{
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": 2017,
+    "parser": "babel-eslint"
+  },
+  "extends": [
+    "plugin:vue/essential",
+    "eslint:recommended"
+  ],
+  "rules": {
+    "no-process-env": 0,
+    "semi": [
+      "error",
+      "always"
+    ],
+    "comma-dangle": [
+      "error",
+      "always"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "func-call-spacing": "error",
+    "arrow-spacing": [
+      "error",
+      {
+        "before": true,
+        "after": true
+      }
+    ],
+    "array-callback-return": "error",
+    "dot-notation": "error",
+    "eol-last": "error",
+    "indent": [
+      "error",
+      2,
+      {
+        "ArrayExpression": "first",
+        "CallExpression": {
+          "arguments": "first"
+        },
+        "FunctionDeclaration": {
+          "parameters": "first"
+        },
+        "FunctionExpression": {
+          "parameters": "first"
+        },
+        "MemberExpression": "off",
+        "ObjectExpression": "first",
+        "SwitchCase": 1
+      }
+    ],
+    "new-parens": "error",
+    "no-useless-escape": 0,
+    "no-var": "error"
+  },
+  "env": {
+    "node": true
+  }
+}

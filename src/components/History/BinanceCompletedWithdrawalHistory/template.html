@@ -1,0 +1,124 @@
+<div class="binance-completed-withdrawal-history">
+    <div id="wrap2" class="uk-visible@m">
+        <div class="sortButtons">
+            <span class="sortButton" @click="sortDataBy(0)">Currency
+                    <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+                  </span>
+            <span class="sortButton" @click="sortDataBy(101)">Exchange Total
+                    <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+          
+                  </span>
+            <span class="sortButton" @click="sortDataBy(201)">Margin Total
+                    <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+          
+                  </span>
+            <span class="sortButton" @click="sortDataBy(301)">Funding Total
+                    <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+          
+                  </span>
+            <span class="sortButton" @click="sortDataBy(401)">Total Balance
+                        <img class="sortIconBtn" src="../../../assets/sort-icon.svg"/>
+              
+                      </span>
+        </div>
+        <div class="sortIcon"></div>
+    </div>
+    <div id="wrap" class="uk-visible@m">
+        <div class="right">
+            <form v-on:submit.prevent autocomplete="off">
+                <input id="search" v-model="filterExchange" name="search" type="text" placeholder="Search by Currency">
+                <input id="search_submit" value="Rechercher" type="submit">
+            </form>
+        </div>
+
+    </div>
+    <div class="uk-hidden@m">
+        <div class="container">
+            <input v-model="searchString" name="search" type="text" placeholder="Search ...">
+            <div class="search"></div>
+        </div>
+        <div class="container2">
+            <div id="mobileDropdown">
+                <span class="sortButtonD" @click="sortDataBy(0)">Currency
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                            </span><br>
+                <span class="sortButtonD" @click="sortDataBy(101)">Exchange Total
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                  
+                            </span><br>
+                <span class="sortButtonD" @click="sortDataBy(201)">Margin Total
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                  
+                            </span><br>
+                <span class="sortButtonD" @click="sortDataBy(301)">Funding Total
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                  
+                            </span> <br>
+                <span class="sortButtonD" @click="sortDataBy(401)">Total Balance
+                              <img class="sortIconBtn" src="../../../assets/sort-icon.svg" />
+                  
+                            </span> <br>
+            </div>
+
+            <div class="search2"></div>
+        </div>
+
+    </div>
+    <div id="hello" data-simplebar data-simplebar-auto-hide="false">
+        <table class="svh-table display nowrap" style="width:100%" data-scroll-x="true" data-scroll-y="294px">
+            <thead>
+                <tr>
+                    <th id="tableHeaders">ID</th>
+                    <th id="tableHeaders">Amount</th>
+                    <th id="tableHeaders">Asset</th>
+                    <th id="tableHeaders">Apply Time</th>
+                    <th id="tableHeaders">Destination Address</th>
+                    <th id="tableHeaders">Transaction Hash</th>
+                </tr>
+            </thead>
+            <tbody v-if="spinnerFlag">
+                <spinner id="spinner"></spinner>
+            </tbody>
+            <tbody v-else>
+                <tr v-for="historyRow in history">
+                    <td>{{ historyRow.id }}</td>
+                    <td>{{ historyRow.amount }}</td>
+                    <td>{{ historyRow.asset }}</td>
+                    <td>{{ formatDateTime(historyRow.applyTime) }}</td>
+                    <td>
+                        <vk-grid class="f1-form-grid">
+                            <div class="uk-width-3-4">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <input class="form-ctrl" type="text" placeholder="Destination Address" :value='historyRow.address' readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </vk-grid>
+                    </td>
+                    <td>
+                        <vk-grid class="f1-form-grid">
+                            <div class="uk-width-3-4">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <input :id='"txhash"+historyRow.id' class="form-ctrl" type="text" placeholder="Transaction Hash" :value='historyRow.txId' readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <span @click="copyReferral(historyRow.id)" class="copyText tooltip uk-width-1-4">
+                                        <img src="https://png.icons8.com/material/50/38545d/copy.png">
+                                        <span class="tooltiptext">Copy</span>
+                            </span>
+                        </vk-grid>
+
+                    </td>
+                </tr>
+                <tr v-if="history.length === 0">
+                    <td colspan="4">
+                        {{ displayText }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

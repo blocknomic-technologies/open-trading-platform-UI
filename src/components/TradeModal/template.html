@@ -1,0 +1,185 @@
+<div class="trade-modal" :style="styleobj" :class="{hidden: hideModal}">
+    <!-- <div style="top:0; bottom: 0; width: 100%; border: 1px solid red; position: fixed;"> -->
+    <vue-draggable-resizable :x="400" :y="200" :w="600" :h="300" :parent="true">
+        <div class="trade-dialog-box">
+            <div class="header" @mousedown="dragStart">
+                <div class="modal-heading">Trade</div>
+                <div @click="closeTrade" class="cross-btn">&#10006;</div>
+            </div>
+            <div class="content">
+                <!-- object value -->
+                <div class="dropdown-container">
+                    <model-select style="width: 23%; margin: 10px;" :options="exchangeList" v-model="selectedExchange" placeholder="Exchange">
+                    </model-select>
+                    <model-select style="width: 23%; margin: 10px;" :options="pairList" v-model="selectedPair" placeholder="Pair">
+                    </model-select>
+                    <model-select style="width: 23%; margin: 10px;" :options="orderTypeBasic" v-model="selectedOrderTypeBasic" placeholder="Order Type">
+                    </model-select>
+                    <model-select style="width: 23%; margin: 10px;" :options="orderTypes" v-model="orderType" placeholder="Order Type">
+                    </model-select>
+                </div>
+                <!-- string value -->
+                <form>
+                    <!-- <div>  <fieldset>
+                                        <legend class="bal fieldLegend">Available Balance</legend> -->
+                    <table v-if=showBalances>
+                            <tbody id="paH" v-if=showTradeBal>
+                                    <tr style="color:white;">
+                                        <td class="balanceNu" v-for="ledger in ledgerData" v-if="ledger.wallet_type==='margin'" >{{ ledger.currency }}: {{ledger.avail_bal}}</td>
+                                         <td v-if="tradeableBalance != -1">Tradeable Balance: {{ tradeableBalance }}</td>
+                                    </tr>
+                                </tbody>
+                        <tbody id="paH" v-else>
+                            <tr style="color:white;">
+                                <td class="balanceNu" v-for="ledger in ledgerData" v-if="ledger.wallet_type==='exchange'" >{{ ledger.currency }}: {{ledger.avail_bal}}</td>
+                                <!-- <td class="balanceNu">{{ ledgerData[1].currency }}: {{ledgerData[1].available }}</td> -->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- </fieldset></div> -->
+                    <div id="flags" v-if="limitTypeTemplate || marketTypeTemplate">
+                        <div class="flagsDiv" v-if="flagsVisibility['oco']"><label class="container"><input v-if="flagsVisibility['oco']" type="checkbox" v-model="flags.oco" name="oco" value="OCO" checked="checked">OCO <span class="checkmark"></span></label></div>
+                        <div class="flagsDiv" v-if="flagsVisibility['hidden']"><label class="container"><input v-if="flagsVisibility['hidden']" type="checkbox" v-model="flags.hidden" name="hidden" value="HIDDEN`">HIDDEN <span class="checkmark"></span></label></div>
+                        <div class="flagsDiv" v-if="flagsVisibility['tif']"><label class="container"><input v-if="flagsVisibility['tif']" type="checkbox" v-model="flags.tif" name="tif" value="TIF">TIF <span class="checkmark"></span></label></div>
+                        <div class="flagsDiv" v-if="flagsVisibility['reduceonly']"><label class="container"><input v-if="flagsVisibility['reduceonly']" type="checkbox" v-model="flags.reduceonly" name="reduceonly" value="REDUCE-ONLY">REDUCE-ONLY <span class="checkmark"></span></label></div>
+                        <div class="flagsDiv" v-if="flagsVisibility['postonly']"><label class="container"><input v-if="flagsVisibility['postonly']" type="checkbox" v-model="flags.postonly" name="postonly" value="POST-ONLY">POST ONLY <span class="checkmark"></span></label></div>
+                        <div class="flagsDiv" v-if="flagsVisibility['iceberg']"><label class="container"><input v-if="flagsVisibility['iceberg']" type="checkbox" v-model="flags.iceberg" name="iceberg" value="ICEBERG">ICEBERG <span class="checkmark"></span></label></div>
+                        <div class="flagsDiv" v-if="flagsVisibility['closeOnTrigger']"><label class="container"><input v-if="flagsVisibility['closeOnTrigger']" type="checkbox" v-model="flags.closeOnTrigger" name="closeOnTrigger" value="closeOnTrigger">Close-On-Trigger <span class="checkmark"></span></label></div>
+                        <div class="flagsDiv" v-if="flagsVisibility['trigger']">
+                            <model-select :options="triggerTypes" v-model="flags.trigger" placeholder="Trigger">
+                            </model-select>
+                        </div>
+                    </div>
+                    <div v-if="marketTypeTemplate" id="marketOrderTemplate">
+                        <div class="uk-grid f1-form-grid">
+                            <div class="uk-width-1-1">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <input class="form-ctrl" v-model="formData.amount" type="number" placeholder="Amount">
+                                        <span class="calcBtn" @click=calcPrice>Calc</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-if="stopOrder" class="uk-width-1-1">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <input class="form-ctrl" v-model="formData.stopPrice" type="number" placeholder="Stop Price">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <vk-grid class="uk-grid uk-grid-small f1-form-grid">
+                            <div class="uk-width-1-2">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <input style='color:var(--green-color)' class="form-ctrl" type="text" placeholder="Buy Price" :value="buyPrice" readonly>
+                                        <span style='color:var(--green-color); position: absolute; top: 10px; right: 0px;'>{{ selectedPair.text.split('/')[1]}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-1-2">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <input style='color:var(--red-color)' class="form-ctrl" type="text" placeholder="Sell Price" :value="sellPrice" readonly>
+                                        <span style='color:var(--red-color);  position: absolute; top: 10px; right: 0px;'>{{ selectedPair.text.split('/')[1]}}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </vk-grid>
+                    </div>
+                    <div v-if="limitTypeTemplate" id="limitOrderTemplate">
+                        <div class="uk-grid f1-form-grid">
+                            <model-select v-if="timeInForceList.length != 0" style="margin-left: 40px;" :options="timeInForceList" v-model="timeInForce" placeholder="Time In Force">
+                            </model-select>
+                            <div class="uk-width-1-1">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <input class="form-ctrl" v-model="formData.amount" type="number" placeholder="Amount">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-1-1">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <input class="form-ctrl" v-model="formData.price" type="number" :placeholder="placeholderText[orderType.text]">
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-if="stopOrder" class="uk-width-1-1">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <input class="form-ctrl" v-model="formData.stopPrice" type="number" placeholder="Stop Price">
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-if="flags['iceberg']" class="uk-width-1-1">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <input class="form-ctrl" v-model="formData.icebergQty" type="number" placeholder="Iceberg Qty">
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-if="flags['oco']" class="uk-width-1-1">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <input class="form-ctrl" v-model="formData.ocoStopPrice" type="number" placeholder="OCO STOP PRICE">
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-if="flags['tif']" class="uk-width-1-1">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <datetime type="datetime" v-model="formData.tif" input-id="startDate" format="yyyy-MM-dd HH:mm:ss" placeholder="TIF">
+                                        </datetime>
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-if="gtd" class="uk-width-1-1">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <datetime type="datetime" v-model="formData.tif" input-id="startDate" format="yyyy-MM-dd HH:mm:ss" placeholder="Date Time">
+                                        </datetime>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <br>
+                    <vk-grid v-if="limitTypeTemplate || marketTypeTemplate" class="uk-grid uk-grid-small f1-form-grid">
+                        <div v-if="showLoader" class="uk-width-1-1 center">
+                            <img src="https://image.ibb.co/dc02hd/30.gif" />
+                        </div>
+                        <div v-else class="uk-width-1-1 flex">
+                            <div class="left">
+                                <button v-if="!showConfirm" class="uk-button uk-button-green" v-on:click.prevent="initateTrade('buy')">buy</button>
+                                <button v-else class="uk-button uk-button-green" v-on:click.prevent="makeTrade">Confirm</button>
+                                <button v-if="!showConfirm" class="uk-button uk-button-red ml10" v-on:click.prevent="initateTrade('sell')">sell</button>
+                                <button v-else class="uk-button uk-button-red ml10" v-on:click.prevent="cancelTrade">Cancel</button>
+                                <button class="uk-button right" v-on:click.prevent="reset">Reset Form</button>
+                            </div>
+                        </div>
+                        <div v-if="selectedExchange.text === 'Bitmex'" class="leverage-bar">
+                            <div class="slider">
+                                <!-- <input type="range" min="0" max="200" value="100" v-model="leverage"><label>{{leverage}}</label> -->
+                                <!-- <input type="number" v-model="leverage"> -->
+                                <div class="uk-width-1-1">
+                                    <div class="form-grp">
+                                        <div class="form-elm">
+                                            <label>Leverage:</label><input class="form-ctrl" v-model="leverage" type="number" placeholder="Leverage">
+                                            <div @click=setBitmexLeverage class="leverageBtn">&#10003;</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    </vk-grid>
+                </form>
+            </div>
+            <!-- <div class="footer"></div> -->
+        </div>
+    </vue-draggable-resizable>
+    <!-- </div> -->
+
+</div>

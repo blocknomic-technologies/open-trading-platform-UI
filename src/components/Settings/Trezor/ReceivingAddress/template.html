@@ -1,0 +1,76 @@
+<div class="Trezor-Receiving-Address">
+    <div v-if="displayFlag">
+        <form>
+            <div style="text-align:center;">
+                <div id="tab-a4" class="settingstab-content">
+                    <div class="form-area">
+                        <vk-grid class="f1-form-grid">
+                            <div class="uk-width-1-1@m">
+                                <div class="dropdown">
+                                    <div class="dropbtn" style="text-transform: capitalize;">{{ selectedCurrency }}
+                                        <i class="fa fa-caret-down "></i>
+                                    </div>
+                                    <div class="dropdown-content ">
+                                        <a v-for="val in currencyArray" @click="changeSelectedCurrency(val.key)" style="color:white; text-transform: capitalize;"> {{ val.value.toUpperCase() }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </vk-grid>
+                        <vk-grid class="f1-form-grid">
+                            <div class="uk-width-1-1@m">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <input class="form-ctrl" type="number" placeholder="Account Number" min="0" step="1" v-model="accountNumber">
+                                    </div>
+                                </div>
+                            </div>
+                        </vk-grid>
+                        <vk-grid class="f1-form-grid">
+                            <div class="uk-width-1-1@m">
+                                <div class="form-grp">
+                                    <div class="form-elm">
+                                        <input class="form-ctrl" type="number" placeholder="Path Number" min="0" step="1" v-model="pathNumber">
+                                    </div>
+                                </div>
+                            </div>
+                        </vk-grid>
+                        <vk-grid class="f1-form-grid">
+                            <div class="uk-width-1-1@m">
+                                <div class="dropdown">
+                                    <div class="dropbtn" style="text-transform: capitalize;">{{ showOnTrezor }}
+                                        <i class="fa fa-caret-down "></i>
+                                    </div>
+                                    <div class="dropdown-content ">
+                                        <a v-for="val in showOnTrezorArray" @click="changeShowTrezor(val.value)" style="color:white; text-transform: capitalize;"> {{ val.key.toUpperCase() }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </vk-grid>
+                        <vk-button class="pl40 pr40 goBack" @click="handleSubmit()">Submit</vk-button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div v-else style="text-align:center;">
+        <div id="hello" data-simplebar data-simplebar-auto-hide="false">
+            <table class="svh-table display nowrap" style="width:100%" data-scroll-x="true" data-scroll-y="294px">
+                <tbody>
+                    <tr>
+                        <th>Path:</th>
+                        <td v-for="(values, index) in result.path">{{result.path[index]}}</td>
+                    </tr>
+                    <tr>
+                        <th>Serialized Path:</th>
+                        <td>{{ result.serializedPath }}</td>
+                    </tr>
+                    <tr>
+                        <th>Address:</th>
+                        <td>{{ result.address }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <vk-button class="pl40 pr40 goBack" @click="goBack()">Go Back</vk-button>
+    </div>
+</div>

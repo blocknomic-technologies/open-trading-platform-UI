@@ -1,0 +1,6 @@
+<vk-modal :show="show" @clickOut="closeModal" @keyEsc="closeModal" @update:show=updateShow @keyup="handleKeyUp">
+    <vk-modal-close @click=closeModal />
+    <h3 class="fs20 mb20 os-semibold c-white uk-text-uppercase">{{internalComponent}}</h3>
+    <deposit v-if="internalComponent === 'deposit'" class="ui-tabs ui-widget ui-widget-content" />
+    <withdrawl v-else-if="internalComponent === 'withdrawal'" class="ui-tabs ui-widget ui-widget-content" />
+</vk-modal>
