@@ -65,6 +65,8 @@ Headless allows the developer to run the platform without running the UI on ther
 3. git
 
 Download node.js and NPM at [https://nodejs.org/en/download/package-manager/](https://nodejs.org/en/download/package-manager/)
+
+
 Download Git at [https://git-scm.com/downloads](https://git-scm.com/downloads)
 
 ##### Download and run
@@ -92,6 +94,8 @@ Running the full system could get heavy that is why we recommend using Head Less
 4. Git
 
 Download node.js and NPM at [https://nodejs.org/en/download/package-manager/](https://nodejs.org/en/download/package-manager/)
+
+
 Download Git at [https://git-scm.com/downloads](https://git-scm.com/downloads)
 
 For Development environments...
