@@ -129,6 +129,7 @@ In this section we will explain all the available feature on the easy to use UI 
  4. Trezor integration
  5. Deposits
  6. Margin trading
+ 7. System and server status
 
 You can also visit our youtube video to see how to use the entire system. (Coming soon)
 
@@ -153,7 +154,10 @@ To use your trezor directly on the platform, use the navbar on the top, go to pr
 You can get wallet address directly from the UI by going funds on the navbar and then wallet and choosing the exchange and currency. We do not allow withdrawls from the system for security reasons.
 
 ##### Margin trading
-Go to the markets page and choose margin trading. More info available on the WIKI and youtube. (Coming soon)
+Go to the markets page and choose Derivatives market at the bottom. More info available on the WIKI and youtube. (Coming soon)
+
+##### System and Server status
+On the top right of the nav bar there are two status alerts. One to show the status of the exchanges and there apis and websockets the other shows if your frontend has successfully connected to the server. 
 
 ### How to recommend Platform features to us?
 
