@@ -56,14 +56,16 @@ The platform has been designed and built for two types of users Traders with no 
 
 #### Head less (Download and run instructions for linux ubuntu)
 
-Headless allows the developer to run the platform without running the UI on there computer. They can simply use https://trader.blocknomic.com to connect the server running on their computer.  This is perfect for people who don't have a powerful enough 
+Headless allows the developer to run the platform without running the UI on there computer. They can simply use https://trader.blocknomic.com to connect the server running on their computer.  This is perfect for people who don't have a powerful enough computer
 
 ##### Requirements
 
 1. Node.js V8.9.0+
 2. NPM
+3. git
 
 Download node.js and NPM at [https://nodejs.org/en/download/package-manager/](https://nodejs.org/en/download/package-manager/)
+Download Git at [https://git-scm.com/downloads](https://git-scm.com/downloads)
 
 ##### Download and run
 For Development environments...
@@ -74,6 +76,7 @@ $ npm install
 (In the root directory search for the keys.js file and input your API keys for the exchanges)
 (To run simply type)
 $ node debug.js
+(open up https://trader.blocknomic.com) and see if you are connected. 
 ```
 
 For Production environment (Coming soon)
@@ -86,8 +89,10 @@ Running the full system could get heavy that is why we recommend using Head Less
 1. Node.js V8.9.0+
 2. NPM
 3. Vue.js V2.5.13+ ( Have not tested in later version, but shouldn't be an issue)
+4. Git
 
 Download node.js and NPM at [https://nodejs.org/en/download/package-manager/](https://nodejs.org/en/download/package-manager/)
+Download Git at [https://git-scm.com/downloads](https://git-scm.com/downloads)
 
 For Development environments...
   ```sh
@@ -193,7 +198,7 @@ LTC = MSnYXgutFWYmmfet9saYGMy66MFuiRYq1y
 
 #### Your Security Concerns
 
-Nothing is stored on a database and all your apikeys are safely stored on your local computer. All http requests and taken care of from the server running on your computer. 
+Nothing is stored on a database and all your apikeys are safely stored on your local computer. All http requests are taken care of from the server running on your computer. 
 
 License
 ----
