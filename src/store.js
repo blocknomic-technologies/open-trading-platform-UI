@@ -34,6 +34,7 @@ const store = new Vuex.Store({
       },
     },
     ledger: [],
+    websocketStatus: 'Closed',
     activeOrders: [],
     recentTrades: [],
     loaderCounter: 0,
@@ -78,6 +79,9 @@ const store = new Vuex.Store({
     bitmexPairs: [],
   },
   getters: {
+    websocketStatus(state) {
+      return state.websocketStatus;
+    },
     themeMode(state) {
       return state.themeMode;
     },
@@ -139,7 +143,7 @@ const store = new Vuex.Store({
         default:
           return (
             state.selectedExchange.charAt(0).toUpperCase() +
-            state.selectedExchange.slice(1)
+                        state.selectedExchange.slice(1)
           );
       }
     },
@@ -191,16 +195,16 @@ const store = new Vuex.Store({
     getAutoStatus(state) {
       if (
         state['bitfinex orders'] === 'operational' &&
-        state['bequant orders'] === 'operational' &&
-        state['coinex orders'] === 'operational' &&
-        state['binance orders'] === 'operational'
+                state['bequant orders'] === 'operational' &&
+                state['coinex orders'] === 'operational' &&
+                state['binance orders'] === 'operational'
       ) {
         return 'operational';
       } else if (
         state['bitfinex orders'] != 'operational' &&
-        state['bequant orders'] != 'operational' &&
-        state['coinex orders'] != 'operational' &&
-        state['binance orders'] != 'operational'
+                state['bequant orders'] != 'operational' &&
+                state['coinex orders'] != 'operational' &&
+                state['binance orders'] != 'operational'
       ) {
         return 'major_outage';
       } else {
@@ -212,7 +216,7 @@ const store = new Vuex.Store({
     },
     getccTickerData(state) {
       return state.tickerData[state.selectedPair.split('/')[0]][
-        state.selectedPair
+                state.selectedPair
       ].exchanges;
     },
     getSelectedPairExchanges(state) {
@@ -232,6 +236,9 @@ const store = new Vuex.Store({
     },
   },
   mutations: {
+    changeWebsocketStatus(state, websocketStatus) {
+      state.websocketStatus = websocketStatus;
+    },
     changeLimitTab(state) {
       state.limitTab = true;
     },
@@ -315,24 +322,24 @@ const store = new Vuex.Store({
     },
     totalPortfolioValue(state) {
       state.totalPortfolioValue = state.ledger
-        .reduce((tpv, {
-          currency,
-          total,
-        }) => {
-          currency = currency.toUpperCase();
-          let sellPrice = 1;
-          if (currency !== state.tpvCurrency) {
-            sellPrice =
-              ((((
-                (state.tickerData[currency] || {})[
-                  `${currency}/${state.tpvCurrency}`
-                ] || {}
-              ).best || {}).bids || {})[0] || {}).price || 0;
-          }
-          tpv += sellPrice * total;
-          return tpv;
-        }, 0)
-        .toFixed(3);
+                .reduce((tpv, {
+                  currency,
+                  total,
+                }) => {
+                  currency = currency.toUpperCase();
+                  let sellPrice = 1;
+                  if (currency !== state.tpvCurrency) {
+                    sellPrice =
+                            ((((
+                              (state.tickerData[currency] || {})[
+                                    `${currency}/${state.tpvCurrency}`
+                              ] || {}
+                            ).best || {}).bids || {})[0] || {}).price || 0;
+                  }
+                  tpv += sellPrice * total;
+                  return tpv;
+                }, 0)
+                .toFixed(3);
     },
     changeStatusCodesValue(state, key) {
       state[key.name] = key.status;
@@ -347,7 +354,7 @@ const store = new Vuex.Store({
     setAvailableExchanges(state) {
       state.availableExchanges = Object.keys(
         state.tickerData[state.selectedPair.split('/')[0]][state.selectedPair]
-        .exchanges
+                .exchanges
       );
     },
     buyPrice(state, price) {

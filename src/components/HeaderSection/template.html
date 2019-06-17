@@ -119,6 +119,7 @@
                         <div id="statusDiv" style="color:var(--primary-text-color);"><span class="dot" :class='statusCode'></span>&nbsp;&nbsp;&nbsp;&nbsp;{{ getPageStatus() }}</div>
                     </a>
                 </div>
+                <div id="serverStatusDiv" style="color:var(--primary-text-color);"><span class="dot" :class='serverStatusCode'></span>&nbsp;&nbsp;&nbsp;&nbsp;{{ getServerStatus() }}</div>
                 <!-- <div v-if="$store.getters.isLoggedIn" id="header-logout" @click="logout"><i class="fas fa-sign-out-alt"></i>Logout</div> -->
             </header>
         </vk-sticky>

@@ -42,29 +42,31 @@ import '@/services/exchangeSockets/newApiEngine';
 const device = new WebSocket('ws://localhost:8085');
 
 
-device.onopen = () => {};
+device.onopen = () => {
+  store.commit('changeWebsocketStatus', 'Connected');
+};
 
 if (!LocalStorage.get(Keys.pingUuid)) {
-    LocalStorage.set(Keys.pingUuid, uuidv4());
+  LocalStorage.set(Keys.pingUuid, uuidv4());
 }
 
 
 EventBus.$on(EventNames.userLogin, () => {
-    store.commit('isLoggedIn', true);
+  store.commit('isLoggedIn', true);
 });
 
 EventBus.$on(EventNames.userLogout, () => {
-    const wasLoggedIn = store.getters.isLoggedIn;
-    store.commit('isLoggedIn', false);
-    store.commit('isPhoneVerified', false);
-    store.commit('isKycVerified', false);
-    store.commit('ledger', []);
-    store.commit('activeOrders', []);
-    store.commit('recentTrades', []);
-    LocalStorage.clearLoginUserData();
-    if (router.currentRoute.path !== '/' || wasLoggedIn) {
-        router.push('/');
-    }
+  const wasLoggedIn = store.getters.isLoggedIn;
+  store.commit('isLoggedIn', false);
+  store.commit('isPhoneVerified', false);
+  store.commit('isKycVerified', false);
+  store.commit('ledger', []);
+  store.commit('activeOrders', []);
+  store.commit('recentTrades', []);
+  LocalStorage.clearLoginUserData();
+  if (router.currentRoute.path !== '/' || wasLoggedIn) {
+    router.push('/');
+  }
 });
 
 const isLoggedIn = LocalStorage.isUserLoggedIn();
@@ -76,83 +78,87 @@ updateStatuses();
 setInterval(updateStatuses, 30000);
 
 async function updateStatuses() {
-    let data = await StatusPageService.getStatusUpdate();
-    data.data.forEach(element => {
-        store.commit('changeStatusCodesValue', { name: element.name.toLowerCase(), status: element.status, });
-    });
+  let data = await StatusPageService.getStatusUpdate();
+  data.data.forEach(element => {
+    store.commit('changeStatusCodesValue', { name: element.name.toLowerCase(), status: element.status, });
+  });
 }
 
 device.onmessage = (payload) => {
-    const data = JSON.parse(payload.data);
-    switch (data.type) {
-        case 'ledger':
-            store.commit('ledger', data.data);
-            return EventBus.$emit(EventNames.ledgerUpdated);
-        case 'orderPlaced':
-            store.commit('ledger', data.data.ledger);
-            store.commit('activeOrders', data.data.activeOrders);
-            return EventBus.$emit(EventNames.orderPlaced);
-        case 'orderFilled':
-            store.commit('ledger', data.data.ledger);
-            store.commit('activeOrders', data.data.activeOrders);
-            store.commit('recentTrades', data.data.recentTrades);
-            return EventBus.$emit(EventNames.orderFilled);
-        case 'orderCanceled':
-            store.commit('ledger', data.data.ledger);
-            store.commit('activeOrders', data.data.activeOrders);
-            store.commit('recentTrades', data.data.recentTrades);
-            return EventBus.$emit(EventNames.orderCanceled);
-        case 'orderPartiallyFilled':
-            store.commit('ledger', data.data.ledger);
-            store.commit('activeOrders', data.data.activeOrders);
-            store.commit('recentTrades', data.data.recentTrades);
-            return EventBus.$emit(EventNames.orderPartiallyFilled);
-        case 'generalNoticeToUser':
-            Vue.notify({
-                group: 'foo',
-                title: 'Important message',
-                text: data.data.message,
-                duration: 20000,
-            });
-            break;
-        case 'generalNotice':
-            Vue.notify({
-                group: 'foo',
-                title: 'Important message',
-                text: data.data.message,
-                duration: 20000,
-            });
-            break;
-        case 'orderUpdated':
-            store.commit('ledger', data.data.ledger);
-            store.commit('activeOrders', data.data.activeOrders);
-            EventBus.$emit(EventNames.orderUpdated);
-            break;
-        case 'bitfinexNotifications':
-            EventBus.$emit(EventNames.notification, data);
-            break;
-    }
+  const data = JSON.parse(payload.data);
+  switch (data.type) {
+    case 'ledger':
+      store.commit('ledger', data.data);
+      return EventBus.$emit(EventNames.ledgerUpdated);
+    case 'orderPlaced':
+      store.commit('ledger', data.data.ledger);
+      store.commit('activeOrders', data.data.activeOrders);
+      return EventBus.$emit(EventNames.orderPlaced);
+    case 'orderFilled':
+      store.commit('ledger', data.data.ledger);
+      store.commit('activeOrders', data.data.activeOrders);
+      store.commit('recentTrades', data.data.recentTrades);
+      return EventBus.$emit(EventNames.orderFilled);
+    case 'orderCanceled':
+      store.commit('ledger', data.data.ledger);
+      store.commit('activeOrders', data.data.activeOrders);
+      store.commit('recentTrades', data.data.recentTrades);
+      return EventBus.$emit(EventNames.orderCanceled);
+    case 'orderPartiallyFilled':
+      store.commit('ledger', data.data.ledger);
+      store.commit('activeOrders', data.data.activeOrders);
+      store.commit('recentTrades', data.data.recentTrades);
+      return EventBus.$emit(EventNames.orderPartiallyFilled);
+    case 'generalNoticeToUser':
+      Vue.notify({
+        group: 'foo',
+        title: 'Important message',
+        text: data.data.message,
+        duration: 20000,
+      });
+      break;
+    case 'generalNotice':
+      Vue.notify({
+        group: 'foo',
+        title: 'Important message',
+        text: data.data.message,
+        duration: 20000,
+      });
+      break;
+    case 'orderUpdated':
+      store.commit('ledger', data.data.ledger);
+      store.commit('activeOrders', data.data.activeOrders);
+      EventBus.$emit(EventNames.orderUpdated);
+      break;
+    case 'bitfinexNotifications':
+      EventBus.$emit(EventNames.notification, data);
+      break;
+  }
 };
 
-device.onerror = () => {};
-device.onclose = () => {};
+device.onerror = () => {
+  store.commit('changeWebsocketStatus', 'Error');
+};
+device.onclose = () => {
+  store.commit('changeWebsocketStatus', 'Closed');
+};
 
 Vue.config.productionTip = false;
 
 if (!isLoggedIn) {
-    EventBus.$emit(EventNames.userLogout);
+  EventBus.$emit(EventNames.userLogout);
 } else {
-    EventBus.$emit(EventNames.userLogin, { username: loggedInUser, mqttKey: mqttKey, });
+  EventBus.$emit(EventNames.userLogin, { username: loggedInUser, mqttKey: mqttKey, });
 }
 
 new Vue({
-    router,
-    store,
-    render: h => h(App),
+  router,
+  store,
+  render: h => h(App),
 }).$mount('#app');
 
 if (!isLoggedIn) {
-    EventBus.$emit(EventNames.userLogout);
+  EventBus.$emit(EventNames.userLogout);
 } else {
-    EventBus.$emit(EventNames.userLogin, { username: loggedInUser, mqttKey: mqttKey, });
+  EventBus.$emit(EventNames.userLogin, { username: loggedInUser, mqttKey: mqttKey, });
 }

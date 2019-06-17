@@ -11,31 +11,13 @@ export default {
     return {
       status: 'Major Outage',
       statusCode: 'major_outage',
+      serverStatusCode: 'major_outage',
     };
   },
   components: {
     ModelSelect,
   },
   methods: {
-    // myFunction() {
-    //   document.getElementById('myDropdown').classList.toggle('show');
-    // },
-
-    // filterFunction() {
-    //   let input, filter, ul, li, a, i;
-    //   input = document.getElementById('myInput');
-    //   filter = input.value.toUpperCase();
-    //   div = document.getElementById('myDropdown');
-    //   a = div.getElementsByTagName('a');
-    //   for (i = 0; i < a.length; i++) {
-    //     txtValue = a[i].textContent || a[i].innerText;
-    //     if (txtValue.toUpperCase().indexOf(filter) > -1) {
-    //       a[i].style.display = '';
-    //     } else {
-    //       a[i].style.display = 'none';
-    //     }
-    //   }
-    // },
     onTriggerClick() {
       this.$store.commit('toggleSidebar');
     },
@@ -59,6 +41,19 @@ export default {
       } else {
         this.statusCode = 'partial_outage';
         return 'Partial System Outage';
+      }
+    },
+    getServerStatus() {
+      let data = this.$store.getters.websocketStatus;
+      if (data === 'Connected') {
+        this.serverStatusCode = 'operational';
+        return 'Websocket Connected';
+      } else if (data === 'Error') {
+        this.serverStatusCode = 'major_outage';
+        return 'Some Error in Connecting';
+      } else {
+        this.serverStatusCode = 'partial_outage';
+        return 'WebSocket Closed';
       }
     },
     logout() {
