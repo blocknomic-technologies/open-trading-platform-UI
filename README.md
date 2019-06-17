@@ -188,6 +188,7 @@ For any customisation or cloud setup of your system please email us at enquiry@b
 We accept crypto donations if you're looking to fund our teams Beers, Pizza's and Butter chicken.
 
 BTC = 3N1eMLHky6mTYLLtN4QfzecWduakVYgdVa
+
 LTC = MSnYXgutFWYmmfet9saYGMy66MFuiRYq1y
 
 #### Your Security Concerns
