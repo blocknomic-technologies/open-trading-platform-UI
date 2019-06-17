@@ -75,7 +75,7 @@ For Development environments...
 $ git clone https://github.com/blocknomic-technologies/open-trading-platform-API.git
 $ cd open-trading-platform-API
 $ npm install
-(In the root directory search for the keys.js file and input your API keys for the exchanges)
+(In the root directory search and edit the keys.js file and input your API keys for the exchanges)
 (To run simply type)
 $ node debug.js
 (open up https://trader.blocknomic.com) and see if you are connected. 
