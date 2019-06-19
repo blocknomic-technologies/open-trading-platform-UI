@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     tabs() {
-      return ['Trezor'];
+      return ['Trezor',];
     },
   },
   methods: {

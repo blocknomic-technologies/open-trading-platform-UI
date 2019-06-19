@@ -28,9 +28,8 @@ You can test out the platform at https://trader.blocknomic.com
   7. Developer Note
   8. Roadmap (Coming soon)
   9. Wiki (Coming soon)
-  10. Business Enquiries
-  11. Donations
-  12. Your security concerns!!!!
+  10. Donations
+  11. Your security concerns!!!!
 
 ### System Architecture
 
@@ -163,7 +162,6 @@ On the top right of the nav bar there are two status alerts. One to show the sta
 
 - If you are a developer you can follow the instructions on the WIKI page. 
 - If you are a trader you can drop us an email at features@blocknomic.com if we get enough inquiries regarding the update we will look into it. 
-- If you are in need for a feature and can't wait you can get in touch with our Business development team to have your custom feature built enquiry@blocknomic.com
 
 ### Developers, Contributors and how to contribute
 
@@ -191,10 +189,6 @@ Please go to the wiki link and follow all the instructions to help with developm
 #### Developer note
 
 This is our first open source project please bear with us as we navigate through this experience and try to make it as comfortable as an experience for you. 
-
-#### Business Enquiry
-
-For any customisation or cloud setup of your system please email us at enquiry@blocknomic.com
 
 #### Donations
 

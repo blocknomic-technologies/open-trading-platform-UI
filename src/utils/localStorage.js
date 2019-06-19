@@ -1,42 +1,42 @@
 class LocalStorage {
-    set(key, data) {
-        return window.localStorage.setItem(key, data);
-    }
+  set(key, data) {
+    return window.localStorage.setItem(key, data);
+  }
 
-    get(key) {
-        return window.localStorage.getItem(key);
-    }
+  get(key) {
+    return window.localStorage.getItem(key);
+  }
 
-    remove(key) {
-        return window.localStorage.removeItem(key);
-    }
+  remove(key) {
+    return window.localStorage.removeItem(key);
+  }
 
-    removeAll() {
-        return window.localStorage.clear();
-    }
+  removeAll() {
+    return window.localStorage.clear();
+  }
 
-    isUserLoggedIn() {
-        return true;
-    }
+  isUserLoggedIn() {
+    return true;
+  }
 
-    clearLoginUserData() {
-        this.remove(Keys.jwtToken);
-        this.remove(Keys.expTime);
-        this.remove(Keys.refreshToken);
-        this.remove(Keys.idToken);
-        this.remove(Keys.username);
-        this.remove(Keys.mqtt);
-    }
+  clearLoginUserData() {
+    this.remove(Keys.jwtToken);
+    this.remove(Keys.expTime);
+    this.remove(Keys.refreshToken);
+    this.remove(Keys.idToken);
+    this.remove(Keys.username);
+    this.remove(Keys.mqtt);
+  }
 }
 
 export default new LocalStorage();
 
 export const Keys = {
-    jwtToken: 'jwt',
-    expTime: 'expT',
-    refreshToken: 'refreshT',
-    idToken: 'idT',
-    username: 'usnn',
-    pingUuid: 'sth',
-    mqtt: 'mqtt',
+  jwtToken: 'jwt',
+  expTime: 'expT',
+  refreshToken: 'refreshT',
+  idToken: 'idT',
+  username: 'usnn',
+  pingUuid: 'sth',
+  mqtt: 'mqtt',
 };
