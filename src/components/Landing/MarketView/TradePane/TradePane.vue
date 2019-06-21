@@ -3,7 +3,6 @@
 <script>
 import Vue from 'vue';
 import TradeTab from './TradeTab/TradeTab.vue';
-import DepthChart from './DepthChart/DepthChart.vue';
 import TabBar from '@/components/TabBar/TabBar.vue';
 import Ticker from './Ticker/Ticker.vue';
 import News from './News/News.vue';
@@ -16,7 +15,6 @@ export default {
   components: {
     TabBar,
     TradeTab,
-    DepthChart,
     Ticker,
     Balance,
     LiveTrades,

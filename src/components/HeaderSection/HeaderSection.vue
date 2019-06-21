@@ -10,7 +10,6 @@ export default {
   data() {
     return {
       status: 'Major Outage',
-      statusCode: 'major_outage',
       serverStatusCode: 'major_outage',
     };
   },
@@ -21,39 +20,17 @@ export default {
     onTriggerClick() {
       this.$store.commit('toggleSidebar');
     },
-    getPageStatus() {
-      let data = this.$store.getters.getPageStatus;
-      if (data === 'All Systems Operational') {
-        this.statusCode = 'operational';
-        return 'All Systems Operational';
-      } else if (data === 'Partial System Outage') {
-        this.statusCode = 'partial_outage';
-        return 'Partial System Outage';
-      } else if (data === 'Major Service Outage') {
-        this.statusCode = 'major_outage';
-        return 'Major Service Outage';
-      }  else if (data === 'Minor Service Outage') {
-        this.statusCode = 'partial_outage';
-        return 'Minor Service Outage';
-      }  else if (data === 'Major System Outage') {
-        this.statusCode = 'major_outage';
-        return 'Major System Outage';
-      } else {
-        this.statusCode = 'partial_outage';
-        return 'Partial System Outage';
-      }
-    },
     getServerStatus() {
       let data = this.$store.getters.websocketStatus;
       if (data === 'Connected') {
         this.serverStatusCode = 'operational';
-        return 'Websocket Connected';
+        return 'Server Connected';
       } else if (data === 'Error') {
         this.serverStatusCode = 'major_outage';
-        return 'Some Error in Connecting';
+        return 'Some Error in Connecting to Server';
       } else {
         this.serverStatusCode = 'partial_outage';
-        return 'WebSocket Closed';
+        return 'Server Closed';
       }
     },
     logout() {

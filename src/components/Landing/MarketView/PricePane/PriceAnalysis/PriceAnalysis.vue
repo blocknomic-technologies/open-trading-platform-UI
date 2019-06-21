@@ -55,7 +55,6 @@ export default {
       return this.$store.getters[`get${exchange}WebsocketsStatus`];
     },
     toggle() {
-      ExchangeDataEventBus.$emit('toggle-multiline');
       if (this.toggleOn) {
         ExchangeDataEventBus.$emit('subscribe-all-ticker');
       } else {

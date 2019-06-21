@@ -127,9 +127,8 @@ export default {
       this.count = 1;
     }
     this.snapshotListener = snap => {
-      // console.log(snap);
       this.showLoader = false;
-      let parsedSnap = JSON.parse(JSON.stringify(snap));
+      let parsedSnap = snap;
       this.asks = this.asksUpdater(parsedSnap);
       this.bids = this.bidsUpdater(parsedSnap);
       this.barAsk = this.asks[this.asks.length - 1].totalVolume;
@@ -139,8 +138,7 @@ export default {
     };
 
     this.bookUpdateListener = snap => {
-      // console.log(snap);
-      let parsedSnap = JSON.parse(JSON.stringify(snap));
+      let parsedSnap = snap;
       this.asks = this.asksUpdater(parsedSnap);
       this.bids = this.bidsUpdater(parsedSnap);
       this.barAsk = this.asks[0].totalVolume;

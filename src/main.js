@@ -27,16 +27,9 @@ import '@/assets/css/simplebar.css';
 import '@/assets/css/colors.css';
 
 import '@/services/exchangeSockets/hitbtc';
-// import '@/services/exchangeSockets/bitfinex';
-// import '@/services/exchangeSockets/coinex';
-// import '@/services/exchangeSockets/binance';
-// import '@/services/exchangeSockets/new_hitbtc';
 import '@/services/exchangeSockets/new_binance';
 import '@/services/exchangeSockets/new_bitfinex';
 import '@/services/exchangeSockets/bitmex.js';
-// import '@/services/exchangeSockets/engineData';
-// import '@/services/exchangeSockets/newEngineData';
-import StatusPageService from './services/StatusPageService';
 import '@/services/exchangeSockets/newApiEngine';
 
 const device = new WebSocket('ws://localhost:8085');
@@ -73,16 +66,6 @@ const isLoggedIn = LocalStorage.isUserLoggedIn();
 const loggedInUser = LocalStorage.get(Keys.username);
 const mqttKey = LocalStorage.get(Keys.mqtt);
 
-
-updateStatuses();
-setInterval(updateStatuses, 30000);
-
-async function updateStatuses() {
-  let data = await StatusPageService.getStatusUpdate();
-  data.data.forEach(element => {
-    store.commit('changeStatusCodesValue', { name: element.name.toLowerCase(), status: element.status, });
-  });
-}
 
 device.onmessage = (payload) => {
   const data = JSON.parse(payload.data);

@@ -37,7 +37,6 @@ import ActiveTrades from '@/components/ActiveTrades/ActiveTrades.vue';
 // import TournamentModal from '@/components/ModalBox/TournamentModal.vue';
 import LocalStorage from '@/utils/localStorage.js';
 import Vuikit from 'vuikit';
-import StatusPageService from '@/services/StatusPageService';
 import Notifications from 'vue-notification';
 import Datetime from 'vue-datetime';
 // You need a specific loader for CSS files
@@ -94,7 +93,6 @@ export default {
   },
   async created() {
     localStorage.shouldOpen = true;
-    await StatusPageService.getStatusUpdate();
     ExchangeDataEventBus.$emit('ticker-connect');
 
   },

@@ -54,21 +54,6 @@ const store = new Vuex.Store({
     totalPortfolioValue: 0,
     tpvCurrency: 'USD',
     limitTab: false,
-    'bch: bitcoin cash': '',
-    'bitfinex orders': '',
-    'bitmex orders': '',
-    'bitfinex websockets': '',
-    'bitmex websockets': '',
-    'coinex orders': '',
-    'coinex websockets': '',
-    'binance orders': '',
-    'binance websockets': '',
-    'btc: bitcoin': '',
-    'xmr: monero': '',
-    'bequant orders': '',
-    'bequant websockets': '',
-    'ltc: litecoin': '',
-    'page status': '',
     tickerData: {},
     availablePairs: [],
     availableExchanges: ['binance', 'bitfinex', 'bequant', 'bitmex', ],
@@ -145,70 +130,6 @@ const store = new Vuex.Store({
             state.selectedExchange.charAt(0).toUpperCase() +
                         state.selectedExchange.slice(1)
           );
-      }
-    },
-    getBtcStatus(state) {
-      return state['btc: bitcoin'];
-    },
-    getXmrStatus(state) {
-      return state['xmr: monero'];
-    },
-    getBchStatus(state) {
-      return state['bch: bitcoin cash'];
-    },
-    getLtcStatus(state) {
-      return state['ltc: litecoin'];
-    },
-    getbitfinexOrderStatus(state) {
-      return state['bitfinex orders'];
-    },
-    getcoinexOrderStatus(state) {
-      return state['coinex orders'];
-    },
-    getbinanceOrderStatus(state) {
-      return state['binance orders'];
-    },
-    getbequantOrderStatus(state) {
-      return state['bequant orders'];
-    },
-    getbitmexOrderStatus(state) {
-      return state['bequant orders'];
-    },
-    getbitfinexWebsocketsStatus(state) {
-      return state['bitfinex websockets'];
-    },
-    getbitmexWebsocketsStatus(state) {
-      return state['bitfinex websockets'];
-    },
-    getbequantWebsocketsStatus(state) {
-      return state['bequant websockets'];
-    },
-    getcoinexWebsocketsStatus(state) {
-      return state['coinex websockets'];
-    },
-    getbinanceWebsocketsStatus(state) {
-      return state['binance websockets'];
-    },
-    getPageStatus(state) {
-      return state['page status'];
-    },
-    getAutoStatus(state) {
-      if (
-        state['bitfinex orders'] === 'operational' &&
-                state['bequant orders'] === 'operational' &&
-                state['coinex orders'] === 'operational' &&
-                state['binance orders'] === 'operational'
-      ) {
-        return 'operational';
-      } else if (
-        state['bitfinex orders'] != 'operational' &&
-                state['bequant orders'] != 'operational' &&
-                state['coinex orders'] != 'operational' &&
-                state['binance orders'] != 'operational'
-      ) {
-        return 'major_outage';
-      } else {
-        return 'partial_outage';
       }
     },
     getTickerData(state) {
@@ -340,9 +261,6 @@ const store = new Vuex.Store({
                   return tpv;
                 }, 0)
                 .toFixed(3);
-    },
-    changeStatusCodesValue(state, key) {
-      state[key.name] = key.status;
     },
     changeTickerData(state, data) {
       // alert("change");

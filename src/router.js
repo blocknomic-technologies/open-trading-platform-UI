@@ -17,18 +17,15 @@ import Ticker from '@/components/TickerPage/TickerPage.vue';
 import Trezor from '@/components/Settings/Trezor/Trezor.vue';
 import TradeModalMobile from '@/components/TradeModalMobile/TradeModalMobile';
 
-// import Home from '@/views/home/Home.vue';
-
 Vue.use(Router);
 
 const vueRouter = new Router({
-  // mode: 'history',
   routes: [{
     path: '/',
     name: 'home',
     component: Landing,
     meta: {
-      pageTitle: 'Blocknomic',
+      pageTitle: 'Open Trading Platform',
     },
   }, {
     path: '/markets',
@@ -62,7 +59,7 @@ const vueRouter = new Router({
                name: 'trezor',
                component: Trezor,
                meta: {
-                 pageTitle: 'Trezor - Blocknomic',
+                 pageTitle: 'Trezor - Open Trading Platform',
                  needLogin: false,
                },
              }, ],
@@ -71,7 +68,7 @@ const vueRouter = new Router({
              path: '/balance',
              component: BalanceTransfer,
              meta: {
-               pageTitle: 'Wallets - Blocknomic',
+               pageTitle: 'Wallets - Open Trading Platform',
                needLogin: false,
              },
              children: [{
@@ -79,7 +76,7 @@ const vueRouter = new Router({
                name: 'wallet-summary-bequant',
                component: SummaryBequant,
                meta: {
-                 pageTitle: 'Wallets - Blocknomic',
+                 pageTitle: 'Wallets - Open Trading Platform',
                  needLogin: false,
                },
              },
@@ -88,7 +85,7 @@ const vueRouter = new Router({
                           name: 'wallet-summary-bitfinex',
                           component: SummaryBitfinex,
                           meta: {
-                            pageTitle: 'Wallets - Blocknomic',
+                            pageTitle: 'Wallets - Open Trading Platform',
                             needLogin: false,
                           },
                         },
@@ -97,7 +94,7 @@ const vueRouter = new Router({
                           name: 'wallet-summary-binance',
                           component: SummaryBinance,
                           meta: {
-                            pageTitle: 'Wallets - Blocknomic',
+                            pageTitle: 'Wallets - Open Trading Platform',
                             needLogin: false,
                           },
                         },
@@ -106,7 +103,7 @@ const vueRouter = new Router({
                           name: 'wallet-summary-bitmex',
                           component: SummaryBitmex,
                           meta: {
-                            pageTitle: 'Wallets - Blocknomic',
+                            pageTitle: 'Wallets - Open Trading Platform',
                             needLogin: false,
                           },
                         },
@@ -117,7 +114,7 @@ const vueRouter = new Router({
              name: 'history',
              component: History,
              meta: {
-               pageTitle: 'History - Blocknomic',
+               pageTitle: 'History - Open Trading Platform',
                needLogin: false,
              },
 

@@ -4,7 +4,7 @@
         <div id="mobile-header" data-uk-sticky>
             <div class="page-mask sidemenu-trigger" v-bind:class="{ active: $store.getters.sidebarOpen, close: $store.getters.sidebarOpen  }"></div>
             <div class="header-links">
-                <a href="https://www.blocknomic.com/" target="_blank" class="logo">
+                <a href="https://www.opentradingplatform.org/" target="_blank" class="logo">
                     <img src="@/assets/logo.png" alt="">
                 </a>
                 <a href="javascript:undefined" class="sidemenu-trigger" @click="onTriggerClick">
@@ -115,12 +115,8 @@
                             </router-link>
                         </div>
                     </div>
-                    <a href="http://status.blocknomic.com" target="_blank">
-                        <div id="statusDiv" style="color:var(--primary-text-color);"><span class="dot" :class='statusCode'></span>&nbsp;&nbsp;&nbsp;&nbsp;{{ getPageStatus() }}</div>
-                    </a>
+                    <div id="statusDiv" style="color:var(--primary-text-color);"><span class="dot" :class='serverStatusCode'></span>&nbsp;&nbsp;&nbsp;&nbsp;{{ getServerStatus() }}</div>
                 </div>
-                <div id="serverStatusDiv" style="color:var(--primary-text-color);"><span class="dot" :class='serverStatusCode'></span>&nbsp;&nbsp;&nbsp;&nbsp;{{ getServerStatus() }}</div>
-                <!-- <div v-if="$store.getters.isLoggedIn" id="header-logout" @click="logout"><i class="fas fa-sign-out-alt"></i>Logout</div> -->
             </header>
         </vk-sticky>
     </div>
