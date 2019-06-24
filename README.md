@@ -1,6 +1,5 @@
 
 # Open Trading Platform - UI
-
 Open Trading Platform is a Unified web application; meta trading platform for cryptocurrency Traders and Developers to run on your browser. It allows you to trade across 5 cryptocurrency exchanges for now:
 
   - Bitfinex (Spot trading)
@@ -13,7 +12,7 @@ The Open Trading Platform platform allows Traders to manage all their accounts o
 The Development is constantly maintained and updated by [Blocknomic Technologies Pvt. Ltd][blocknomic]
 
 The open source system has been built keeping non-developers in mind to allow ease of startup.
-You can test out the platform at https://trader.blocknomic.com
+You can test out the platform at https://trader.opentradingplatform.org
 
 ![Use Open Trading Platform UI to trade safely and efficiently ](https://lh3.googleusercontent.com/6xFt-fxZ1c1x_yDTOXrLE2UgU7B7iWxvK4h1jwdTtCkny_M1D_lLmeOi9RpVAbOBXOKiTJCKNDly "Open Trading Platfom UI")
 
@@ -55,7 +54,7 @@ The platform has been designed and built for two types of users Traders with no 
 
 #### Head less (Download and run instructions for linux ubuntu)
 
-Headless allows the developer to run the platform without running the UI on there computer. They can simply use https://trader.blocknomic.com to connect the server running on their computer.  This is perfect for people who don't have a powerful enough computer
+Headless allows the developer to run the platform without running the UI on there computer. They can simply use https://trader.opentradingplatform.org to connect the server running on their computer.  This is perfect for people who don't have a powerful enough computer
 
 ##### Requirements
 
@@ -77,7 +76,7 @@ $ npm install
 (In the root directory search and edit the keys.js file and input your API keys for the exchanges)
 (To run simply type)
 $ node debug.js
-(open up https://trader.blocknomic.com) and see if you are connected. 
+(open up https://trader.opentradingplatform.org) and see if you are connected. 
 ```
 
 For Production environment (Coming soon)
