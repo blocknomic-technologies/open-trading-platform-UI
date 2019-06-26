@@ -147,13 +147,19 @@ There is only one way to place a trade anywhere on the system by simply pressing
 **alt+t** 
 To view all open orders you simply press
 **alt+o**
-![Using keyboard shortcuts](https://lh3.googleusercontent.com/WK8273Axzz1lWas2t8zeXvFEpA1_mzvjfMD8V0CktV0VEfTEeJycq3QRR7nCEWdg7d0QmzcCpHVo "Keyboard shortcuts")
+
+![enter image description here](https://lh3.googleusercontent.com/GtqCk8wU1pImcq5HFMGryYDe6MQ6YpIlwaQgdjr3X436fWrND0v798YTsQtiI-Hu43YmAaSyOh6P "Keyboard shortcuts")
+
 #### View markets
 To select an exchange and a currency pair you have to visit markets on the navbar and choose your Exchange and currency pair there. 
+
+
 ![Choosing your currency](https://lh3.googleusercontent.com/2gb3ZhF8bgIfcf7szRAa4F4j0ropkQsA6qL3SroL_sq2nXPPM7bb5lD0dOgc1OS31dVOeJscEvfb "Market")
 
 #### News
 We have incorporated a little news widget to allow you to view the latest news in the, we haven't completed programming it, but in the near future depending on the Currency pair you are on it will provide you relevant information regarding those coins for different new channels.
+
+
 ![enter image description here](https://lh3.googleusercontent.com/ueTxModFb3EUZ1at-5rH9GtO275BvXZHEJ1d1KYJ9vWaKf-_rmn77hcaFOSZcLgPRrE559wS25vz "News")
 
 #### Trezor
@@ -161,15 +167,20 @@ To use your trezor directly on the platform, use the navbar on the top, go to pr
 
 #### Deposit
 You can get wallet address directly from the UI by going funds on the navbar and then wallet and choosing the exchange and currency. We do not allow withdrawls from the system for security reasons.
+
 ![
 ](https://lh3.googleusercontent.com/FtfUrECoPdBeazCR-VCEk8KhiCA5_UBocjSnx_P3kRhWVWFLRfJYtfMV4sb0WBcbEvAotMQK1dQY "Deposits")
 #### Margin trading
 Go to the markets page and choose Derivatives market at the bottom.
+
+
 ![
 ](https://lh3.googleusercontent.com/9TbBOqA0_FA-dmus1bTKcwzwJd9UPM3GzR6g89CscAjguapq8qglc5h9k2-ZeKy5AZVP1iUpkNUW "Margin trading")
 
 #### Server status
 On the top right of the nav bar there is a status bar that allows you to see if your local server is on or not. Green means connected, Orange means NOT connected.
+
+
 ![
 ](https://lh3.googleusercontent.com/Fg-XhR9o5uKv2XlPzg38H9Mc4L-gcPLllm8sq0fkJqNsNTCt6i_8OdsM-UOz3DTAVy5DL_HwPmjn "Server status")
 
