@@ -67,7 +67,8 @@ export default {
         });
         obj.getScrollElement().scrollTop = 9999999;
       } catch (e) {
-        console.log(e);
+        throw e;
+        
       }
     },
     asksUpdater(parsedSnap) {
