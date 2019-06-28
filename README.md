@@ -1,6 +1,5 @@
 
 # Open Trading Platform - UI
-
 Open Trading Platform is a Unified web application; meta trading platform for cryptocurrency Traders and Developers to run on your browser. It allows you to trade across 5 cryptocurrency exchanges for now:
 
   - Bitfinex (Spot trading)
@@ -13,31 +12,33 @@ The Open Trading Platform platform allows Traders to manage all their accounts o
 The Development is constantly maintained and updated by [Blocknomic Technologies Pvt. Ltd][blocknomic]
 
 The open source system has been built keeping non-developers in mind to allow ease of startup.
-You can test out the platform at https://trader.blocknomic.com
+You can test out the platform at https://trader.opentradingplatform.org
 
 ![Use Open Trading Platform UI to trade safely and efficiently ](https://lh3.googleusercontent.com/6xFt-fxZ1c1x_yDTOXrLE2UgU7B7iWxvK4h1jwdTtCkny_M1D_lLmeOi9RpVAbOBXOKiTJCKNDly "Open Trading Platfom UI")
 
 # INDEX
   
-  1. System architecture
-  2. Getting Started
-  3. Platform Features
-  4. How to recommend Platform features to us?
-  5. Developers, Contributors and how to contribute
-  6. To-Do's
-  7. Developer Note
-  8. Roadmap (Coming soon)
+  1. [System architecture](#system-architecture)
+  2. [Getting Started](#getting-started)
+  3. [Platform Features](#platform-features)
+  4. [How to recommend Platform features to us?](#how-to-recommend-platform-features-to-us)
+  5. [Developers, Contributors and how to contribute](#developers-contributors-and-how-to-contribute)
+  6. [Todos](#todos)
+  7. [Developer Note](#developer-note)
+  8. [Roadmap](#roadmap)
   9. Wiki (Coming soon)
-  10. Donations
-  11. Your security concerns!!!!
+  10. Documentation (Coming soon) 
+  11. [Donations](#donations)
+  12. [Your security concerns!!!!](#your-security-concerns)
 
-### System Architecture
+## System Architecture
 
 The Open Trading platform has three main components
 
 1. UI
 2. API
 3. ENGINE
+4. TradingView widgets
 
 The **UI** is available at [https://github.com/blocknomic-technologies/open-trading-platform-UI](https://github.com/blocknomic-technologies/open-trading-platform-UI) repository that contains all the code for the frontend which is displayed on browser. The **UI** requires both the **API** and the **ENGINE** to operate properly. 
 
@@ -45,19 +46,21 @@ The **API** available at [https://github.com/blocknomic-technologies/open-tradin
 
 The **ENGINE** is currently being run by us. It's a simple aggregator engine that complies all the different exchanges ticker/market data and displays it for users to use to choose their currency pair and comparing market rates etc. The **ENGINE** will be open sourced in future dates after cleaning up of the code. 
 
-### Getting Started
+The **TRADING VIEW WIDGETS** are also currently being run by us we will be releasing the code soon.
+
+## Getting Started
 
 The platform has been designed and built for two types of users Traders with no development experience and Traders/Developers with basic development experience below we will give you the different options to run the system. There are 3 ways to start the system.
 
- 1. Head less (Easy)
- 2. Full (Medium)
- 3. Download (Easiest) - Coming soon
+ 1. [Headless (Easy)](#headless)
+ 2. [Full (Medium)](#full)
+ 3. [Download (Easiest)](#download)
 
-#### Head less (Download and run instructions for linux ubuntu)
+### Headless
 
-Headless allows the developer to run the platform without running the UI on there computer. They can simply use https://trader.blocknomic.com to connect the server running on their computer.  This is perfect for people who don't have a powerful enough computer
+Headless allows the developer to run the platform without running the UI on there computer. They can simply use https://trader.opentradingplatform.org to connect the server running on their computer. 
 
-##### Requirements
+#### Requirements
 
 1. Node.js V8.9.0+
 2. NPM
@@ -65,10 +68,8 @@ Headless allows the developer to run the platform without running the UI on ther
 
 Download node.js and NPM at [https://nodejs.org/en/download/package-manager/](https://nodejs.org/en/download/package-manager/)
 
-
 Download Git at [https://git-scm.com/downloads](https://git-scm.com/downloads)
 
-##### Download and run
 For Development environments...
   ```sh
 $ git clone https://github.com/blocknomic-technologies/open-trading-platform-API.git
@@ -77,13 +78,13 @@ $ npm install
 (In the root directory search and edit the keys.js file and input your API keys for the exchanges)
 (To run simply type)
 $ node debug.js
-(open up https://trader.blocknomic.com) and see if you are connected. 
+(open up https://trader.opentradingplatform.org) and see if you are connected. 
 ```
 
 For Production environment (Coming soon)
 
-#### Full (Download and run instructions for linux ubuntu)
-Running the full system could get heavy that is why we recommend using Head Less. But if you are looking to overhaul the system and test out all the feature there are two main part to running her. 
+### Full
+Running the full system could get heavy that is why we recommend using Head Less. But if you are looking to overhaul the system and test out all the feature there are two main part to running it. 
 
 ##### Requirements
 
@@ -118,52 +119,76 @@ $ npm run serve
 
 Within the terminal you will be given a link http://localhost.... open the link and trade
 
-### Platform Features
+For Production environment (Coming soon)
+
+### Download
+
+Easiest way to run the system, perfect for traders/non-developers.
+visit https://opentradingplatform.org/traders.html
+
+## Platform Features
 
 In this section we will explain all the available feature on the easy to use UI that we have made.
 
- 1. Keyboard shortcuts
- 2. View markets
- 3. News
- 4. Trezor integration
- 5. Deposits
- 6. Margin trading
- 7. System and server status
+ 1. [Keyboard shortcuts](#keyboard-shortcuts)
+ 2. [View markets](#view-markets)
+ 3. [News](#news)
+ 4. [Trezor integration](#trezor)
+ 5. [Deposits](#deposits)
+ 6. [Margin trading](#margin-trading)
+ 7. [Server status](#server-status)
 
 You can also visit our youtube video to see how to use the entire system. (Coming soon)
 
 You can do almost everything that you can on the exchanges directly on this platform. Below we will discuss in details everything that you can do with the UI. 
 
-##### Keyboard Shortcuts
+#### Keyboard Shortcuts
 There is only one way to place a trade anywhere on the system by simply pressing
 **alt+t** 
 To view all open orders you simply press
 **alt+o**
 
-##### View markets
+![enter image description here](https://lh3.googleusercontent.com/GtqCk8wU1pImcq5HFMGryYDe6MQ6YpIlwaQgdjr3X436fWrND0v798YTsQtiI-Hu43YmAaSyOh6P "Keyboard shortcuts")
+
+#### View markets
 To select an exchange and a currency pair you have to visit markets on the navbar and choose your Exchange and currency pair there. 
 
-##### News
+
+![Choosing your currency](https://lh3.googleusercontent.com/2gb3ZhF8bgIfcf7szRAa4F4j0ropkQsA6qL3SroL_sq2nXPPM7bb5lD0dOgc1OS31dVOeJscEvfb "Market")
+
+#### News
 We have incorporated a little news widget to allow you to view the latest news in the, we haven't completed programming it, but in the near future depending on the Currency pair you are on it will provide you relevant information regarding those coins for different new channels.
 
-##### Trezor
+
+![enter image description here](https://lh3.googleusercontent.com/ueTxModFb3EUZ1at-5rH9GtO275BvXZHEJ1d1KYJ9vWaKf-_rmn77hcaFOSZcLgPRrE559wS25vz "News")
+
+#### Trezor
 To use your trezor directly on the platform, use the navbar on the top, go to profile->Setting and connect your trezor. More info available on the WIKI. (Coming soon)
 
-##### Deposit
+#### Deposit
 You can get wallet address directly from the UI by going funds on the navbar and then wallet and choosing the exchange and currency. We do not allow withdrawls from the system for security reasons.
 
-##### Margin trading
-Go to the markets page and choose Derivatives market at the bottom. More info available on the WIKI and youtube. (Coming soon)
+![
+](https://lh3.googleusercontent.com/FtfUrECoPdBeazCR-VCEk8KhiCA5_UBocjSnx_P3kRhWVWFLRfJYtfMV4sb0WBcbEvAotMQK1dQY "Deposits")
+#### Margin trading
+Go to the markets page and choose Derivatives market at the bottom.
 
-##### System and Server status
-On the top right of the nav bar there are two status alerts. One to show the status of the exchanges and there apis and websockets the other shows if your frontend has successfully connected to the server. 
 
-### How to recommend Platform features to us?
+![
+](https://lh3.googleusercontent.com/9TbBOqA0_FA-dmus1bTKcwzwJd9UPM3GzR6g89CscAjguapq8qglc5h9k2-ZeKy5AZVP1iUpkNUW "Margin trading")
 
-- If you are a developer you can follow the instructions on the WIKI page. 
-- If you are a trader you can drop us an email at features@blocknomic.com if we get enough inquiries regarding the update we will look into it. 
+#### Server status
+On the top right of the nav bar there is a status bar that allows you to see if your local server is on or not. Green means connected, Orange means NOT connected.
 
-### Developers, Contributors and how to contribute
+
+![
+](https://lh3.googleusercontent.com/Fg-XhR9o5uKv2XlPzg38H9Mc4L-gcPLllm8sq0fkJqNsNTCt6i_8OdsM-UOz3DTAVy5DL_HwPmjn "Server status")
+
+## How to recommend Platform features to us?
+
+- Just visit the issues tab on this github rep and choose the feature template. 
+
+## Developers, Contributors and how to contribute
 
 | Developer |  |
 | ------ | ------ |
@@ -179,18 +204,21 @@ Want to contribute? Great!
 
 Please go to the wiki link and follow all the instructions to help with development of the Open Trading Platform
 
-### Todos
+## Todos
 
  - Clean code
  - Add documentation (Swagger & JsDocs)
  - Finish up wiki 
  - Complete all coming soon agendas
 
-#### Developer note
+## Developer note
 
 This is our first open source project please bear with us as we navigate through this experience and try to make it as comfortable as an experience for you. 
 
-#### Donations
+## Roadmap
+
+![enter image description here](https://lh3.googleusercontent.com/TuQzTUmKm3g17d85wqCu3uCT5a-nIw0_LT9zXcGji9qtIXNq8BNKbW6aMvs-CHe1iTw-NR05sCGQ "Roadmap")
+## Donations
 
 We accept crypto donations if you're looking to fund our teams Beers, Pizza's and Butter chicken.
 
@@ -198,7 +226,7 @@ BTC = 3N1eMLHky6mTYLLtN4QfzecWduakVYgdVa
 
 LTC = MSnYXgutFWYmmfet9saYGMy66MFuiRYq1y
 
-#### Your Security Concerns
+## Your Security Concerns
 
 Nothing is stored on a database and all your apikeys are safely stored on your local computer. All http requests are taken care of from the server running on your computer. 
 
