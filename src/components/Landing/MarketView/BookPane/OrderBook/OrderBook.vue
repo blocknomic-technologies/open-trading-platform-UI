@@ -6,7 +6,6 @@ import SimpleBar from 'simplebar';
 import Spinner from '@/components/Spinner/Spinner.vue';
 import precisionMaps from '@/assets/json/precisionMaps.js';
 import Decimal from 'decimal.js';
-
 export default {
   name: 'order-book',
   components: {
@@ -68,12 +67,11 @@ export default {
         });
         obj.getScrollElement().scrollTop = 9999999;
       } catch (e) {
-        // console.log(e);
+        console.log(e);
       }
     },
     asksUpdater(parsedSnap) {
       if (parsedSnap && parsedSnap.asks && parsedSnap.asks.length) {
-        if (parsedSnap.asks.length > 50) parsedSnap.asks.length = 50;
         let asks = [parsedSnap.asks.length,];
         for (let i = 0; i < parsedSnap.asks.length; i++) {
           if (i === 0) {
@@ -92,7 +90,6 @@ export default {
     },
     bidsUpdater(parsedSnap) {
       if (parsedSnap && parsedSnap.bids && parsedSnap.bids.length) {
-        if (parsedSnap.bids.length > 50) parsedSnap.bids.length = 50;
         let bids = [];
         for (let i = parsedSnap.bids.length - 1; i >= 0; i--) {
           if (i === parsedSnap.bids.length - 1) {
@@ -128,7 +125,7 @@ export default {
     }
     this.snapshotListener = snap => {
       this.showLoader = false;
-      let parsedSnap = snap;
+      let parsedSnap = JSON.parse(JSON.stringify(snap));
       this.asks = this.asksUpdater(parsedSnap);
       this.bids = this.bidsUpdater(parsedSnap);
       this.barAsk = this.asks[this.asks.length - 1].totalVolume;
@@ -136,9 +133,8 @@ export default {
       this.timeout = setTimeout(() => this.scrollTopBookToBottom(), 2000);
       this.$store.commit('removeLoaderTask', 1);
     };
-
     this.bookUpdateListener = snap => {
-      let parsedSnap = snap;
+      let parsedSnap = JSON.parse(JSON.stringify(snap));
       this.asks = this.asksUpdater(parsedSnap);
       this.bids = this.bidsUpdater(parsedSnap);
       this.barAsk = this.asks[0].totalVolume;

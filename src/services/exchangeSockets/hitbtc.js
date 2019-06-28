@@ -95,7 +95,7 @@ function connectbequant2() {
   };
 }
 
-ExchangeDataEventBus.$on('change-symbol', function (pair) {
+ExchangeDataEventBus.$on('change-symbol', function(pair) {
   // console.log('symbol change called:', pair);
   //currentPair =pair;
   changeTickerPair(pair);
@@ -737,8 +737,8 @@ function saveSnapshotData(dataObj, snapshotData, precision, askOrBid) {
 
   }
   dataObj[askOrBid][roundedPrice].totalVolume = dataObj[askOrBid][roundedPrice].totalVolume -
-    (dataObj[askOrBid][roundedPrice].data[snapshotData.price] || 0) +
-    parseFloat(snapshotData.size);
+        (dataObj[askOrBid][roundedPrice].data[snapshotData.price] || 0) +
+        parseFloat(snapshotData.size);
   dataObj[askOrBid][roundedPrice].data[`${snapshotData.price}`] = parseFloat(snapshotData.size);
 
   if (parseFloat(snapshotData.size) === 0) {
@@ -784,14 +784,14 @@ function getOrderBookArrayByPrecision(precision, snapshot) {
       });
     }
   });
-  chartData.asks.sort(function (a, b) {
+  chartData.asks.sort(function(a, b) {
     return a.value - b.value;
   });
-  chartData.bids.sort(function (a, b) {
+  chartData.bids.sort(function(a, b) {
     return a.value - b.value;
   });
-  chartData.asks = chartData.asks.slice(0, 25).filter(i => i.volume !== 0 && i.value !== 0);
-  chartData.bids = chartData.bids.slice(-25).filter(i => i.volume !== 0 && i.value !== 0);
+  chartData.asks = chartData.asks.filter(i => i.volume > 0.00001 && i.value > 0.0001).splice(0, 25);
+  chartData.bids = chartData.bids.filter(i => i.volume > 0.00001 && i.value > 0.0001).splice(-25);
   if (snapshot) {
     ExchangeDataEventBus.$emit('snapshotOrderbook', JSON.parse(JSON.stringify(chartData)));
   } else {
