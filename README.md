@@ -46,7 +46,7 @@ The **API** available at [https://github.com/blocknomic-technologies/open-tradin
 
 The **ENGINE** is currently being run by us. It's a simple aggregator engine that complies all the different exchanges ticker/market data and displays it for users to use to choose their currency pair and comparing market rates etc. The **ENGINE** will be open sourced in future dates after cleaning up of the code. 
 
-The **TRADING VIEW WIDGETS** are also currently being run by us we will be releasing the code soon.
+The **TRADING VIEW WIDGETS** are also currently being run by us. If you wish to run it on your own follow the instruction on https://github.com/blocknomic-technologies/open-trading-platform-TradingView/blob/master/README.md 
 
 ## Getting Started
 
