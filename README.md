@@ -26,7 +26,7 @@ You can test out the platform at https://trader.opentradingplatform.org
   6. [Todos](#todos)
   7. [Developer Note](#developer-note)
   8. [Roadmap](#roadmap)
-  9. Wiki (Coming soon)
+  9. [Wiki][wiki]
   10. Documentation (Coming soon) 
   11. [Donations](#donations)
   12. [Your security concerns!!!!](#your-security-concerns)
@@ -241,4 +241,5 @@ GNU AGPLv3
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
    [blocknomic]: <http://blocknomic.com>
+   [wiki]: <http://blocknomic.com>
 
