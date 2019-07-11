@@ -184,6 +184,8 @@ On the top right of the nav bar there is a status bar that allows you to see if 
 ![
 ](https://lh3.googleusercontent.com/Fg-XhR9o5uKv2XlPzg38H9Mc4L-gcPLllm8sq0fkJqNsNTCt6i_8OdsM-UOz3DTAVy5DL_HwPmjn "Server status")
 
+FOR MORE DETAILS ON PLATFORM FEATURES PLEASE VISIT THE [WIKI][wiki]
+
 ## How to recommend Platform features to us?
 
 - Just visit the issues tab on this github rep and choose the feature template. 
@@ -201,8 +203,7 @@ On the top right of the nav bar there is a status bar that allows you to see if 
 | Ayush Gupta | Full stack developer |
 
 Want to contribute? Great!
-
-Please go to the wiki link and follow all the instructions to help with development of the Open Trading Platform
+We'll be adding guidelines soon.
 
 ## Todos
 
