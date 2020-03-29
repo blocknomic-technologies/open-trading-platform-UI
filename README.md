@@ -202,8 +202,10 @@ FOR MORE DETAILS ON PLATFORM FEATURES PLEASE VISIT THE [WIKI][wiki]
 | ------ | ------ |
 | Ayush Gupta | Full stack developer |
 
-Want to contribute? Great!
-We'll be adding guidelines soon.
+Want to contribute? Great! 
+follow the below links step-by-step 
+[https://jarv.is/notes/how-to-pull-request-fork-github/](https://jarv.is/notes/how-to-pull-request-fork-github/) 
+Give the repo a star to get latest updates
 
 ## Todos
 
