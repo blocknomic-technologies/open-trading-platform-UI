@@ -21,7 +21,7 @@
         "eventemitter2": "^5.0.1",
         "izitoast": "^1.2.0",
         "luxon": "^1.16.0",
-        "serialize-javascript": "^2.1.1",
+        "serialize-javascript": "^4.0.0",
         "simple-web-worker": "^1.2.0",
         "simplebar": "^2.6.1",
         "trezor-connect": "^6.0.2",
